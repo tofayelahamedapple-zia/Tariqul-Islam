@@ -7,9 +7,9 @@
 /* ---------- 1. Tokens ---------- */
 :root {
   /* Night */
-  --night:    #171C33;
-  --night-2:  #0E1225;
-  --slate:    #262F51;
+  --night:    #231E18;
+  --night-2:  #17120E;
+  --slate:    #3C3229;
 
   /* Warm accent */
   --sand:      #DC9A63;
@@ -23,15 +23,15 @@
   --white:    #FFFFFF;
 
   /* Text */
-  --ink:      #1A1E33;
-  --body:     #4B5271;
-  --muted:    #838AA3;
+  --ink:      #241F1A;
+  --body:     #56493F;
+  --muted:    #8C8077;
   --on-night: #EFEAE2;
-  --on-night-2: #9BA3C0;
+  --on-night-2: #B5A89B;
 
   /* Rules */
-  --line:      rgba(26, 30, 51, .13);
-  --line-2:    rgba(26, 30, 51, .26);
+  --line:      rgba(36, 31, 26, .14);
+  --line-2:    rgba(36, 31, 26, .26);
   --line-night:rgba(239, 234, 226, .17);
 
   /* Type */
@@ -40,6 +40,10 @@
   --font-calligraphy: 'Amiri', serif;
   --display-weight: 500;
   --display-track: -.02em;
+
+  /* Geometric texture — one tile, laid at 5% over every band */
+  --pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23FBF7F1' stroke-width='1.2'%3E%3Cpath d='M40 3 51 14 66 14 66 29 77 40 66 51 66 66 51 66 40 77 29 66 14 66 14 51 3 40 14 29 14 14 29 14Z'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23231E18' stroke-width='1.2'%3E%3Cpath d='M40 3 51 14 66 14 66 29 77 40 66 51 66 66 51 66 40 77 29 66 14 66 14 51 3 40 14 29 14 14 29 14Z'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3C/svg%3E");
 
   /* Metrics */
   --maxw:   1240px;
@@ -126,6 +130,23 @@ html[data-lang="ar"] body { font-size: 17px; }
 }
 .skip-link:focus { top: 0; }
 
+/* ---------- 3b. Geometric texture ---------- */
+.hero, .section, .footer { position: relative; }
+.hero::before,
+.section::before,
+.footer::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--pattern-dark);
+  background-size: 80px 80px;
+  opacity: .05;
+}
+.hero::before,
+.section--deep::before,
+.section--mid::before,
+.footer::before { background-image: var(--pattern-light); }
+/* Keep every band's own content above the texture. */
+.hero > .wrap, .section > .wrap, .footer > .wrap { position: relative; z-index: 1; }
+
 /* ---------- 4. Header ---------- */
 .header {
   position: fixed; top: 0; inset-inline: 0; z-index: 100;
@@ -133,7 +154,7 @@ html[data-lang="ar"] body { font-size: 17px; }
   transition: background .3s var(--ease), border-color .3s var(--ease);
 }
 .header.is-stuck {
-  background: rgba(23, 28, 51, .92);
+  background: rgba(35, 30, 24, .92);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom-color: var(--line-night);
@@ -215,13 +236,13 @@ html[data-lang="bn"] .brand__role, html[data-lang="ar"] .brand__role { text-tran
 .hero__media::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to right, var(--night) 0%, rgba(23, 28, 51, .55) 26%, rgba(23, 28, 51, 0) 62%),
-    linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 26%);
+    linear-gradient(to right, var(--night) 0%, rgba(35, 30, 24, .55) 26%, rgba(35, 30, 24, 0) 62%),
+    linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 26%);
 }
 html[data-lang="ar"] .hero__media::after {
   background:
-    linear-gradient(to left, var(--night) 0%, rgba(23, 28, 51, .55) 26%, rgba(23, 28, 51, 0) 62%),
-    linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 26%);
+    linear-gradient(to left, var(--night) 0%, rgba(35, 30, 24, .55) 26%, rgba(35, 30, 24, 0) 62%),
+    linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 26%);
 }
 
 .hero__eyebrow {
@@ -642,12 +663,12 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
   /* A wide, short band takes a horizontal slice — aim it at the face. */
   .hero__img { object-position: center 34%; }
   .hero__media::after {
-    background: linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 34%),
-                linear-gradient(to bottom, rgba(23, 28, 51, .5) 0%, rgba(23, 28, 51, 0) 22%);
+    background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
+                linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);
   }
   html[data-lang="ar"] .hero__media::after {
-    background: linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 34%),
-                linear-gradient(to bottom, rgba(23, 28, 51, .5) 0%, rgba(23, 28, 51, 0) 22%);
+    background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
+                linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);
   }
   .about { grid-template-columns: 1fr; }
   .about__aside { position: static; }

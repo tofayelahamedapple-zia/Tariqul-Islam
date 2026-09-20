@@ -177,19 +177,28 @@ public/                    ← the entire website; this is what gets published
 
 ## Design system
 
-Midnight navy, terracotta sand and cream — an editorial system built around a
-high-contrast serif, hairline rules and offset frames. Original to this site.
+Warm espresso, terracotta sand and cream — an editorial system built around a
+high-contrast serif and hairline rules. The palette is entirely warm: there is no
+blue or grey anywhere, so the dark bands and the sand accent share one temperature.
 
 | Token | Value | Use |
 |---|---|---|
-| Night | `#171C33` | hero, Studies, Media, Vision, mission block |
-| Darkest | `#0E1225` | footer |
-| Slate | `#262F51` | Aspirations band |
+| Dark | `#231E18` | hero, Studies, Media, Vision, mission block |
+| Darkest | `#17120E` | footer |
+| Stone | `#3C3229` | Aspirations band |
 | Sand | `#DC9A63` | accent — rules, pills, ranks, years, calligraphy |
 | Sand deep | `#C8854E` | the same accent on cream backgrounds |
 | Cream | `#FBF7F1` | default section background |
 | Cream alt | `#F2EADF` | alternating sections |
-| Ink / body | `#1A1E33` / `#4B5271` | headings, paragraphs |
+| Ink / body | `#241F1A` / `#56493F` | headings, paragraphs |
+| Muted | `#8C8077` | captions, secondary text |
+
+**Texture.** One eight-point geometric tile — octagram, rotated square, centre circle —
+is laid across every band at **5% opacity**, 80px. Two variants are held as tokens:
+`--pattern-light` (cream stroke) for the dark bands and the footer, `--pattern-dark`
+(espresso stroke) for the cream ones. It renders as a `::before` layer at `z-index: 0`
+with each band's `.wrap` lifted to `z-index: 1`, so it never sits over content. To make
+it stronger or fainter, change the single `opacity` on that rule.
 
 **Type.** Display is **Fraunces** — a variable serif with optical sizing, set at weight
 500 with tight tracking. Body is **Plus Jakarta Sans**. Fraunces covers Latin only, so
@@ -219,7 +228,7 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=10`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=11`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 
