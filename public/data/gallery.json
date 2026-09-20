@@ -2,107 +2,286 @@
   {
     "cat": "awards",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Dubai International Holy Qur'an Award — 2017", "bn": "দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ড — ২০১৭", "ar": "جائزة دبي الدولية للقرآن الكريم — ٢٠١٧" },
-    "sub": { "en": "First Place — Full Qur'an Category", "bn": "১ম স্থান — সম্পূর্ণ কুরআন ক্যাটাগরি", "ar": "المركز الأول — فرع القرآن كاملًا" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Dubai International Holy Qur'an Award — 2017",
+      "bn": "দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ড — ২০১৭",
+      "ar": "جائزة دبي الدولية للقرآن الكريم — ٢٠١٧"
+    },
+    "sub": {
+      "en": "First Place — Full Qur'an Category",
+      "bn": "১ম স্থান — সম্পূর্ণ কুরআন ক্যাটাগরি",
+      "ar": "المركز الأول — فرع القرآن كاملًا"
+    }
   },
   {
     "cat": "awards",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Kuwait International Qur'an Competition — 2018", "bn": "কুয়েত আন্তর্জাতিক কুরআন প্রতিযোগিতা — ২০১৮", "ar": "مسابقة الكويت الدولية للقرآن — ٢٠١٨" },
-    "sub": { "en": "Ninth Place — Full Qur'an Category", "bn": "৯ম স্থান — সম্পূর্ণ কুরআন ক্যাটাগরি", "ar": "المركز التاسع — فرع القرآن كاملًا" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Kuwait International Qur'an Competition — 2018",
+      "bn": "কুয়েত আন্তর্জাতিক কুরআন প্রতিযোগিতা — ২০১৮",
+      "ar": "مسابقة الكويت الدولية للقرآن — ٢٠١٨"
+    },
+    "sub": {
+      "en": "Ninth Place — Full Qur'an Category",
+      "bn": "৯ম স্থান — সম্পূর্ণ কুরআন ক্যাটাগরি",
+      "ar": "المركز التاسع — فرع القرآن كاملًا"
+    }
   },
   {
     "cat": "awards",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Sheikh Jassim Qur'an Competition — 2023", "bn": "শাইখ জাসিম কুরআন প্রতিযোগিতা — ২০২৩", "ar": "مسابقة الشيخ جاسم للقرآن — ٢٠٢٣" },
-    "sub": { "en": "Doha, Qatar", "bn": "দোহা, কাতার", "ar": "الدوحة، قطر" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Sheikh Jassim Qur'an Competition — 2023",
+      "bn": "শাইখ জাসিম কুরআন প্রতিযোগিতা — ২০২৩",
+      "ar": "مسابقة الشيخ جاسم للقرآن — ٢٠٢٣"
+    },
+    "sub": {
+      "en": "Doha, Qatar",
+      "bn": "দোহা, কাতার",
+      "ar": "الدوحة، قطر"
+    }
   },
   {
     "cat": "studies",
     "src": "",
-    "tall": true,
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Al-Masjid an-Nabawi — Madinah", "bn": "আল-মসজিদ আন-নববী — মদিনা", "ar": "المسجد النبوي — المدينة المنوّرة" },
-    "sub": { "en": "Continuing Qur'anic Studies", "bn": "কুরআনী অধ্যয়ন চলমান", "ar": "مواصلة الدراسات القرآنية" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Al-Masjid an-Nabawi — Madinah",
+      "bn": "আল-মসজিদ আন-নববী — মদিনা",
+      "ar": "المسجد النبوي — المدينة المنوّرة"
+    },
+    "sub": {
+      "en": "Continuing Qur'anic Studies",
+      "bn": "কুরআনী অধ্যয়ন চলমান",
+      "ar": "مواصلة الدراسات القرآنية"
+    }
   },
   {
     "cat": "studies",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Holy Quran Academy — Sharjah", "bn": "হলি কুরআন একাডেমি — শারজাহ", "ar": "أكاديمية القرآن الكريم — الشارقة" },
-    "sub": { "en": "Advanced Qur'anic Studies & Qira'at", "bn": "উচ্চতর কুরআনী অধ্যয়ন ও ক্বিরাআত", "ar": "الدراسات القرآنية المتقدّمة والقراءات" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Holy Quran Academy — Sharjah",
+      "bn": "হলি কুরআন একাডেমি — শারজাহ",
+      "ar": "أكاديمية القرآن الكريم — الشارقة"
+    },
+    "sub": {
+      "en": "Advanced Qur'anic Studies & Qira'at",
+      "bn": "উচ্চতর কুরআনী অধ্যয়ন ও ক্বিরাআত",
+      "ar": "الدراسات القرآنية المتقدّمة والقراءات"
+    }
   },
   {
     "cat": "studies",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "With My Teachers", "bn": "শিক্ষকদের সাথে", "ar": "مع مشايخي" },
-    "sub": { "en": "Halaqah & Qira'at sessions", "bn": "হালাকা ও ক্বিরাআত মজলিস", "ar": "حلقات القراءات" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "With My Teachers",
+      "bn": "শিক্ষকদের সাথে",
+      "ar": "مع مشايخي"
+    },
+    "sub": {
+      "en": "Halaqah & Qira'at sessions",
+      "bn": "হালাকা ও ক্বিরাআত মজলিস",
+      "ar": "حلقات القراءات"
+    }
   },
   {
     "cat": "imam",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Banani Central Jame Masjid", "bn": "বনানী কেন্দ্রীয় জামে মসজিদ", "ar": "مسجد بناني الجامع المركزي" },
-    "sub": { "en": "Tarawih — Dhaka, Bangladesh", "bn": "তারাবীহ — ঢাকা, বাংলাদেশ", "ar": "التراويح — دكا، بنغلاديش" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Banani Central Jame Masjid",
+      "bn": "বনানী কেন্দ্রীয় জামে মসজিদ",
+      "ar": "مسجد بناني الجامع المركزي"
+    },
+    "sub": {
+      "en": "Tarawih — Dhaka, Bangladesh",
+      "bn": "তারাবীহ — ঢাকা, বাংলাদেশ",
+      "ar": "التراويح — دكا، بنغلاديش"
+    }
   },
   {
     "cat": "imam",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Mosque Al-Malik", "bn": "মসজিদ আল-মালিক", "ar": "مسجد المالك" },
-    "sub": { "en": "Tarawih — Kuala Lumpur, Malaysia", "bn": "তারাবীহ — কুয়ালালামপুর, মালয়েশিয়া", "ar": "التراويح — كوالالمبور، ماليزيا" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Mosque Al-Malik",
+      "bn": "মসজিদ আল-মালিক",
+      "ar": "مسجد المالك"
+    },
+    "sub": {
+      "en": "Tarawih — Kuala Lumpur, Malaysia",
+      "bn": "তারাবীহ — কুয়ালালামপুর, মালয়েশিয়া",
+      "ar": "التراويح — كوالالمبور، ماليزيا"
+    }
   },
   {
     "cat": "competitions",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "PHP Qur'an-er Alo — NTV", "bn": "পিএইচপি কুরআনের আলো — এনটিভি", "ar": "PHP نور القرآن — قناة NTV" },
-    "sub": { "en": "National Qur'an Competition", "bn": "জাতীয় কুরআন প্রতিযোগিতা", "ar": "مسابقة قرآنية وطنية" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "PHP Qur'an-er Alo — NTV",
+      "bn": "পিএইচপি কুরআনের আলো — এনটিভি",
+      "ar": "PHP نور القرآن — قناة NTV"
+    },
+    "sub": {
+      "en": "National Qur'an Competition",
+      "bn": "জাতীয় কুরআন প্রতিযোগিতা",
+      "ar": "مسابقة قرآنية وطنية"
+    }
   },
   {
     "cat": "competitions",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "National Hifazul Quran Competition", "bn": "জাতীয় হিফজুল কুরআন প্রতিযোগিতা", "ar": "المسابقة الوطنية لحفظ القرآن" },
-    "sub": { "en": "Second Place — 2017", "bn": "২য় স্থান — ২০১৭", "ar": "المركز الثاني — ٢٠١٧" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "National Hifazul Quran Competition",
+      "bn": "জাতীয় হিফজুল কুরআন প্রতিযোগিতা",
+      "ar": "المسابقة الوطنية لحفظ القرآن"
+    },
+    "sub": {
+      "en": "Second Place — 2017",
+      "bn": "২য় স্থান — ২০১৭",
+      "ar": "المركز الثاني — ٢٠١٧"
+    }
   },
   {
     "cat": "teaching",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "With My Students", "bn": "শিক্ষার্থীদের সাথে", "ar": "مع طلابي" },
-    "sub": { "en": "Qur'an & Tajweed classes", "bn": "কুরআন ও তাজবীদ ক্লাস", "ar": "دروس القرآن والتجويد" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "With My Students",
+      "bn": "শিক্ষার্থীদের সাথে",
+      "ar": "مع طلابي"
+    },
+    "sub": {
+      "en": "Qur'an & Tajweed classes",
+      "bn": "কুরআন ও তাজবীদ ক্লাস",
+      "ar": "دروس القرآن والتجويد"
+    }
   },
   {
     "cat": "teaching",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Judging Panel", "bn": "বিচারক প্যানেল", "ar": "لجنة التحكيم" },
-    "sub": { "en": "Qur'an & Hifz competitions", "bn": "কুরআন ও হিফজ প্রতিযোগিতা", "ar": "مسابقات القرآن والحفظ" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Judging Panel",
+      "bn": "বিচারক প্যানেল",
+      "ar": "لجنة التحكيم"
+    },
+    "sub": {
+      "en": "Qur'an & Hifz competitions",
+      "bn": "কুরআন ও হিফজ প্রতিযোগিতা",
+      "ar": "مسابقات القرآن والحفظ"
+    }
   },
   {
     "cat": "events",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "B.M.C. Islamic Conference — Malaysia", "bn": "বি.এম.সি. ইসলামিক কনফারেন্স — মালয়েশিয়া", "ar": "مؤتمر B.M.C. الإسلامي — ماليزيا" },
-    "sub": { "en": "2024", "bn": "২০২৪", "ar": "٢٠٢٤" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "B.M.C. Islamic Conference — Malaysia",
+      "bn": "বি.এম.সি. ইসলামিক কনফারেন্স — মালয়েশিয়া",
+      "ar": "مؤتمر B.M.C. الإسلامي — ماليزيا"
+    },
+    "sub": {
+      "en": "2024",
+      "bn": "২০২৪",
+      "ar": "٢٠٢٤"
+    }
   },
   {
     "cat": "events",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Noor E Alam Madrasa Inauguration — India", "bn": "নূর এ আলম মাদরাসা উদ্বোধন — ভারত", "ar": "افتتاح مدرسة نور العالم — الهند" },
-    "sub": { "en": "2024", "bn": "২০২৪", "ar": "٢٠٢٤" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Noor E Alam Madrasa Inauguration — India",
+      "bn": "নূর এ আলম মাদরাসা উদ্বোধন — ভারত",
+      "ar": "افتتاح مدرسة نور العالم — الهند"
+    },
+    "sub": {
+      "en": "2024",
+      "bn": "২০২৪",
+      "ar": "٢٠٢٤"
+    }
   },
   {
     "cat": "events",
     "src": "",
-    "slot": { "en": "Add photo", "bn": "ছবি যোগ করুন", "ar": "أضف صورة" },
-    "title": { "en": "Markazut Tahfiz Foundation — Saudi Arabia", "bn": "মারকাযুত তাহফীজ ফাউন্ডেশন — সৌদি আরব", "ar": "مؤسسة مركز التحفيظ — السعودية" },
-    "sub": { "en": "10th Anniversary Qur'an Inauguration, 2022", "bn": "১০ম বার্ষিকী কুরআন উদ্বোধনী, ২০২২", "ar": "الافتتاح القرآني للذكرى العاشرة، ٢٠٢٢" }
+    "slot": {
+      "en": "Add photo",
+      "bn": "ছবি যোগ করুন",
+      "ar": "أضف صورة"
+    },
+    "title": {
+      "en": "Markazut Tahfiz Foundation — Saudi Arabia",
+      "bn": "মারকাযুত তাহফীজ ফাউন্ডেশন — সৌদি আরব",
+      "ar": "مؤسسة مركز التحفيظ — السعودية"
+    },
+    "sub": {
+      "en": "10th Anniversary Qur'an Inauguration, 2022",
+      "bn": "১০ম বার্ষিকী কুরআন উদ্বোধনী, ২০২২",
+      "ar": "الافتتاح القرآني للذكرى العاشرة، ٢٠٢٢"
+    }
   }
 ]

@@ -559,10 +559,10 @@ html[data-lang="ar"] .video__play svg { transform: scaleX(-1); margin-inline-sta
 .gal-item { position: relative; background: none; }
 .gal-item img,
 .gal-item__ph {
+  /* One ratio for every tile, so the grid stays even whatever is dropped in. */
   aspect-ratio: 4/3; width: 100%; border-radius: var(--radius-lg);
   border: 1px solid var(--line); background: var(--cream-3); overflow: hidden;
 }
-.gal-item--tall img, .gal-item--tall .gal-item__ph { aspect-ratio: 3/4; }
 .gal-item img { object-fit: cover; transition: opacity .25s; }
 .gal-item:hover img { opacity: .88; }
 .gal-item__ph {

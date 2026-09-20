@@ -117,7 +117,8 @@ To swap the hero photo, replace it with your own 3:4 image and update the `width
 
 Each entry has a `cat` (`awards`, `studies`, `imam`, `competitions`, `teaching`,
 `events`) that drives the filter buttons, plus `title` and `sub` captions in all three
-languages. Set `"tall": true` for a portrait-shaped tile. No HTML changes needed.
+languages. Every tile is **4:3**, cropped with `object-fit: cover`, so a photo of any
+shape drops in without breaking the grid. No HTML changes needed.
 
 ### Videos
 
@@ -261,7 +262,7 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=20`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=21`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 

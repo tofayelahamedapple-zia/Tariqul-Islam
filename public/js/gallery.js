@@ -39,13 +39,12 @@
     grid.innerHTML = visible.map(function (it) {
       var title = esc(t(it.title));
       var sub   = esc(t(it.sub));
-      var tall  = it.tall ? ' gal-item--tall' : '';
 
       var inner = it.src
         ? '<img src="' + esc(it.src) + '" alt="' + title + '" loading="lazy" decoding="async">'
         : '<div class="gal-item__ph">' + PH_SVG + '<span>' + esc(t(it.slot)) + '</span></div>';
 
-      return '<figure class="gal-item' + tall + '" data-cat="' + esc(it.cat) + '" tabindex="0">' +
+      return '<figure class="gal-item" data-cat="' + esc(it.cat) + '" tabindex="0">' +
                inner +
                '<figcaption class="gal-item__cap"><b>' + title + '</b><span>' + sub + '</span></figcaption>' +
              '</figure>';
