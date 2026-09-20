@@ -68,7 +68,7 @@ To change a Bangla string, find the same key in `bn.json` and edit its value.
 To add a fourth language, copy `bn.json` to e.g. `ur.json`, translate the values, then
 add `'ur'` to `SUPPORTED` in `public/js/i18n.js` and a button in the header.
 
-Keys currently in use: **262**. To check a dictionary is complete:
+Keys currently in use: **259**, and both dictionaries carry exactly those. To check a dictionary is complete:
 
 ```bash
 node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8').match(/data-i18n=\"[^\"]*\"/g).map(s=>s.slice(11,-1))); const d=require('./public/i18n/bn.json'); console.log([...en].filter(k=>!(k in d)))"
@@ -80,8 +80,8 @@ node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8')
 
 ### Portrait photograph
 
-The hero is art-directed: two crops of the same photograph, each cut to the panel it
-fills, so `object-fit: cover` has almost nothing left to trim.
+One 3:4 crop fills the mihrab niche at every breakpoint, so `object-fit: cover` has
+nothing left to trim. The other crops are kept as spares from earlier layouts.
 
 | File | Size | Used by |
 |---|---|---|
@@ -92,11 +92,11 @@ fills, so `object-fit: cover` has almost nothing left to trim.
 | `portrait.jpg` | 896×1200 (3:4) | spare — the original crop |
 | `portrait-cutout.webp` | 900×939, transparent | spare — subject on a transparent background |
 
-All five come from one source photograph taken outside Al-Masjid an-Nabawi. The
+All of these come from one source photograph taken outside Al-Masjid an-Nabawi. The
 background was replaced with a soft off-white wall carrying a low-relief Islamic
-geometric pattern and the harsh midday shadows were evened out; the two hero crops were
-then produced by **outpainting** that image, so the subject's own pixels are untouched
-and only the wall is extended. Face, beard, sunglasses, ghutra, igal and thobe are
+geometric pattern and the harsh midday shadows were evened out; the wider and taller
+crops were then produced by **outpainting** that image, so the subject's own pixels are
+untouched and only the wall is extended. Face, beard, sunglasses, igal and thobe are
 unchanged from the original throughout.
 
 `portrait-arch.webp` is a 3:4 crop of the outpainted tall image, framed so the head sits
@@ -104,8 +104,9 @@ about a third down — that is what the arch wants. Its ghutra was re-draped to 
 reference the client supplied: the two front edges hang straight down alongside the
 cheeks and meet near the chin, with the fabric falling forward over the chest. That was
 a reference-guided edit of the source portrait, then outpainted and cropped through the
-same pipeline, so the composition matches the earlier version exactly. To swap the hero photo, replace it
-with your own 3:4 image and update the `width`/`height` on the `.hero__img` in
+same pipeline, so the composition matches the earlier version exactly.
+
+To swap the hero photo, replace it with your own 3:4 image and update the `width`/`height` on the `.hero__img` in
 `public/index.html`. Its `src` carries a `?v=` query; bump it after replacing the file.
 
 ### Gallery photographs
