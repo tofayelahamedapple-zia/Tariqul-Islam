@@ -80,9 +80,17 @@ node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8')
 
 ### Portrait photograph
 
-1. Save the photo as `public/assets/portrait.jpg` (portrait orientation, ~800×1000).
-2. In `public/index.html`, find the comment `PORTRAIT:` in the hero and remove the
-   `<!--` / `-->` around the `<img>` line. The placeholder hides itself automatically.
+`public/assets/portrait.jpg` (896×1200, 3:4) is already in place and shown in the hero.
+
+It was produced from the original photograph taken outside Al-Masjid an-Nabawi: the
+background was replaced with a soft off-white wall carrying a low-relief Islamic
+geometric pattern, and the harsh midday sun shadows were evened out. The subject —
+face, beard, sunglasses, ghutra, igal and thobe — is unchanged from the original.
+
+To swap in a different photo, overwrite `public/assets/portrait.jpg` with another 3:4
+image and update the `width`/`height` attributes on the `<img>` in the hero of
+`public/index.html` to match. The frame crops with `object-fit: cover`, so an image
+that is not exactly 3:4 still fills it without distortion.
 
 ### Gallery photographs
 
