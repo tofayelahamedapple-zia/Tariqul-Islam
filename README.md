@@ -99,7 +99,11 @@ and only the wall is extended. Face, beard, sunglasses, ghutra, igal and thobe a
 unchanged from the original throughout.
 
 `portrait-arch.webp` is a 3:4 crop of the outpainted tall image, framed so the head sits
-about a third down — that is what the arch wants. To swap the hero photo, replace it
+about a third down — that is what the arch wants. Its ghutra was re-draped to a
+reference the client supplied: the two front edges hang straight down alongside the
+cheeks and meet near the chin, with the fabric falling forward over the chest. That was
+a reference-guided edit of the source portrait, then outpainted and cropped through the
+same pipeline, so the composition matches the earlier version exactly. To swap the hero photo, replace it
 with your own 3:4 image and update the `width`/`height` on the `.hero__img` in
 `public/index.html`. Its `src` carries a `?v=` query; bump it after replacing the file.
 
