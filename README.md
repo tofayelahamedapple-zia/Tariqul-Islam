@@ -165,17 +165,38 @@ public/                    ← the entire website; this is what gets published
 
 ## Design system
 
+Modern minimal: one typeface, hairline rules, generous whitespace, near-monochrome
+with a single accent. No ornament, no drop shadows, no gradients.
+
 | Token | Value | Use |
 |---|---|---|
-| Ivory | `#FBF7EF` | page background |
-| Deep green | `#0C2B24` | hero, footer, feature sections |
-| Gold | `#C2A25C` | accents, rules, active states |
-| Display type | Cormorant Garamond | headings (Amiri in Arabic, Noto Serif Bengali in Bangla) |
-| Body type | Inter | text (Noto Sans Arabic / Noto Sans Bengali) |
+| Background | `#FDFDFC` | most sections |
+| Alt background | `#F4F4F1` | alternating sections |
+| Ink | `#0F1110` | headings and key text |
+| Muted | `#767B78` | secondary text |
+| Accent | `#1C5B43` | links, active states, the Qira'at panel |
+| Dark | `#101512` / `#0A0E0C` | Vision section and footer |
+| Typeface | Inter | everything (Noto Sans Bengali / Noto Sans Arabic per language) |
+| Hairline | `rgba(15,17,16,.11)` | every divider, card edge and grid line |
 
-Arabic-inspired eight-point geometry appears as a low-opacity background pattern and as
-section ornaments. Animations are restrained fade-ups and are fully disabled under
-`prefers-reduced-motion`.
+Amiri is loaded for one element only — the calligraphic `القراءات العشر` in the Qira'at
+panel. Headings are large and tightly tracked (`-0.032em`); Bangla and Arabic reset
+tracking to zero and increase line-height, since tight tracking hurts both scripts.
+
+Structure is built from **hairlines rather than cards** — lists, tables and grids share
+one `border` treatment, and grid cells carry their own 1px ring (`box-shadow`) so an
+incomplete row never leaves a stray filled block. Hover states change background or
+border colour only; nothing moves. Animation is a single short fade-up, disabled
+entirely under `prefers-reduced-motion`.
+
+Section rhythm alternates background / alt-background, with exactly two dark moments —
+**Vision** and the **footer** — so they carry weight without the page feeling heavy.
+
+### Cache busting
+
+`index.html` links assets as `css/styles.css?v=5`, `js/main.js?v=2` and so on. After
+editing CSS or JS, bump that number so browsers pick the change up immediately instead
+of serving a cached copy.
 
 ## Browser support
 
