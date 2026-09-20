@@ -80,21 +80,25 @@ node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8')
 
 ### Portrait photograph
 
-Two derivatives of the original photograph (taken outside Al-Masjid an-Nabawi) ship with
-the site, both produced with Higgsfield from the same source. In both, the harsh midday
-sun shadows were evened out to diffused light, and the subject — face, beard, sunglasses,
-ghutra, igal and thobe — is unchanged from the original.
+The hero is art-directed: two crops of the same photograph, each cut to the panel it
+fills, so `object-fit: cover` has almost nothing left to trim.
 
-- `public/assets/portrait.jpg` (896×1200, 3:4) — subject on a soft off-white wall with a
-  low-relief Islamic geometric pattern. **This is the one the hero frame uses.**
-- `public/assets/portrait-cutout.webp` (900×939, 75 KB) — the same subject cut out on a
-  transparent background. Not currently placed; keep it for any layout that needs the
-  subject over a flat colour.
+| File | Size | Used by |
+|---|---|---|
+| `portrait-tall.webp` | 880×1577 (9:16) | the tall desktop panel, via `<source media="(min-width: 921px)">` |
+| `portrait-wide.webp` | 1600×893 (16:9) | the wide stacked band below 921px — also the `<img>` fallback |
+| `portrait.jpg` | 896×1200 (3:4) | the original crop; kept, not currently placed |
+| `portrait-cutout.webp` | 900×939, transparent | subject cut out; kept for any flat-colour layout |
 
-To swap the hero photo, replace `portrait.jpg` with another image and update the
-`width`/`height` on the `.hero__img` in `public/index.html`. It crops with
-`object-fit: cover`, so a photo of any ratio fills the panel without distortion; adjust
-`object-position` if the face lands off-centre.
+All four come from one source photograph taken outside Al-Masjid an-Nabawi. The
+background was replaced with a soft off-white wall carrying a low-relief Islamic
+geometric pattern and the harsh midday shadows were evened out; the two hero crops were
+then produced by **outpainting** that image, so the subject's own pixels are untouched
+and only the wall is extended. Face, beard, sunglasses, ghutra, igal and thobe are
+unchanged from the original throughout.
+
+To swap the hero photo, replace both webp files with your own 9:16 and 16:9 crops and
+update the `width`/`height` on the `<source>` and `<img>` in `public/index.html`.
 
 ### Gallery photographs
 
@@ -228,7 +232,7 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=11`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=12`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 

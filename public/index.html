@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Reem+Kufi:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Hind+Siliguri:wght@300;400;500;600;700&family=Amiri:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="stylesheet" href="css/styles.css?v=12">
 
 <script type="application/ld+json">
 {
@@ -121,8 +121,12 @@
   </div>
 
   <figure class="hero__media">
-    <img class="hero__img" src="assets/portrait.jpg" alt="MD Tariqul Islam"
-         width="896" height="1200" loading="eager" fetchpriority="high">
+    <picture>
+      <!-- 9:16 for the tall desktop panel, 16:9 for the wide stacked band -->
+      <source media="(min-width: 921px)" srcset="assets/portrait-tall.webp" width="880" height="1577">
+      <img class="hero__img" src="assets/portrait-wide.webp" alt="MD Tariqul Islam"
+           width="1600" height="893" loading="eager" fetchpriority="high">
+    </picture>
   </figure>
 
   <div class="hero__strip">
@@ -427,6 +431,14 @@
       <div class="edu__row">
         <span><span class="edu__deg" data-i18n="edu.g.deg">Honors</span><span class="edu__inst" data-i18n="edu.g.inst">Government Madrasa-e-Alia</span></span>
         <span class="edu__yrs" data-i18n="edu.g.yrs">2024–Present</span>
+      </div>
+      <div class="edu__row">
+        <span><span class="edu__deg" data-i18n="cur.a.focus">Qur'anic Study Circle (Halaqah)</span><span class="edu__inst"><span data-i18n="cur.a.title">Al-Masjid an-Nabawi</span> — <span data-i18n="cur.a.place">Madinah, Saudi Arabia</span></span></span>
+        <span class="edu__yrs"><span class="pill pill--ongoing" data-i18n="status.ongoing">Ongoing</span></span>
+      </div>
+      <div class="edu__row">
+        <span><span class="edu__deg" data-i18n="cur.b.focus">Advanced Qur'anic Studies &amp; Qira'at</span><span class="edu__inst"><span data-i18n="cur.b.title">Holy Quran Academy</span> — <span data-i18n="cur.b.place">Sharjah, United Arab Emirates</span></span></span>
+        <span class="edu__yrs"><span class="pill pill--ongoing" data-i18n="status.ongoing">Ongoing</span></span>
       </div>
       <div class="edu__row">
         <span><span class="edu__deg" data-i18n="edu.h.deg">Advanced Qira'at Studies</span><span class="edu__inst" data-i18n="edu.h.inst">Markaz Al-Ustaz — Dr. Ahmad Essa Al-Masarawi</span></span>
