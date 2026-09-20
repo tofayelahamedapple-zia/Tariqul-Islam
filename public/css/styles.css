@@ -189,20 +189,41 @@ html[data-lang="bn"] .brand__role, html[data-lang="ar"] .brand__role { text-tran
 .menu-btn[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
 .menu-btn[aria-expanded="true"] span::after  { top: 0; transform: rotate(-45deg); }
 
-/* ---------- 5. Hero ---------- */
+/* ---------- 5. Hero — full-bleed split with a credential strip ---------- */
 .hero {
   position: relative; background: var(--night); color: var(--on-night-2);
-  padding-block: clamp(124px, 15vw, 180px) clamp(72px, 9vw, 116px);
+  padding-block: clamp(120px, 14vw, 172px) 0;
   overflow: hidden;
 }
 .hero::after {
-  content: ''; position: absolute; inset-inline-start: 0; bottom: 0; width: 100%; height: 1px;
-  background: linear-gradient(90deg, var(--sand), transparent 60%);
+  content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, var(--sand), transparent 62%); z-index: 3;
 }
 .hero__inner {
-  display: grid; grid-template-columns: minmax(0, 1.32fr) minmax(0, .78fr);
-  gap: clamp(40px, 6vw, 88px); align-items: center;
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  gap: clamp(36px, 5vw, 72px);
 }
+.hero__copy { padding-bottom: clamp(56px, 7vw, 92px); }
+
+/* Photograph fills the trailing half, edge to edge, and dissolves into the night */
+.hero__media {
+  position: absolute; margin: 0; z-index: 1;
+  inset-block: 0; inset-inline-end: 0; width: clamp(320px, 42%, 620px);
+}
+.hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center 16%; }
+.hero__media::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to right, var(--night) 0%, rgba(23, 28, 51, .55) 26%, rgba(23, 28, 51, 0) 62%),
+    linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 26%);
+}
+html[data-lang="ar"] .hero__media::after {
+  background:
+    linear-gradient(to left, var(--night) 0%, rgba(23, 28, 51, .55) 26%, rgba(23, 28, 51, 0) 62%),
+    linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 26%);
+}
+
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 12px;
   font-size: 11.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
@@ -213,41 +234,29 @@ html[data-lang="bn"] .hero__eyebrow, html[data-lang="ar"] .hero__eyebrow {
   text-transform: none; letter-spacing: .04em; font-size: 13.5px;
 }
 .hero__name {
-  font-size: clamp(2.7rem, 7.4vw, 5.4rem); line-height: 1.02;
+  font-size: clamp(2.7rem, 7vw, 5.2rem); line-height: 1.02;
   color: var(--white); margin-bottom: 22px;
 }
 .hero__roles {
-  font-size: clamp(.86rem, 1.6vw, 1rem); letter-spacing: .09em; text-transform: uppercase;
+  font-size: clamp(.86rem, 1.5vw, .98rem); letter-spacing: .09em; text-transform: uppercase;
   color: var(--sand-soft); font-weight: 500;
   padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid var(--line-night);
 }
 html[data-lang="bn"] .hero__roles, html[data-lang="ar"] .hero__roles {
   text-transform: none; letter-spacing: .01em; font-size: 1.04rem;
 }
-.hero__lead { color: var(--on-night-2); font-size: 1rem; max-width: 60ch; }
+.hero__lead { color: var(--on-night-2); font-size: 1rem; max-width: 58ch; }
 .hero__lead + .hero__lead { margin-top: 14px; }
 .hero__lead strong { color: var(--sand-soft); font-weight: 600; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 36px; }
 
-/* Framed portrait with an offset rule behind it */
-.hero__portrait { position: relative; }
-.frame { margin: 0; position: relative; }
-.frame::before {
-  content: ''; position: absolute; inset: 18px -18px -18px 18px;
-  border: 1px solid var(--sand); border-radius: var(--radius-lg); pointer-events: none;
-}
-html[data-lang="ar"] .frame::before { inset: 18px 18px -18px -18px; }
-.frame__img {
-  position: relative; width: 100%; height: auto; aspect-ratio: 3 / 4;
-  object-fit: cover; object-position: center 18%;
-  border-radius: var(--radius-lg); background: var(--slate);
-}
-.hero__badge { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line-night); }
-.hero__badge b {
-  display: block; font-family: var(--font-display); font-weight: var(--display-weight);
-  font-size: 1.5rem; color: var(--sand); letter-spacing: -.015em;
-}
-.hero__badge span { display: block; font-size: 12.5px; color: var(--on-night-2); margin-top: 4px; }
+/* Credential strip across the foot of the hero */
+.hero__strip { position: relative; z-index: 2; background: var(--night); border-top: 1px solid var(--line-night); }
+.stat-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stat-row .stat { padding-block: clamp(22px, 2.6vw, 32px); padding-inline: 0 22px; background: none; }
+.stat-row .stat + .stat { border-inline-start: 1px solid var(--line-night); padding-inline-start: 22px; }
+.stat-row .stat b { color: var(--sand); }
+.stat-row .stat span { color: var(--on-night-2); }
 
 .scroll-cue { display: none; }
 
@@ -314,9 +323,6 @@ html[data-lang="bn"] .label, html[data-lang="ar"] .label { text-transform: none;
 html[data-lang="bn"] .about__mission h3, html[data-lang="ar"] .about__mission h3 { text-transform: none; letter-spacing: .04em; font-size: 13.5px; }
 .about__mission p { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 1.3rem; line-height: 1.5; color: var(--white); }
 
-.stat-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-.stat { background: var(--cream); padding: 22px 24px; }
-.section--alt .stat { background: var(--cream-2); }
 .stat b {
   display: block; font-family: var(--font-display); font-weight: var(--display-weight);
   font-size: 2.2rem; line-height: 1; color: var(--sand-2); letter-spacing: -.02em;
@@ -628,19 +634,34 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
   .nav.is-open .nav__link::after { display: none; }
 }
 @media (max-width: 920px) {
-  .hero__inner { grid-template-columns: 1fr; align-items: start; gap: 52px; }
-  .hero__portrait { width: min(310px, 74%); }
+  /* The split collapses: photograph sits below the copy, still full-bleed. */
+  .hero { padding-bottom: 0; }
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__copy { padding-bottom: clamp(36px, 6vw, 56px); }
+  .hero__media { position: static; width: 100%; height: clamp(300px, 56vw, 460px); }
+  /* A wide, short band takes a horizontal slice — aim it at the face. */
+  .hero__img { object-position: center 34%; }
+  .hero__media::after {
+    background: linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 34%),
+                linear-gradient(to bottom, rgba(23, 28, 51, .5) 0%, rgba(23, 28, 51, 0) 22%);
+  }
+  html[data-lang="ar"] .hero__media::after {
+    background: linear-gradient(to top, var(--night) 0%, rgba(23, 28, 51, 0) 34%),
+                linear-gradient(to bottom, rgba(23, 28, 51, .5) 0%, rgba(23, 28, 51, 0) 22%);
+  }
   .about { grid-template-columns: 1fr; }
   .about__aside { position: static; }
 }
 @media (max-width: 640px) {
   .header__inner { height: 70px; }
   .nav.is-open { inset-block-start: 70px; }
-  .hero { padding-block: 108px 64px; }
+  .hero { padding-block: 104px 0; }
   .hero__actions .btn { flex: 1 1 100%; justify-content: center; }
-  .hero__portrait { width: min(250px, 80%); }
-  .frame::before { inset: 12px -12px -12px 12px; }
-  html[data-lang="ar"] .frame::before { inset: 12px 12px -12px -12px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .stat-row .stat { padding-inline-end: 16px; }
+  .stat-row .stat:nth-child(2n) { border-inline-start: 1px solid var(--line-night); padding-inline-start: 16px; }
+  .stat-row .stat:nth-child(2n+1) { border-inline-start: 0; padding-inline-start: 0; }
+  .stat-row .stat:nth-child(n+3) { border-top: 1px solid var(--line-night); }
   .record { grid-template-columns: 1fr; }
   .record__rank, .edu__yrs, .xp__yrs { justify-self: start; }
   .edu__row, .xp__row { grid-template-columns: 1fr; }

@@ -92,8 +92,9 @@ ghutra, igal and thobe — is unchanged from the original.
   subject over a flat colour.
 
 To swap the hero photo, replace `portrait.jpg` with another image and update the
-`width`/`height` on the `.frame__img` in `public/index.html`. The frame crops with
-`object-fit: cover` at 3:4, so a photo of any ratio still fills it without distortion.
+`width`/`height` on the `.hero__img` in `public/index.html`. It crops with
+`object-fit: cover`, so a photo of any ratio fills the panel without distortion; adjust
+`object-position` if the face lands off-centre.
 
 ### Gallery photographs
 
@@ -198,12 +199,19 @@ looser line-height. Body text swaps to **IBM Plex Sans Arabic** and **Hind Silig
 respectively. **Amiri** is loaded for one element only — the calligraphic
 `القراءات العشر` in the Qira'at panel.
 
-**Components.** The hero photograph sits in a rounded frame with a **sand rule offset
-behind it** (and mirrored for RTL). Section numbers are small caps followed by a short
-rule. Cards are 10px-radius with a 1px border that warms to sand on hover — nothing
-moves. Lists (awards, education, imam, judging) are hairline rows. Gallery captions sit
-**beneath** each frame in serif with a sand subtitle, magazine-style, rather than
-overlaying the image. The headline award carries a 2px sand rule in the margin.
+**Hero.** A full-bleed split: the copy sits in the leading column while the photograph
+fills the trailing 42% edge to edge, dissolving into the night through a two-stop
+gradient (mirrored under RTL). A four-figure **credential strip** — Hifz year, Dubai
+placing, countries, years teaching — runs across the foot of the hero on a hairline.
+Those four figures used to sit in the About column; they now appear once, here, so
+About is purely narrative. Below 920px the split stacks: the photograph becomes a
+full-width band with its crop aimed at the face, and the strip becomes a 2×2.
+
+**Components.** Section numbers are small caps followed by a short rule. Cards are
+10px-radius with a 1px border that warms to sand on hover — nothing moves. Lists
+(awards, education, imam, judging) are hairline rows. Gallery captions sit **beneath**
+each frame in serif with a sand subtitle, magazine-style, rather than overlaying the
+image. The headline award carries a 2px sand rule in the margin.
 
 **Rhythm.** night (hero) → cream → cream-alt → cream → night (Studies + Qira'at) →
 cream → slate (Aspirations) → cream → cream-alt → night (Media) → cream → night
@@ -211,7 +219,7 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=8`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=10`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 
