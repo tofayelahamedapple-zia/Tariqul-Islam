@@ -41,6 +41,9 @@
   --display-weight: 500;
   --display-track: -.02em;
 
+  /* Arabesque frame drawn as a border-image around the hero photograph */
+  --frame-arabesque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23DC9A63' stroke-width='1.6'%3E%3Crect x='10' y='10' width='44' height='44'/%3E%3Cpath d='M10 3 L17 10 L10 17 L3 10 Z'/%3E%3Crect x='5.05' y='5.05' width='9.9' height='9.9'/%3E%3Cpath d='M54 3 L61 10 L54 17 L47 10 Z'/%3E%3Crect x='49.05' y='5.05' width='9.9' height='9.9'/%3E%3Cpath d='M10 47 L17 54 L10 61 L3 54 Z'/%3E%3Crect x='5.05' y='49.05' width='9.9' height='9.9'/%3E%3Cpath d='M54 47 L61 54 L54 61 L47 54 Z'/%3E%3Crect x='49.05' y='49.05' width='9.9' height='9.9'/%3E%3C/g%3E%3C/svg%3E");
+
   /* Geometric texture — one tile, laid at 5% over every band */
   --pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23FBF7F1' stroke-width='1.2'%3E%3Cpath d='M40 3 51 14 66 14 66 29 77 40 66 51 66 66 51 66 40 77 29 66 14 66 14 51 3 40 14 29 14 14 29 14Z'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3C/svg%3E");
   --pattern-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23231E18' stroke-width='1.2'%3E%3Cpath d='M40 3 51 14 66 14 66 29 77 40 66 51 66 66 51 66 40 77 29 66 14 66 14 51 3 40 14 29 14 14 29 14Z'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3C/svg%3E");
@@ -224,30 +227,23 @@ html[data-lang="bn"] .brand__role, html[data-lang="ar"] .brand__role { text-tran
 }
 .hero__inner {
   display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-  column-gap: clamp(36px, 5vw, 72px);
+  grid-template-rows: auto auto; column-gap: clamp(40px, 5vw, 76px);
 }
-.hero__head, .hero__body { grid-column: 1; position: relative; z-index: 2; }
+.hero__head { grid-column: 1; grid-row: 1; position: relative; z-index: 2; }
+.hero__body { grid-column: 1; grid-row: 2; position: relative; z-index: 2; }
 .hero__body { padding-bottom: clamp(56px, 7vw, 92px); }
 
-/* Photograph fills the trailing half, edge to edge, and dissolves into the night */
+/* Photograph sits in the trailing column inside an arabesque frame */
 .hero__media {
-  position: absolute; margin: 0; z-index: 1;
-  inset-block: 0; inset-inline-end: 0; width: clamp(320px, 42%, 620px);
+  grid-column: 2; grid-row: 1 / span 2; align-self: center;
+  margin: 0; position: relative; z-index: 2;
+  aspect-ratio: 9 / 16;
+  /* 18px border against a slice of 20 keeps the corner medallions near 1:1 */
+  border: 18px solid transparent;
+  border-image: var(--frame-arabesque) 20 stretch;
 }
 .hero__media picture { display: block; width: 100%; height: 100%; }
-/* Each crop is cut to its own panel, so centring needs no vertical nudge. */
 .hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.hero__media::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    linear-gradient(to right, var(--night) 0%, rgba(35, 30, 24, .55) 26%, rgba(35, 30, 24, 0) 62%),
-    linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 26%);
-}
-html[data-lang="ar"] .hero__media::after {
-  background:
-    linear-gradient(to left, var(--night) 0%, rgba(35, 30, 24, .55) 26%, rgba(35, 30, 24, 0) 62%),
-    linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 26%);
-}
 
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 12px;
@@ -664,10 +660,7 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
   .hero__inner { display: flex; flex-direction: column; }
   .hero__head { padding-bottom: clamp(28px, 5vw, 44px); }
   .hero__body { padding-block: clamp(30px, 5vw, 46px) clamp(36px, 6vw, 56px); }
-  .hero__media {
-    position: static; height: clamp(300px, 56vw, 460px);
-    width: auto; margin-inline: calc(var(--gutter) * -1);
-  }
+  .hero__media { aspect-ratio: 4 / 3; width: 100%; border-width: 15px; }
   .hero__media::after {
     background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
                 linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);
