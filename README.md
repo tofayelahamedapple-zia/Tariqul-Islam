@@ -176,10 +176,13 @@ public/                    ← the entire website; this is what gets published
 
 ## Design system
 
-Deep green and gold, condensed display type, rounded cards and pill buttons —
-the UI language of [tofayelahamed.com](https://tofayelahamed.com), adapted to this
-subject rather than copied: different wordmark, different mark, its own palette
-weighting and its own section rhythm.
+Deep green and gold, condensed display type, rounded cards and pill buttons.
+
+The **visual direction only** was taken from a reference site the client supplied
+(tofayelahamed.com): palette family, display typeface, arch portrait, pill buttons,
+card shape. No markup, CSS, copy, imagery or branding was taken from it — every file
+here is written for this site. The wordmark, the eight-point mark, the content, the
+section structure and the trilingual behaviour are all this project's own.
 
 | Token | Value | Use |
 |---|---|---|
