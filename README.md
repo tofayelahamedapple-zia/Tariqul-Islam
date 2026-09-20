@@ -80,17 +80,20 @@ node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8')
 
 ### Portrait photograph
 
-`public/assets/portrait.jpg` (896×1200, 3:4) is already in place and shown in the hero.
+Two derivatives of the original photograph (taken outside Al-Masjid an-Nabawi) ship with
+the site, both produced with Higgsfield from the same source:
 
-It was produced from the original photograph taken outside Al-Masjid an-Nabawi: the
-background was replaced with a soft off-white wall carrying a low-relief Islamic
-geometric pattern, and the harsh midday sun shadows were evened out. The subject —
-face, beard, sunglasses, ghutra, igal and thobe — is unchanged from the original.
+- `public/assets/portrait-cutout.webp` (900×939, 75 KB) — subject cut out on a
+  transparent background. **This is the one the hero arch uses.**
+- `public/assets/portrait.jpg` (896×1200, 3:4) — the same subject on a soft off-white
+  wall with a low-relief Islamic geometric pattern. Not currently placed; keep it for a
+  future About or press section.
 
-To swap in a different photo, overwrite `public/assets/portrait.jpg` with another 3:4
-image and update the `width`/`height` attributes on the `<img>` in the hero of
-`public/index.html` to match. The frame crops with `object-fit: cover`, so an image
-that is not exactly 3:4 still fills it without distortion.
+In both, the harsh midday sun shadows were evened out to diffused light, and the subject
+— face, beard, sunglasses, ghutra, igal and thobe — is unchanged from the original.
+
+To swap the hero photo, replace `portrait-cutout.webp` with another transparent-background
+cut-out and update the `width`/`height` on the `.arch__img` in `public/index.html`.
 
 ### Gallery photographs
 
@@ -173,36 +176,41 @@ public/                    ← the entire website; this is what gets published
 
 ## Design system
 
-Modern minimal: one typeface, hairline rules, generous whitespace, near-monochrome
-with a single accent. No ornament, no drop shadows, no gradients.
+Deep green and gold, condensed display type, rounded cards and pill buttons —
+the UI language of [tofayelahamed.com](https://tofayelahamed.com), adapted to this
+subject rather than copied: different wordmark, different mark, its own palette
+weighting and its own section rhythm.
 
 | Token | Value | Use |
 |---|---|---|
-| Background | `#FDFDFC` | most sections |
-| Alt background | `#F4F4F1` | alternating sections |
-| Ink | `#0F1110` | headings and key text |
-| Muted | `#767B78` | secondary text |
-| Accent | `#1C5B43` | links, active states, the Qira'at panel |
-| Dark | `#101512` / `#0A0E0C` | Vision section and footer |
-| Typeface | Inter | everything (Noto Sans Bengali / Noto Sans Arabic per language) |
-| Hairline | `rgba(15,17,16,.11)` | every divider, card edge and grid line |
+| Deep green | `#16291F` | hero, media section, feature cards |
+| Darkest | `#0F1E17` | footer |
+| Teal green | `#0E5F52` | sticky header, Aspirations band, solid buttons on light |
+| Gold | `#F2CE4B` | accent — squiggle, arch, pills, years, play buttons |
+| White | `#FFFFFF` | default section background, cards |
+| Mint | `#F1F6F4` | alternating sections |
+| Body text | `#3C5B51` / muted `#6F8B82` | paragraphs, captions |
 
-Amiri is loaded for one element only — the calligraphic `القراءات العشر` in the Qira'at
-panel. Headings are large and tightly tracked (`-0.032em`); Bangla and Arabic reset
-tracking to zero and increase line-height, since tight tracking hurts both scripts.
+**Type.** Display is **Staatliches** — a condensed all-caps face, set with
+`text-transform: uppercase`. Staatliches is Latin-only, so each script swaps in its own
+display face through the `--font-display` and `--display-case` variables: **Cairo** (700)
+for Arabic and **Noto Sans Bengali** (700) for Bangla, both with uppercasing turned off
+and looser line-height. Body text is **Inter**, swapping to the matching Noto face per
+language. **Amiri** is loaded for one element only — the calligraphic `القراءات العشر`.
 
-Structure is built from **hairlines rather than cards** — lists, tables and grids share
-one `border` treatment, and grid cells carry their own 1px ring (`box-shadow`) so an
-incomplete row never leaves a stray filled block. Hover states change background or
-border colour only; nothing moves. Animation is a single short fade-up, disabled
-entirely under `prefers-reduced-motion`.
+**Components.** Cards are 16px-radius on white with a 1px-soft shadow, lifting 3px on
+hover. Buttons are full pills: gold on dark sections, teal on light. Section numbers are
+pill badges rather than plain labels. Gallery captions are always visible over a gradient,
+in Staatliches with a gold subtitle. The hero portrait is a **cut-out subject on a flat
+gold arch** (`border-radius: 9999px 9999px 16px 16px`), with a hand-drawn gold underline
+beneath the name.
 
-Section rhythm alternates background / alt-background, with exactly two dark moments —
-**Vision** and the **footer** — so they carry weight without the page feeling heavy.
+**Rhythm.** white → mint → white → mint → white → teal (Aspirations) → white → mint →
+deep green (Media) → mint → deep green (Vision) → white → darkest (footer).
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=5`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=7`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 
