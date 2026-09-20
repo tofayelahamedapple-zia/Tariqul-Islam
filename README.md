@@ -86,6 +86,7 @@ fills, so `object-fit: cover` has almost nothing left to trim.
 | File | Size | Used by |
 |---|---|---|
 | `portrait-arch.webp` | 900×1200 (3:4) | **the mihrab niche in the hero, at every breakpoint** |
+| `og-image.jpg` | 1200×630 | the social link preview |
 | `portrait-tall.webp` | 880×1577 (9:16) | spare — the outpainted tall crop |
 | `portrait-wide.webp` | 1600×893 (16:9) | spare — the outpainted wide crop |
 | `portrait.jpg` | 896×1200 (3:4) | spare — the original crop |
@@ -129,13 +130,15 @@ instead, replace a tile's `<a class="video">…</a>` in `index.html` with:
 
 ### Social preview image
 
-Save a 1200×630 image as `public/assets/og-image.jpg` for link previews on
-Facebook, WhatsApp and X.
+`public/assets/og-image.jpg` (1200×630) is in place — the name, roles and the Dubai
+placing set beside the portrait on the site's own dark panel. Replace the file to change
+it; the dimensions are what Facebook, WhatsApp and X expect.
 
 ### Before going live
 
 Replace `https://example.com/` in `public/index.html` (the `canonical` tag),
-`public/robots.txt` and `public/sitemap.xml` with the real domain.
+`public/robots.txt` and `public/sitemap.xml` with the real domain. Nothing else is a
+placeholder.
 
 ---
 
@@ -252,9 +255,30 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=17`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=19`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
+
+## Checks
+
+Run through these after a change; all of them passed at the last audit.
+
+- **Routes** — every file resolves, and an unknown path returns the styled 404.
+- **Dead CSS** — no selector in `styles.css` is left without a match in the HTML or JS.
+  `sr-only` is the one deliberate exception, kept as an accessibility utility.
+- **Assets** — nothing referenced is missing. Four portrait crops are kept as documented
+  spares and are not referenced; everything else is in use.
+- **i18n** — the Bangla and Arabic dictionaries carry exactly the keys the HTML uses:
+  259 each, none missing, none orphaned. Switching to a language leaves no English
+  behind except `gal.note`, which quotes a file path on purpose.
+- **Languages** — English (Fraunces), Bangla (Hind Siliguri) and Arabic (Reem Kufi, RTL)
+  each load their own display face and none overflow.
+- **Widths** — 375, 768 and 1440 all report no horizontal overflow. The credential strip
+  reflows 4 → 2 columns, the nav collapses to the menu button below 1040px.
+- **Behaviour** — gallery filters, scroll-spy, the sticky header and the mobile menu all
+  respond; all 50 reveal animations fire.
+- **Content** — the status labels below are present and correctly assigned, and the
+  display name is spelled `MD TARIQUL ISLAM` everywhere it appears as the name.
 
 ## Browser support
 

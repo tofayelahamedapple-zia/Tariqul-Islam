@@ -110,7 +110,6 @@ html[data-lang="ar"] body { font-size: 17px; }
 
 /* ---------- 3. Layout ---------- */
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
-.wrap--narrow { max-width: 840px; }
 .section { padding-block: var(--sec-y); background: var(--cream); }
 .section--alt  { background: var(--cream-2); }
 .section--mid  { background: var(--slate); color: var(--on-night-2); }
@@ -169,8 +168,10 @@ html[data-lang="ar"] body { font-size: 17px; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.2; }
 .brand__name {
   font-family: var(--font-display); font-weight: var(--display-weight);
-  font-size: 18px; letter-spacing: -.01em; color: var(--white); white-space: nowrap;
+  font-size: 16px; text-transform: uppercase; letter-spacing: .015em;
+  color: var(--white); white-space: nowrap;
 }
+html[data-lang="bn"] .brand__name, html[data-lang="ar"] .brand__name { text-transform: none; font-size: 17px; }
 .brand__role {
   font-family: var(--font); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--sand); font-weight: 600; white-space: nowrap;
@@ -276,7 +277,6 @@ html[data-lang="bn"] .hero__roles, html[data-lang="ar"] .hero__roles {
 .stat-row .stat b { color: var(--sand); }
 .stat-row .stat span { color: var(--on-night-2); }
 
-.scroll-cue { display: none; }
 
 /* ---------- 6. Buttons ---------- */
 .btn {
@@ -388,7 +388,6 @@ html[data-lang="bn"] .about__mission h3, html[data-lang="ar"] .about__mission h3
 .award__catname { font-size: 13px; color: var(--muted); }
 .award__note { margin-top: 20px; font-size: .96rem; color: var(--muted); max-width: 62ch; }
 .award__side { display: none; }
-.medal { font-size: 1rem; }
 
 /* ---------- 11. Row lists ---------- */
 .records, .edu, .xp { border-top: 1px solid var(--line); }
@@ -657,7 +656,8 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
   .hero__inner { display: flex; flex-direction: column; }
   .hero__head { padding-bottom: clamp(28px, 5vw, 44px); }
   .hero__body { padding-block: clamp(30px, 5vw, 46px) clamp(36px, 6vw, 56px); }
-  .hero__media { width: min(320px, 100%); margin-inline: auto; }
+  /* Grows with the viewport instead of sticking at phone size on tablets */
+  .hero__media { width: min(420px, 100%); margin-inline: auto; }
   .hero__media::after {
     background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
                 linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);
@@ -684,12 +684,11 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
   .edu__row, .xp__row { grid-template-columns: 1fr; }
   .award { grid-template-columns: 1fr; gap: 14px; }
   .award--primary::before { inset-inline-start: -12px; }
-  .stat-stack { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 430px) {
   .header__inner { gap: 10px; }
   .brand__mark { width: 26px; height: 26px; }
-  .brand__name { font-size: 16px; }
+  .brand__name { font-size: 14px; letter-spacing: .01em; }
   .brand__role { display: none; }
   .header__actions { gap: 6px; }
   .lang__btn { padding: 5px 8px; font-size: 11px; }
