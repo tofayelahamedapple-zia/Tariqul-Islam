@@ -144,8 +144,10 @@ html[data-lang="ar"] body { font-size: 17px; }
 .section--deep::before,
 .section--mid::before,
 .footer::before { background-image: var(--pattern-light); }
-/* Keep every band's own content above the texture. */
-.hero > .wrap, .section > .wrap, .footer > .wrap { position: relative; z-index: 1; }
+/* Keep every band's own content above the texture. The hero's wrap is left
+   unpositioned on purpose, so the absolutely positioned photo still resolves
+   against .hero and can bleed past the wrap; its children carry z-index instead. */
+.section > .wrap, .footer > .wrap { position: relative; z-index: 1; }
 
 /* ---------- 4. Header ---------- */
 .header {
@@ -221,11 +223,11 @@ html[data-lang="bn"] .brand__role, html[data-lang="ar"] .brand__role { text-tran
   background: linear-gradient(90deg, var(--sand), transparent 62%); z-index: 3;
 }
 .hero__inner {
-  position: relative; z-index: 2;
   display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-  gap: clamp(36px, 5vw, 72px);
+  column-gap: clamp(36px, 5vw, 72px);
 }
-.hero__copy { padding-bottom: clamp(56px, 7vw, 92px); }
+.hero__head, .hero__body { grid-column: 1; position: relative; z-index: 2; }
+.hero__body { padding-bottom: clamp(56px, 7vw, 92px); }
 
 /* Photograph fills the trailing half, edge to edge, and dissolves into the night */
 .hero__media {
@@ -659,9 +661,13 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
 @media (max-width: 920px) {
   /* The split collapses: photograph sits below the copy, still full-bleed. */
   .hero { padding-bottom: 0; }
-  .hero__inner { grid-template-columns: 1fr; }
-  .hero__copy { padding-bottom: clamp(36px, 6vw, 56px); }
-  .hero__media { position: static; width: 100%; height: clamp(300px, 56vw, 460px); }
+  .hero__inner { display: flex; flex-direction: column; }
+  .hero__head { padding-bottom: clamp(28px, 5vw, 44px); }
+  .hero__body { padding-block: clamp(30px, 5vw, 46px) clamp(36px, 6vw, 56px); }
+  .hero__media {
+    position: static; height: clamp(300px, 56vw, 460px);
+    width: auto; margin-inline: calc(var(--gutter) * -1);
+  }
   .hero__media::after {
     background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
                 linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);

@@ -213,12 +213,23 @@ respectively. **Amiri** is loaded for one element only — the calligraphic
 `القراءات العشر` in the Qira'at panel.
 
 **Hero.** A full-bleed split: the copy sits in the leading column while the photograph
-fills the trailing 42% edge to edge, dissolving into the night through a two-stop
+fills the trailing 42% edge to edge, dissolving into the dark through a two-stop
 gradient (mirrored under RTL). A four-figure **credential strip** — Hifz year, Dubai
 placing, countries, years teaching — runs across the foot of the hero on a hairline.
 Those four figures used to sit in the About column; they now appear once, here, so
-About is purely narrative. Below 920px the split stacks: the photograph becomes a
-full-width band with its crop aimed at the face, and the strip becomes a 2×2.
+About is purely narrative.
+
+The copy is split into `.hero__head` (eyebrow, name, roles) and `.hero__body`
+(paragraphs, buttons) with the photograph **between them in the document**. On desktop
+that makes no difference, because the photograph is absolutely positioned; below 920px
+the hero becomes a flex column and the natural order puts the face directly under the
+name, where it is visible without scrolling. The strip reflows to a 2×2 there, and
+negative inline margins cancel the wrap gutter so the photograph still bleeds.
+
+Note that `.hero`'s own `.wrap` is deliberately left unpositioned — the texture layer
+positions every other band's wrap, but doing so here would make it the containing block
+for the absolutely positioned photograph and stop it reaching the viewport edge. The
+hero's children carry `z-index` instead.
 
 **Components.** Section numbers are small caps followed by a short rule. Cards are
 10px-radius with a 1px border that warms to sand on hover — nothing moves. Lists
@@ -232,7 +243,7 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=12`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=14`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 
