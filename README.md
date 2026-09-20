@@ -208,6 +208,11 @@ blue or grey anywhere, so the dark bands and the sand accent share one temperatu
 | Ink / body | `#241F1A` / `#56493F` | headings, paragraphs |
 | Muted | `#8C8077` | captions, secondary text |
 
+**Cards on the dark bands** are filled opaque (`--card-night` `#2E2924`, `--card-mid`
+`#473C33`, plus their hover steps) rather than with a translucent white overlay. An
+overlay let the texture read straight through the cards and left them looking muddy;
+the opaque fills match what those overlays rendered as, so the weight is unchanged.
+
 **Texture.** One eight-point geometric tile — octagram, rotated square, centre circle —
 is laid across every band at **5% opacity**, 80px. Two variants are held as tokens:
 `--pattern-light` (cream stroke) for the dark bands and the footer, `--pattern-dark`
@@ -256,7 +261,7 @@ cream → slate (Aspirations) → cream → cream-alt → night (Media) → crea
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=19`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=20`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 

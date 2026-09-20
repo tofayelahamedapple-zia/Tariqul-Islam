@@ -41,6 +41,13 @@
   --display-weight: 500;
   --display-track: -.02em;
 
+  /* Opaque card fills for the dark bands — a translucent overlay let the
+     texture read through the cards and muddied them. */
+  --card-night:       #2E2924;
+  --card-night-hover: #3A342C;
+  --card-mid:         #473C33;
+  --card-mid-hover:   #52473C;
+
   /* Geometric texture — one tile, laid at 5% over every band */
   --pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23FBF7F1' stroke-width='1.2'%3E%3Cpath d='M40 3 51 14 66 14 66 29 77 40 66 51 66 66 51 66 40 77 29 66 14 66 14 51 3 40 14 29 14 14 29 14Z'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3C/svg%3E");
   --pattern-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23231E18' stroke-width='1.2'%3E%3Cpath d='M40 3 51 14 66 14 66 29 77 40 66 51 66 66 51 66 40 77 29 66 14 66 14 51 3 40 14 29 14 14 29 14Z'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3C/svg%3E");
@@ -431,13 +438,18 @@ html[data-lang="bn"] .about__mission h3, html[data-lang="ar"] .about__mission h3
 }
 .section--alt .study, .section--alt .level, .section--alt .country, .section--alt .aspire { background: var(--cream); }
 .study:hover, .level:hover, .country:hover, .aspire:hover { border-color: var(--sand-2); }
-.section--deep .study, .section--deep .level, .section--deep .country, .section--deep .aspire,
-.section--mid .study, .section--mid .level, .section--mid .country, .section--mid .aspire {
-  background: rgba(255, 255, 255, .05); border-color: var(--line-night); color: var(--on-night-2);
+.section--deep .study, .section--deep .level, .section--deep .country, .section--deep .aspire {
+  background: var(--card-night); border-color: var(--line-night); color: var(--on-night-2);
 }
-.section--deep .study:hover, .section--mid .study:hover,
-.section--deep .country:hover, .section--mid .country:hover,
-.section--deep .aspire:hover, .section--mid .aspire:hover { border-color: var(--sand); background: rgba(255, 255, 255, .08); }
+.section--mid .study, .section--mid .level, .section--mid .country, .section--mid .aspire {
+  background: var(--card-mid); border-color: var(--line-night); color: var(--on-night-2);
+}
+.section--deep .study:hover, .section--deep .country:hover, .section--deep .aspire:hover {
+  border-color: var(--sand); background: var(--card-night-hover);
+}
+.section--mid .study:hover, .section--mid .country:hover, .section--mid .aspire:hover {
+  border-color: var(--sand); background: var(--card-mid-hover);
+}
 
 .study__icon { width: 30px; height: 30px; stroke: var(--sand-2); fill: none; stroke-width: 1.4; margin-bottom: 22px; }
 .section--deep .study__icon, .section--mid .study__icon { stroke: var(--sand); }
@@ -458,7 +470,8 @@ html[data-lang="bn"] .about__mission h3, html[data-lang="ar"] .about__mission h3
 }
 .section--alt .chip { background: var(--cream); }
 .chip:hover { border-color: var(--sand-2); color: var(--sand-2); }
-.section--deep .chip, .section--mid .chip { background: rgba(255, 255, 255, .05); border-color: var(--line-night); color: var(--on-night-2); }
+.section--deep .chip { background: var(--card-night); border-color: var(--line-night); color: var(--on-night-2); }
+.section--mid .chip { background: var(--card-mid); border-color: var(--line-night); color: var(--on-night-2); }
 .section--deep .chip:hover, .section--mid .chip:hover { border-color: var(--sand); color: var(--sand); }
 
 /* ---------- 15. Qira'at ---------- */
@@ -521,11 +534,11 @@ html[data-lang="ar"] .path__arrow { transform: scaleX(-1); }
 .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: 46px; }
 .video {
   position: relative; aspect-ratio: 16/9; border-radius: var(--radius-lg); overflow: hidden;
-  border: 1px solid var(--line-night); background: rgba(255, 255, 255, .04);
+  border: 1px solid var(--line-night); background: var(--card-night);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
   text-align: center; padding: 20px; transition: border-color .25s, background .25s;
 }
-.video:hover { border-color: var(--sand); background: rgba(255, 255, 255, .07); }
+.video:hover { border-color: var(--sand); background: var(--card-night-hover); }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video__play { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--sand); display: grid; place-items: center; }
 .video__play svg { width: 15px; height: 15px; fill: var(--sand); margin-inline-start: 3px; }
@@ -572,8 +585,8 @@ html[data-lang="ar"] .video__play svg { transform: scaleX(-1); margin-inline-sta
 html[data-lang="bn"] .vision-lead, html[data-lang="ar"] .vision-lead { font-size: clamp(1.3rem, 3vw, 1.9rem); line-height: 1.55; letter-spacing: 0; }
 .vision-sub { margin-top: 20px; color: var(--on-night-2); max-width: 56ch; }
 .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: clamp(46px, 6vw, 74px); }
-.vision-cell { border: 1px solid var(--line-night); border-radius: var(--radius-lg); padding: clamp(26px, 3.2vw, 34px); transition: border-color .25s, background .25s; }
-.vision-cell:hover { border-color: var(--sand); background: rgba(255, 255, 255, .05); }
+.vision-cell { background: var(--card-night); border: 1px solid var(--line-night); border-radius: var(--radius-lg); padding: clamp(26px, 3.2vw, 34px); transition: border-color .25s, background .25s; }
+.vision-cell:hover { border-color: var(--sand); background: var(--card-night-hover); }
 .vision-cell__num { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 1rem; color: var(--sand); display: block; margin-bottom: 20px; }
 .vision-cell__title { font-size: 1.28rem; margin-bottom: 12px; color: var(--white); }
 .vision-cell p { color: var(--on-night-2); font-size: .95rem; }
