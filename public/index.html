@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Reem+Kufi:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Hind+Siliguri:wght@300;400;500;600;700&family=Amiri:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=16">
+<link rel="stylesheet" href="css/styles.css?v=17">
 
 <script type="application/ld+json">
 {
@@ -106,12 +106,21 @@
     </div>
 
     <figure class="hero__media">
-      <picture>
-        <!-- 9:16 for the tall desktop panel, 16:9 for the wide stacked band -->
-        <source media="(min-width: 921px)" srcset="assets/portrait-tall.webp" width="880" height="1577">
-        <img class="hero__img" src="assets/portrait-wide.webp" alt="MD Tariqul Islam"
-             width="1600" height="893" loading="eager" fetchpriority="high">
-      </picture>
+      <img class="hero__img" src="assets/portrait-arch.webp?v=2" alt="MD Tariqul Islam"
+           width="900" height="1200" loading="eager" fetchpriority="high">
+      <!-- Mihrab niche: the photograph is clipped to the arch, the twin rules trace it.
+           viewBox is 3:4, matching .hero__media, so nothing distorts at any size. -->
+      <svg class="hero__arch" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="mihrab" clipPathUnits="objectBoundingBox">
+            <path d="M0,1 L0,0.45 C0,0.2 0.2,0.05 0.5,0 C0.8,0.05 1,0.2 1,0.45 L1,1 Z"/>
+          </clipPath>
+        </defs>
+        <g fill="none" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-linejoin="round">
+          <path stroke-width="2.4" d="M2,398 L2,181 C2,82 61,22 150,2.5 C239,22 298,82 298,181 L298,398 Z"/>
+          <path stroke-width="1"   d="M13,387 L13,188 C13,96 68,42 150,22 C232,42 287,96 287,188 L287,387 Z"/>
+        </g>
+      </svg>
     </figure>
 
     <div class="hero__body">
