@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tariqul-portfolio",
+      "runtimeExecutable": "/Users/mac/.local/node/bin/node",
+      "runtimeArgs": ["server.js"],
+      "port": 4900
+    }
+  ]
+}
