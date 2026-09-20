@@ -81,19 +81,19 @@ node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8')
 ### Portrait photograph
 
 Two derivatives of the original photograph (taken outside Al-Masjid an-Nabawi) ship with
-the site, both produced with Higgsfield from the same source:
+the site, both produced with Higgsfield from the same source. In both, the harsh midday
+sun shadows were evened out to diffused light, and the subject — face, beard, sunglasses,
+ghutra, igal and thobe — is unchanged from the original.
 
-- `public/assets/portrait-cutout.webp` (900×939, 75 KB) — subject cut out on a
-  transparent background. **This is the one the hero arch uses.**
-- `public/assets/portrait.jpg` (896×1200, 3:4) — the same subject on a soft off-white
-  wall with a low-relief Islamic geometric pattern. Not currently placed; keep it for a
-  future About or press section.
+- `public/assets/portrait.jpg` (896×1200, 3:4) — subject on a soft off-white wall with a
+  low-relief Islamic geometric pattern. **This is the one the hero frame uses.**
+- `public/assets/portrait-cutout.webp` (900×939, 75 KB) — the same subject cut out on a
+  transparent background. Not currently placed; keep it for any layout that needs the
+  subject over a flat colour.
 
-In both, the harsh midday sun shadows were evened out to diffused light, and the subject
-— face, beard, sunglasses, ghutra, igal and thobe — is unchanged from the original.
-
-To swap the hero photo, replace `portrait-cutout.webp` with another transparent-background
-cut-out and update the `width`/`height` on the `.arch__img` in `public/index.html`.
+To swap the hero photo, replace `portrait.jpg` with another image and update the
+`width`/`height` on the `.frame__img` in `public/index.html`. The frame crops with
+`object-fit: cover` at 3:4, so a photo of any ratio still fills it without distortion.
 
 ### Gallery photographs
 
@@ -176,44 +176,42 @@ public/                    ← the entire website; this is what gets published
 
 ## Design system
 
-Deep green and gold, condensed display type, rounded cards and pill buttons.
-
-The **visual direction only** was taken from a reference site the client supplied
-(tofayelahamed.com): palette family, display typeface, arch portrait, pill buttons,
-card shape. No markup, CSS, copy, imagery or branding was taken from it — every file
-here is written for this site. The wordmark, the eight-point mark, the content, the
-section structure and the trilingual behaviour are all this project's own.
+Midnight navy, terracotta sand and cream — an editorial system built around a
+high-contrast serif, hairline rules and offset frames. Original to this site.
 
 | Token | Value | Use |
 |---|---|---|
-| Deep green | `#16291F` | hero, media section, feature cards |
-| Darkest | `#0F1E17` | footer |
-| Teal green | `#0E5F52` | sticky header, Aspirations band, solid buttons on light |
-| Gold | `#F2CE4B` | accent — squiggle, arch, pills, years, play buttons |
-| White | `#FFFFFF` | default section background, cards |
-| Mint | `#F1F6F4` | alternating sections |
-| Body text | `#3C5B51` / muted `#6F8B82` | paragraphs, captions |
+| Night | `#171C33` | hero, Studies, Media, Vision, mission block |
+| Darkest | `#0E1225` | footer |
+| Slate | `#262F51` | Aspirations band |
+| Sand | `#DC9A63` | accent — rules, pills, ranks, years, calligraphy |
+| Sand deep | `#C8854E` | the same accent on cream backgrounds |
+| Cream | `#FBF7F1` | default section background |
+| Cream alt | `#F2EADF` | alternating sections |
+| Ink / body | `#1A1E33` / `#4B5271` | headings, paragraphs |
 
-**Type.** Display is **Staatliches** — a condensed all-caps face, set with
-`text-transform: uppercase`. Staatliches is Latin-only, so each script swaps in its own
-display face through the `--font-display` and `--display-case` variables: **Cairo** (700)
-for Arabic and **Noto Sans Bengali** (700) for Bangla, both with uppercasing turned off
-and looser line-height. Body text is **Inter**, swapping to the matching Noto face per
-language. **Amiri** is loaded for one element only — the calligraphic `القراءات العشر`.
+**Type.** Display is **Fraunces** — a variable serif with optical sizing, set at weight
+500 with tight tracking. Body is **Plus Jakarta Sans**. Fraunces covers Latin only, so
+each script swaps its own display face through `--font-display` and `--display-weight`:
+**Reem Kufi** (geometric kufi) for Arabic and **Hind Siliguri** for Bangla, both with
+looser line-height. Body text swaps to **IBM Plex Sans Arabic** and **Hind Siliguri**
+respectively. **Amiri** is loaded for one element only — the calligraphic
+`القراءات العشر` in the Qira'at panel.
 
-**Components.** Cards are 16px-radius on white with a 1px-soft shadow, lifting 3px on
-hover. Buttons are full pills: gold on dark sections, teal on light. Section numbers are
-pill badges rather than plain labels. Gallery captions are always visible over a gradient,
-in Staatliches with a gold subtitle. The hero portrait is a **cut-out subject on a flat
-gold arch** (`border-radius: 9999px 9999px 16px 16px`), with a hand-drawn gold underline
-beneath the name.
+**Components.** The hero photograph sits in a rounded frame with a **sand rule offset
+behind it** (and mirrored for RTL). Section numbers are small caps followed by a short
+rule. Cards are 10px-radius with a 1px border that warms to sand on hover — nothing
+moves. Lists (awards, education, imam, judging) are hairline rows. Gallery captions sit
+**beneath** each frame in serif with a sand subtitle, magazine-style, rather than
+overlaying the image. The headline award carries a 2px sand rule in the margin.
 
-**Rhythm.** white → mint → white → mint → white → teal (Aspirations) → white → mint →
-deep green (Media) → mint → deep green (Vision) → white → darkest (footer).
+**Rhythm.** night (hero) → cream → cream-alt → cream → night (Studies + Qira'at) →
+cream → slate (Aspirations) → cream → cream-alt → night (Media) → cream → night
+(Vision) → cream-alt → darkest (footer).
 
 ### Cache busting
 
-`index.html` links assets as `css/styles.css?v=7`, `js/main.js?v=2` and so on. After
+`index.html` links assets as `css/styles.css?v=8`, `js/main.js?v=2` and so on. After
 editing CSS or JS, bump that number so browsers pick the change up immediately instead
 of serving a cached copy.
 
