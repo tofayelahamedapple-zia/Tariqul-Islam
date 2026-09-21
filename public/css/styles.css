@@ -43,6 +43,10 @@
 
   /* Opaque card fills for the dark bands — a translucent overlay let the
      texture read through the cards and muddied them. */
+  --panel-light:      #FFFFFF;
+  --panel-light-alt:  #EFE7DC;
+  --panel-light-hover:#FAF4EC;
+  --sand-wash:        #F7E7D6;
   --card-night:       #2E2924;
   --card-night-hover: #3A342C;
   --card-mid:         #473C33;
@@ -158,14 +162,12 @@ html[data-lang="ar"] body { font-size: 17px; }
 /* ---------- 4. Header ---------- */
 .header {
   position: fixed; top: 0; inset-inline: 0; z-index: 100;
-  background: transparent; border-bottom: 1px solid transparent;
-  transition: background .3s var(--ease), border-color .3s var(--ease);
+  background: var(--night); border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
 }
 .header.is-stuck {
-  background: rgba(35, 30, 24, .92);
-  backdrop-filter: saturate(160%) blur(14px);
-  -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom-color: var(--line-night);
+  box-shadow: 0 2px 18px rgba(23, 18, 14, .3);
 }
 .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 82px; }
 
@@ -175,10 +177,9 @@ html[data-lang="ar"] body { font-size: 17px; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.2; }
 .brand__name {
   font-family: var(--font-display); font-weight: var(--display-weight);
-  font-size: 16px; text-transform: uppercase; letter-spacing: .015em;
+  font-size: 16px; letter-spacing: .015em;
   color: var(--white); white-space: nowrap;
 }
-html[data-lang="bn"] .brand__name, html[data-lang="ar"] .brand__name { text-transform: none; font-size: 17px; }
 .brand__role {
   font-family: var(--font); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--sand); font-weight: 600; white-space: nowrap;
@@ -359,22 +360,24 @@ html[data-lang="bn"] .about__mission h3, html[data-lang="ar"] .about__mission h3
   display: inline-flex; align-items: center;
   font-size: 11.5px; font-weight: 600; padding: 4px 11px; border-radius: 3px;
   border: 1px solid var(--line-2); color: var(--muted); white-space: nowrap;
+  background: var(--panel-light);
 }
-.pill--achieved  { border-color: var(--sand-2); color: var(--sand-2); background: rgba(220, 154, 99, .12); }
+.pill--achieved  { border-color: var(--sand-2); color: var(--sand-2); background: var(--sand-wash); }
 .pill--completed { border-color: var(--line-2); color: var(--body); }
 .pill--ongoing   { border-color: var(--line-2); color: var(--ink); }
-.section--deep .pill, .section--mid .pill { border-color: var(--line-night); color: var(--on-night-2); }
-.section--deep .pill--achieved, .section--mid .pill--achieved { border-color: var(--sand); color: var(--sand); background: rgba(220, 154, 99, .14); }
+.section--deep .pill, .section--mid .pill { background: var(--card-mid); }
+.section--deep .pill--achieved, .section--mid .pill--achieved { border-color: var(--sand); color: var(--sand); background: var(--card-night-hover); }
 .section--deep .pill--ongoing, .section--mid .pill--ongoing { color: var(--on-night); }
 
 /* ---------- 10. Awards ---------- */
-.awards { border-top: 1px solid var(--line); }
+.awards { background: var(--panel-light); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
 .award {
-  border-bottom: 1px solid var(--line); padding-block: clamp(28px, 3.6vw, 44px);
+  border-bottom: 1px solid var(--line); padding: clamp(28px, 3.6vw, 44px) clamp(20px, 2.6vw, 32px);
   display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: clamp(18px, 3vw, 36px);
   align-items: start; transition: background .22s;
 }
-.award:hover { background: rgba(220, 154, 99, .06); }
+.award:last-child { border-bottom: 0; }
+.award:hover { background: var(--panel-light-hover); }
 .award--primary { position: relative; }
 .award--primary::before {
   content: ''; position: absolute; inset-block: 0; inset-inline-start: -16px;
@@ -397,12 +400,13 @@ html[data-lang="bn"] .about__mission h3, html[data-lang="ar"] .about__mission h3
 .award__side { display: none; }
 
 /* ---------- 11. Row lists ---------- */
-.records, .edu, .xp { border-top: 1px solid var(--line); }
+.records, .edu, .xp { background: var(--panel-light); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
 .record, .edu__row, .xp__row {
-  padding-block: 20px; border-bottom: 1px solid var(--line);
+  padding: 20px clamp(18px, 2.4vw, 28px); border-bottom: 1px solid var(--line);
   display: grid; gap: 8px 26px; align-items: baseline; transition: background .22s;
 }
-.record:hover, .edu__row:hover, .xp__row:hover { background: rgba(220, 154, 99, .06); }
+.record:last-child, .edu__row:last-child, .xp__row:last-child { border-bottom: 0; }
+.record:hover, .edu__row:hover, .xp__row:hover { background: var(--panel-light-hover); }
 .record { grid-template-columns: 78px minmax(0, 1fr) auto; }
 .edu__row, .xp__row { grid-template-columns: minmax(0, 1fr) auto; }
 .record__year { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 1.1rem; color: var(--sand-2); }
@@ -577,6 +581,24 @@ html[data-lang="ar"] .video__play svg { transform: scaleX(-1); margin-inline-sta
   font-size: 1rem; color: var(--ink); line-height: 1.32; letter-spacing: -.01em;
 }
 .gal-item__cap span { display: block; margin-top: 3px; font-size: .84rem; color: var(--sand-2); }
+/* "See more" — only ever shown on phones, where the grids are collapsed */
+.more {
+  display: block; margin: 22px auto 0; padding: 12px 26px;
+  border: 1px solid var(--line-2); border-radius: var(--radius);
+  background: var(--panel-light); color: var(--ink);
+  font-family: var(--font); font-size: 14px; font-weight: 600;
+  transition: border-color .22s, color .22s;
+}
+.more:hover { border-color: var(--sand-2); color: var(--sand-2); }
+.more[hidden] { display: none; }
+.more__off { display: none; }
+.more.is-open .more__on { display: none; }
+.more.is-open .more__off { display: inline; }
+.section--deep .more, .section--mid .more {
+  background: var(--card-night); border-color: var(--line-night); color: var(--on-night);
+}
+.section--deep .more:hover, .section--mid .more:hover { border-color: var(--sand); color: var(--sand); }
+
 .gal-note { margin-top: 40px; text-align: center; font-size: .9rem; color: var(--muted); }
 .gal-note--start { text-align: start; margin-top: 22px; }
 

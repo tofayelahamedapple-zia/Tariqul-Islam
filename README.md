@@ -7,6 +7,9 @@ Built with **plain Node.js and zero npm dependencies**. Everything the site need
 in `public/`, so the same folder runs locally behind `server.js` *and* publishes as-is to
 GitHub Pages, Netlify, Vercel or any static host.
 
+Every word on the site lives in **`content/site.json`**, in all three languages. Edit it
+through the admin, and `build.js` regenerates the page from it.
+
 ---
 
 ## Run it locally
@@ -15,13 +18,53 @@ GitHub Pages, Netlify, Vercel or any static host.
 node server.js
 ```
 
-Then open <http://localhost:4900>. To use a different port:
+- Site: <http://localhost:4900>
+- Admin: <http://localhost:4900/admin>
+
+Sign in with any username and the password `tariqul`. **Change it** by starting the
+server with your own:
 
 ```bash
-PORT=8080 node server.js
+ADMIN_PASSWORD="your-password" node server.js
 ```
 
-> **বাংলায়:** টার্মিনালে `node server.js` চালান, তারপর ব্রাউজারে `http://localhost:4900` খুলুন।
+To use a different port: `PORT=8080 node server.js`.
+
+> **বাংলায়:** `node server.js` চালান → সাইট `localhost:4900`, অ্যাডমিন `localhost:4900/admin`।
+> যেকোনো ইউজারনেম আর পাসওয়ার্ড `tariqul` দিয়ে ঢুকুন। পাসওয়ার্ড বদলাতে উপরের
+> `ADMIN_PASSWORD` কমান্ডটা ব্যবহার করুন।
+
+---
+
+## Editing the content
+
+The admin is a form over `content/site.json`. Every section of the site has a page in
+the left-hand list, and every repeatable thing — awards, milestones, qualifications,
+mosques, countries, photographs, menu items, social links — can be **added, reordered,
+duplicated and deleted**.
+
+At the top there are three language tabs. Switch to বাংলা or العربية and every box shows
+that language, with the English printed underneath for reference, so nothing drifts out
+of sync. Photographs can be uploaded straight from the gallery section.
+
+**Save & publish** writes `content/site.json` and immediately regenerates:
+
+| Generated file | From |
+|---|---|
+| `public/index.html` | the English text, baked in so crawlers and no-JS visitors see the full page |
+| `public/i18n/bn.json` · `ar.json` | the Bangla and Arabic overlays |
+| `public/data/gallery.json` | the gallery |
+
+Those four files are **build output — do not edit them by hand**, they are overwritten on
+every save. The previous version of `site.json` is kept in `content/backups/` (last 20).
+
+You can also edit `content/site.json` in a text editor and run `node build.js` yourself.
+
+> **বাংলায়:** অ্যাডমিনে বাঁ দিকের তালিকা থেকে সেকশন বেছে নিন। উপরে তিনটে ভাষার ট্যাব —
+> বাংলা বা আরবিতে গেলে প্রতিটা ঘরের নিচে ইংরেজিটা দেখা যাবে। যেকোনো তালিকায় জিনিস
+> **যোগ, সরানো, নকল ও মুছে** ফেলা যায়। **Save & publish** চাপলেই সাইট নতুন করে তৈরি হয়।
+> `public/` ফোল্ডারের index.html আর i18n ফাইলগুলো হাতে এডিট করবেন না — ওগুলো প্রতিবার
+> সেভে নতুন করে লেখা হয়।
 
 ---
 
@@ -63,12 +106,16 @@ The site ships in **English (default), বাংলা and العربية**, swi
 
 ### Editing or adding a translation
 
-Every translatable element in `index.html` carries a `data-i18n="key"` attribute.
-To change a Bangla string, find the same key in `bn.json` and edit its value.
-To add a fourth language, copy `bn.json` to e.g. `ur.json`, translate the values, then
-add `'ur'` to `SUPPORTED` in `public/js/i18n.js` and a button in the header.
+Use the admin — pick the language tab and type. The keys in `public/i18n/*.json` are
+generated from the content tree, so editing those files directly is pointless: the next
+save overwrites them.
 
-Keys currently in use: **259**, and both dictionaries carry exactly those. To check a dictionary is complete:
+To add a fourth language: add it to every string in `content/site.json`, teach `build.js`
+to emit a dictionary for it, then add `'ur'` (or whichever) to `SUPPORTED` in
+`public/js/i18n.js` and a button in the header of `build.js`.
+
+Keys currently in use: **304**, and both dictionaries carry exactly those — `build.js`
+emits them together, so they cannot drift apart. To confirm:
 
 ```bash
 node -e "const en=new Set(require('fs').readFileSync('public/index.html','utf8').match(/data-i18n=\"[^\"]*\"/g).map(s=>s.slice(11,-1))); const d=require('./public/i18n/bn.json'); console.log([...en].filter(k=>!(k in d)))"
@@ -111,9 +158,9 @@ To swap the hero photo, replace it with your own 3:4 image and update the `width
 
 ### Gallery photographs
 
-1. Drop images into `public/assets/gallery/`.
-2. Open `public/data/gallery.json` and set the matching entry's `"src"`, e.g.
-   `"src": "assets/gallery/dubai-2017.jpg"`.
+In the admin, open **15 Gallery** and use **Upload…** on any photograph slot; the file
+lands in `public/assets/gallery/` and is selected for you. Add or delete slots with the
+buttons on each card.
 
 Each entry has a `cat` (`awards`, `studies`, `imam`, `competitions`, `teaching`,
 `events`) that drives the filter buttons, plus `title` and `sub` captions in all three
@@ -175,9 +222,14 @@ supplied in, so overlapping programmes read correctly.
 ## Project layout
 
 ```
-server.js                  zero-dependency static server (local dev / self-hosting)
+content/site.json          ← every word on the site, in all three languages
+content/backups/           last 20 versions, written on each save (not committed)
+build.js                   renders the site from site.json
+server.js                  zero-dependency server: serves public/ and hosts the admin
+admin/                     the content editor (password-protected, never published)
+tools/extract-content.js   one-off migration that created site.json
 .github/workflows/         GitHub Pages deployment
-public/                    ← the entire website; this is what gets published
+public/                    ← generated. The entire website; this is what gets published
   index.html               all sections, English copy, data-i18n keys
   404.html
   css/styles.css           design system, RTL support, responsive rules
@@ -286,6 +338,9 @@ Run through these after a change; all of them passed at the last audit.
   respond; all 50 reveal animations fire.
 - **Content** — the status labels below are present and correctly assigned, and the
   display name is spelled `MD TARIQUL ISLAM` everywhere it appears as the name.
+- **Admin round trip** — reading, editing, saving and rebuilding leaves the site correct;
+  invalid JSON and content missing its `sections` block are refused without touching the
+  published files.
 
 ## Browser support
 

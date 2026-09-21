@@ -1,91 +1,136 @@
 /**
  * MD TARIQUL ISLAM — Personal Portfolio
- * Zero-dependency Node.js static server.
+ * Zero-dependency Node.js server: serves the published site, and hosts the
+ * content admin that edits content/site.json and rebuilds the site.
  *
- * Everything the site needs lives in ./public, which means the exact same
- * folder can be published as-is to GitHub Pages / Netlify / Vercel.
- * This server is only for local development and for self-hosting.
+ *   node server.js                     -> http://localhost:4900
+ *   PORT=8080 node server.js
+ *   ADMIN_PASSWORD=... node server.js  -> admin at /admin
  *
- *   node server.js            -> http://localhost:4900
- *   PORT=8080 node server.js  -> http://localhost:8080
+ * public/ stays a plain static folder, so it still publishes to GitHub Pages
+ * as-is. The admin only runs where Node runs.
  */
-
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
+const crypto = require('crypto');
+const { build } = require('./build');
 
 const PORT = Number(process.env.PORT) || 4900;
 const HOST = process.env.HOST || '0.0.0.0';
 const ROOT = path.join(__dirname, 'public');
+const ADMIN = path.join(__dirname, 'admin');
+const CONTENT = path.join(__dirname, 'content/site.json');
+const BACKUPS = path.join(__dirname, 'content/backups');
+const PASSWORD = process.env.ADMIN_PASSWORD || 'tariqul';
+const UPLOAD_DIR = path.join(ROOT, 'assets/gallery');
+const MAX_UPLOAD = 8 * 1024 * 1024;
 
 const MIME = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.json': 'application/json; charset=utf-8',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp',
-  '.avif': 'image/avif',
-  '.gif': 'image/gif',
-  '.ico': 'image/x-icon',
-  '.mp4': 'video/mp4',
-  '.webm': 'video/webm',
-  '.mp3': 'audio/mpeg',
-  '.m4a': 'audio/mp4',
-  '.woff': 'font/woff',
-  '.woff2': 'font/woff2',
-  '.ttf': 'font/ttf',
-  '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml; charset=utf-8',
-  '.pdf': 'application/pdf'
+  '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8',
+  '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
+  '.mp4': 'video/mp4', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.m4a': 'audio/mp4',
+  '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf',
+  '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.pdf': 'application/pdf'
 };
 
 function send(res, status, body, headers) {
   res.writeHead(status, Object.assign({ 'X-Content-Type-Options': 'nosniff' }, headers || {}));
-  if (body && body.pipe) body.pipe(res);
-  else res.end(body);
+  if (body && body.pipe) body.pipe(res); else res.end(body);
+}
+const json = (res, status, obj) =>
+  send(res, status, JSON.stringify(obj), { 'Content-Type': MIME['.json'] });
+
+/* ---------- auth ---------- */
+function authorised(req) {
+  const h = req.headers.authorization || '';
+  if (!h.startsWith('Basic ')) return false;
+  const given = Buffer.from(h.slice(6), 'base64').toString('utf8').split(':').slice(1).join(':');
+  const a = Buffer.from(given), b = Buffer.from(PASSWORD);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+const challenge = res =>
+  send(res, 401, 'Authentication required', {
+    'WWW-Authenticate': 'Basic realm="Portfolio admin", charset="UTF-8"',
+    'Content-Type': 'text/plain; charset=utf-8'
+  });
+
+/* ---------- request body ---------- */
+function readBody(req, limit, cb) {
+  const chunks = [];
+  let size = 0, done = false;
+  const fail = msg => { if (!done) { done = true; cb(new Error(msg)); req.destroy(); } };
+  req.on('data', c => {
+    size += c.length;
+    if (size > limit) return fail('too large');
+    chunks.push(c);
+  });
+  req.on('error', () => fail('read error'));
+  req.on('end', () => { if (!done) { done = true; cb(null, Buffer.concat(chunks)); } });
 }
 
-function notFound(res) {
-  const page = path.join(ROOT, '404.html');
-  fs.readFile(page, (err, buf) => {
-    if (err) return send(res, 404, 'Not Found', { 'Content-Type': 'text/plain; charset=utf-8' });
-    send(res, 404, buf, { 'Content-Type': MIME['.html'] });
+/* ---------- admin API ---------- */
+function saveContent(buf, cb) {
+  let parsed;
+  try { parsed = JSON.parse(buf.toString('utf8')); }
+  catch (e) { return cb({ status: 400, error: 'That is not valid JSON: ' + e.message }); }
+  if (!parsed || !parsed.sections || !parsed.meta) {
+    return cb({ status: 400, error: 'Content is missing its meta or sections block — not saving.' });
+  }
+  // Keep the previous version so a bad edit is never final.
+  try {
+    fs.mkdirSync(BACKUPS, { recursive: true });
+    if (fs.existsSync(CONTENT)) {
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+      fs.copyFileSync(CONTENT, path.join(BACKUPS, `site-${stamp}.json`));
+      const old = fs.readdirSync(BACKUPS).filter(f => f.startsWith('site-')).sort();
+      old.slice(0, Math.max(0, old.length - 20)).forEach(f => fs.unlinkSync(path.join(BACKUPS, f)));
+    }
+  } catch (e) { /* a failed backup must not block the save */ }
+
+  fs.writeFileSync(CONTENT, JSON.stringify(parsed, null, 2) + '\n');
+  try {
+    const result = build();
+    cb(null, result);
+  } catch (e) {
+    cb({ status: 500, error: 'Saved, but the rebuild failed: ' + e.message });
+  }
+}
+
+function saveUpload(req, res) {
+  const name = String(req.headers['x-filename'] || '').replace(/[^A-Za-z0-9._-]/g, '');
+  if (!name || !/\.(jpe?g|png|webp|avif|gif)$/i.test(name)) {
+    return json(res, 400, { error: 'Give the file a name ending in .jpg, .png, .webp, .avif or .gif' });
+  }
+  readBody(req, MAX_UPLOAD, (err, buf) => {
+    if (err) return json(res, 413, { error: 'File is larger than 8 MB' });
+    fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+    fs.writeFileSync(path.join(UPLOAD_DIR, name), buf);
+    json(res, 200, { src: 'assets/gallery/' + name, bytes: buf.length });
   });
 }
 
-const server = http.createServer((req, res) => {
-  if (req.method !== 'GET' && req.method !== 'HEAD') {
-    return send(res, 405, 'Method Not Allowed', { 'Content-Type': 'text/plain; charset=utf-8', Allow: 'GET, HEAD' });
-  }
-
-  let pathname;
+const listGallery = () => {
   try {
-    pathname = decodeURIComponent(url.parse(req.url).pathname);
-  } catch (e) {
-    return send(res, 400, 'Bad Request', { 'Content-Type': 'text/plain; charset=utf-8' });
-  }
+    return fs.readdirSync(UPLOAD_DIR)
+      .filter(f => /\.(jpe?g|png|webp|avif|gif)$/i.test(f))
+      .map(f => 'assets/gallery/' + f).sort();
+  } catch (e) { return []; }
+};
 
-  if (pathname.endsWith('/')) pathname += 'index.html';
-
-  // Resolve inside ROOT only — blocks ../ traversal.
-  const filePath = path.join(ROOT, path.normalize(pathname));
-  if (!filePath.startsWith(ROOT + path.sep) && filePath !== ROOT) {
+/* ---------- static ---------- */
+function serveStatic(req, res, baseDir, pathname) {
+  const filePath = path.join(baseDir, path.normalize(pathname));
+  if (!filePath.startsWith(baseDir + path.sep) && filePath !== baseDir) {
     return send(res, 403, 'Forbidden', { 'Content-Type': 'text/plain; charset=utf-8' });
   }
-
   fs.stat(filePath, (err, stat) => {
     if (err || !stat.isFile()) {
-      // Allow extension-less pretty URLs: /about -> /about.html
       if (!path.extname(filePath)) {
-        return fs.stat(filePath + '.html', (e2, s2) => {
-          if (e2 || !s2.isFile()) return notFound(res);
-          stream(filePath + '.html', s2);
-        });
+        return fs.stat(filePath + '.html', (e2, s2) =>
+          (e2 || !s2.isFile()) ? notFound(res) : stream(filePath + '.html', s2));
       }
       return notFound(res);
     }
@@ -94,42 +139,76 @@ const server = http.createServer((req, res) => {
 
   function stream(file, stat) {
     const ext = path.extname(file).toLowerCase();
-    const type = MIME[ext] || 'application/octet-stream';
     const etag = '"' + stat.size.toString(16) + '-' + stat.mtimeMs.toString(16) + '"';
-
     if (req.headers['if-none-match'] === etag) return send(res, 304, null, { ETag: etag });
-
-    // Code + copy revalidate every request (cheap 304s via ETag) so an edit or
-    // a new translation is picked up immediately. Media is safe to cache hard.
-    const LONG_CACHE = ['.png', '.jpg', '.jpeg', '.webp', '.avif', '.gif', '.mp4',
-                        '.webm', '.mp3', '.m4a', '.woff', '.woff2', '.ttf', '.pdf'];
-    const cache = LONG_CACHE.indexOf(ext) !== -1
-      ? 'public, max-age=604800'
-      : 'no-cache';
-
+    const LONG = ['.png','.jpg','.jpeg','.webp','.avif','.gif','.mp4','.webm','.mp3','.m4a','.woff','.woff2','.ttf','.pdf'];
     const headers = {
-      'Content-Type': type,
+      'Content-Type': MIME[ext] || 'application/octet-stream',
       'Content-Length': stat.size,
-      'Cache-Control': cache,
-      ETag: etag,
-      'Last-Modified': stat.mtime.toUTCString()
+      'Cache-Control': LONG.indexOf(ext) !== -1 ? 'public, max-age=604800' : 'no-cache',
+      ETag: etag, 'Last-Modified': stat.mtime.toUTCString()
     };
-
     if (req.method === 'HEAD') return send(res, 200, null, headers);
     send(res, 200, fs.createReadStream(file), headers);
   }
+}
+
+function notFound(res) {
+  fs.readFile(path.join(ROOT, '404.html'), (err, buf) =>
+    err ? send(res, 404, 'Not Found', { 'Content-Type': 'text/plain; charset=utf-8' })
+        : send(res, 404, buf, { 'Content-Type': MIME['.html'] }));
+}
+
+/* ---------- router ---------- */
+const server = http.createServer((req, res) => {
+  let pathname;
+  try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }
+  catch (e) { return send(res, 400, 'Bad Request', { 'Content-Type': 'text/plain; charset=utf-8' }); }
+
+  /* --- admin --- */
+  if (pathname === '/admin' || pathname.startsWith('/admin/') || pathname.startsWith('/api/')) {
+    if (!authorised(req)) return challenge(res);
+
+    if (pathname === '/api/content' && req.method === 'GET') {
+      return send(res, 200, fs.readFileSync(CONTENT), { 'Content-Type': MIME['.json'], 'Cache-Control': 'no-store' });
+    }
+    if (pathname === '/api/content' && req.method === 'POST') {
+      return readBody(req, 4 * 1024 * 1024, (err, buf) => {
+        if (err) return json(res, 413, { error: 'Content is too large' });
+        saveContent(buf, (bad, result) =>
+          bad ? json(res, bad.status, { error: bad.error }) : json(res, 200, { ok: true, ...result }));
+      });
+    }
+    if (pathname === '/api/upload' && req.method === 'POST') return saveUpload(req, res);
+    if (pathname === '/api/gallery-files' && req.method === 'GET') return json(res, 200, { files: listGallery() });
+
+    if (pathname === '/admin' || pathname === '/admin/') pathname = '/admin/index.html';
+    return serveStatic(req, res, ADMIN, pathname.replace(/^\/admin/, '') || '/index.html');
+  }
+
+  /* --- published site --- */
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    return send(res, 405, 'Method Not Allowed', { 'Content-Type': 'text/plain; charset=utf-8', Allow: 'GET, HEAD' });
+  }
+  if (pathname.endsWith('/')) pathname += 'index.html';
+  serveStatic(req, res, ROOT, pathname);
 });
 
 server.listen(PORT, HOST, () => {
   console.log('');
   console.log('  MD TARIQUL ISLAM — Portfolio');
   console.log('  ──────────────────────────────────────────');
-  console.log('  Local:   http://localhost:' + PORT);
-  console.log('  Serving: ' + ROOT);
+  console.log('  Site:    http://localhost:' + PORT);
+  console.log('  Admin:   http://localhost:' + PORT + '/admin');
+  console.log('  Sign in with any username and the password' +
+              (process.env.ADMIN_PASSWORD ? ' from ADMIN_PASSWORD.' : ' "tariqul".'));
+  if (!process.env.ADMIN_PASSWORD) {
+    console.log('  Set your own:  ADMIN_PASSWORD="…" node server.js');
+  }
   console.log('');
 });
 
-server.on('error', (err) => {
+server.on('error', err => {
   if (err.code === 'EADDRINUSE') {
     console.error('\n  Port ' + PORT + ' is already in use. Try:  PORT=4901 node server.js\n');
     process.exit(1);

@@ -74,6 +74,30 @@
     revealables.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- "See more": on phones, show the first few items of a grid ---- */
+  var phone = window.matchMedia('(max-width: 640px)');
+  Array.prototype.forEach.call(document.querySelectorAll('.more'), function (btn) {
+    var grid = document.querySelector(btn.getAttribute('data-more'));
+    if (!grid) return;
+    var step = Number(btn.getAttribute('data-step')) || 3;
+    var open = false;
+
+    function apply() {
+      var items = Array.prototype.slice.call(grid.children);
+      var collapsible = phone.matches && items.length > step;
+      items.forEach(function (el, i) { el.hidden = collapsible && !open && i >= step; });
+      btn.hidden = !collapsible;
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    }
+    btn.addEventListener('click', function () { open = !open; apply(); });
+    // The gallery re-renders on filter and on language change.
+    document.addEventListener('gallery:render', function () { open = false; apply(); });
+    document.addEventListener('langchange', apply);
+    if (phone.addEventListener) phone.addEventListener('change', function () { open = false; apply(); });
+    apply();
+  });
+
   /* ---- Smooth anchor scrolling that respects the fixed header ---- */
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');

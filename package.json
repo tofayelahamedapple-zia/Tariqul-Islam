@@ -2,13 +2,23 @@
   "name": "tariqul-islam-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Premium personal portfolio website for MD TARIQUL ISLAM — International Qur'anic Reciter, Hafiz, Qari & Qur'an Educator.",
+  "description": "Premium personal portfolio for MD TARIQUL ISLAM — International Qur'anic Reciter, Hafiz, Qari & Qur'an Educator. Zero-dependency Node.js, trilingual, with a content admin.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "node build.js",
+    "extract": "node tools/extract-content.js"
   },
-  "engines": { "node": ">=18" },
-  "keywords": ["portfolio", "quran", "hafiz", "qari", "qiraat"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "portfolio",
+    "quran",
+    "hafiz",
+    "qari",
+    "qiraat"
+  ],
   "license": "UNLICENSED"
 }

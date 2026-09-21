@@ -1,0 +1,2339 @@
+{
+  "_note": "Single source of truth for every word on the site. Edit at /admin (node server.js), or by hand then run: node build.js",
+  "meta": {
+    "displayName": "MD TARIQUL ISLAM",
+    "brandRole": {
+      "en": "Hafiz · Qari · Educator",
+      "bn": "হাফিজ · ক্বারী · শিক্ষক",
+      "ar": "حافظ · قارئ · معلّم"
+    },
+    "title": {
+      "en": "MD TARIQUL ISLAM — International Qur'anic Reciter, Hafiz & Qur'an Educator",
+      "bn": "এমডি তারিকুল ইসলাম — আন্তর্জাতিক কুরআন তিলাওয়াতকারী, হাফিজ ও কুরআন শিক্ষক",
+      "ar": "محمد طريق الإسلام — قارئ دولي للقرآن الكريم، حافظ ومعلّم للقرآن"
+    },
+    "description": "MD TARIQUL ISLAM — Bangladeshi Hafiz of the Holy Qur'an, Qari and Qur'an educator. 1st Place, Full Qur'an Category, Dubai International Holy Qur'an Award 2017. Continuing advanced Qur'anic and Qira'at studies in Madinah and Sharjah.",
+    "canonical": "https://example.com/",
+    "skip": {
+      "en": "Skip to content",
+      "bn": "মূল কনটেন্টে যান",
+      "ar": "تخطَّ إلى المحتوى"
+    },
+    "more": {
+      "en": "See more",
+      "bn": "আরও দেখুন",
+      "ar": "عرض المزيد"
+    },
+    "less": {
+      "en": "Show less",
+      "bn": "কম দেখুন",
+      "ar": "عرض أقل"
+    }
+  },
+  "status": {
+    "achieved": {
+      "en": "Achieved",
+      "bn": "অর্জিত",
+      "ar": "تحقّق"
+    },
+    "completed": {
+      "en": "Completed",
+      "bn": "সম্পন্ন",
+      "ar": "مُنجَز"
+    },
+    "ongoing": {
+      "en": "Ongoing",
+      "bn": "চলমান",
+      "ar": "مستمر"
+    },
+    "awaited": {
+      "en": "Admission Examination Completed — Result Awaited",
+      "bn": "ভর্তি পরীক্ষা সম্পন্ন — ফলাফলের অপেক্ষায়",
+      "ar": "أُنجز اختبار القبول — بانتظار النتيجة"
+    },
+    "future": {
+      "en": "Future Academic Aspiration",
+      "bn": "ভবিষ্যৎ একাডেমিক আকাঙ্ক্ষা",
+      "ar": "طموح أكاديمي مستقبلي"
+    },
+    "participation": {
+      "en": "Participation",
+      "bn": "অংশগ্রহণ",
+      "ar": "مشاركة"
+    }
+  },
+  "ranks": {
+    "1": {
+      "en": "1st Place",
+      "bn": "১ম স্থান",
+      "ar": "المركز الأول"
+    },
+    "2": {
+      "en": "2nd Place",
+      "bn": "২য় স্থান",
+      "ar": "المركز الثاني"
+    },
+    "4": {
+      "en": "4th Place",
+      "bn": "৪র্থ স্থান",
+      "ar": "المركز الرابع"
+    },
+    "5": {
+      "en": "5th Place",
+      "bn": "৫ম স্থান",
+      "ar": "المركز الخامس"
+    },
+    "6": {
+      "en": "6th Place",
+      "bn": "৬ষ্ঠ স্থান",
+      "ar": "المركز السادس"
+    },
+    "9": {
+      "en": "9th Place",
+      "bn": "৯ম স্থান",
+      "ar": "المركز التاسع"
+    }
+  },
+  "nav": [
+    {
+      "href": "#about",
+      "label": {
+        "en": "About",
+        "bn": "পরিচিতি",
+        "ar": "نبذة"
+      }
+    },
+    {
+      "href": "#achievements",
+      "label": {
+        "en": "Achievements",
+        "bn": "অর্জন",
+        "ar": "الإنجازات"
+      }
+    },
+    {
+      "href": "#journey",
+      "label": {
+        "en": "Journey",
+        "bn": "পথচলা",
+        "ar": "المسيرة"
+      }
+    },
+    {
+      "href": "#studies",
+      "label": {
+        "en": "Studies",
+        "bn": "অধ্যয়ন",
+        "ar": "الدراسات"
+      }
+    },
+    {
+      "href": "#academic",
+      "label": {
+        "en": "Academic",
+        "bn": "শিক্ষা",
+        "ar": "التعليم"
+      }
+    },
+    {
+      "href": "#teaching",
+      "label": {
+        "en": "Teaching",
+        "bn": "শিক্ষকতা",
+        "ar": "التدريس"
+      }
+    },
+    {
+      "href": "#imam",
+      "label": {
+        "en": "Imam",
+        "bn": "ইমামতি",
+        "ar": "الإمامة"
+      }
+    },
+    {
+      "href": "#media",
+      "label": {
+        "en": "Media",
+        "bn": "মিডিয়া",
+        "ar": "الإعلام"
+      }
+    },
+    {
+      "href": "#gallery",
+      "label": {
+        "en": "Gallery",
+        "bn": "গ্যালারি",
+        "ar": "المعرض"
+      }
+    },
+    {
+      "href": "#vision",
+      "label": {
+        "en": "Vision",
+        "bn": "লক্ষ্য",
+        "ar": "الرؤية"
+      }
+    },
+    {
+      "href": "#contact",
+      "label": {
+        "en": "Contact",
+        "bn": "যোগাযোগ",
+        "ar": "التواصل"
+      }
+    }
+  ],
+  "hero": {
+    "eyebrow": {
+      "en": "Serving the Qur'an",
+      "bn": "কুরআনের খেদমতে",
+      "ar": "في خدمة القرآن الكريم"
+    },
+    "name": {
+      "en": "MD TARIQUL ISLAM",
+      "bn": "এমডি তারিকুল ইসলাম",
+      "ar": "محمد طريق الإسلام"
+    },
+    "roles": {
+      "en": "International Qur'anic Reciter · Hafiz of the Qur'an · Qari · Qur'an Educator",
+      "bn": "আন্তর্জাতিক কুরআন তিলাওয়াতকারী · হাফিজুল কুরআন · ক্বারী · কুরআন শিক্ষক",
+      "ar": "قارئ دولي للقرآن الكريم · حافظ لكتاب الله · قارئ · معلّم للقرآن"
+    },
+    "leads": [
+      {
+        "en": "A Bangladeshi Hafiz of the Holy Qur'an and Qur'anic reciter, recognized through national and international Qur'an competitions and dedicated to Qur'anic recitation, Tajweed, Qira'at, teaching and Islamic education.",
+        "bn": "বাংলাদেশের একজন হাফিজে কুরআন ও তিলাওয়াতকারী, যিনি জাতীয় ও আন্তর্জাতিক কুরআন প্রতিযোগিতায় স্বীকৃতি লাভ করেছেন এবং কুরআন তিলাওয়াত, তাজবীদ, ক্বিরাআত, শিক্ষকতা ও ইসলামী শিক্ষার সাথে নিবেদিতপ্রাণভাবে যুক্ত।",
+        "ar": "حافظ لكتاب الله وقارئ للقرآن الكريم من بنغلاديش، نال التقدير في المسابقات القرآنية المحلية والدولية، ومتفرّغ لتلاوة القرآن والتجويد والقراءات والتدريس والتعليم الإسلامي."
+      },
+      {
+        "en": "In 2017, he achieved <strong>1st Place in the Full Qur'an category</strong> at the Dubai International Holy Qur'an Award, and 4th Place in the Melody category at the same event. He later achieved 9th Place in the Kuwait International Qur'an Recitation Competition in 2018.",
+        "bn": "২০১৭ সালে তিনি দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ডে <strong>সম্পূর্ণ কুরআন ক্যাটাগরিতে ১ম স্থান</strong> এবং একই আয়োজনে সুর ক্যাটাগরিতে ৪র্থ স্থান অর্জন করেন। পরবর্তীতে ২০১৮ সালে কুয়েত আন্তর্জাতিক কুরআন তিলাওয়াত প্রতিযোগিতায় ৯ম স্থান অর্জন করেন।",
+        "ar": "في عام ٢٠١٧م حصل على <strong>المركز الأول في فرع القرآن الكريم كاملًا</strong> في جائزة دبي الدولية للقرآن الكريم، والمركز الرابع في فرع الصوت الحسن في الحدث نفسه. ثم نال المركز التاسع في مسابقة الكويت الدولية لتلاوة القرآن الكريم عام ٢٠١٨م."
+      },
+      {
+        "en": "Today, his journey continues through advanced Qur'anic studies in Madinah and Sharjah, alongside his academic pursuit of Islamic and Qur'anic studies.",
+        "bn": "বর্তমানে তাঁর পথচলা অব্যাহত রয়েছে মদিনা ও শারজাহতে উচ্চতর কুরআনী অধ্যয়নের মাধ্যমে, পাশাপাশি ইসলামী ও কুরআনী শিক্ষায় একাডেমিক অগ্রযাত্রার সঙ্গে।",
+        "ar": "وتتواصل مسيرته اليوم من خلال الدراسات القرآنية المتقدّمة في المدينة المنوّرة والشارقة، إلى جانب مساره الأكاديمي في الدراسات الإسلامية والقرآنية."
+      }
+    ],
+    "ctas": [
+      {
+        "href": "#journey",
+        "label": {
+          "en": "Explore My Journey",
+          "bn": "আমার পথচলা দেখুন",
+          "ar": "تعرّف على مسيرتي"
+        },
+        "primary": true
+      },
+      {
+        "href": "#achievements",
+        "label": {
+          "en": "View Achievements",
+          "bn": "অর্জনসমূহ দেখুন",
+          "ar": "استعرض الإنجازات"
+        }
+      },
+      {
+        "href": "#media",
+        "label": {
+          "en": "Listen to My Recitation",
+          "bn": "তিলাওয়াত শুনুন",
+          "ar": "استمع إلى تلاوتي"
+        }
+      }
+    ],
+    "image": {
+      "src": "assets/portrait-arch.webp?v=3",
+      "width": 900,
+      "height": 1200,
+      "alt": "MD Tariqul Islam"
+    }
+  },
+  "stats": [
+    {
+      "value": "2012",
+      "label": {
+        "en": "Hifz completed",
+        "bn": "হিফজ সম্পন্ন",
+        "ar": "إتمام الحفظ"
+      }
+    },
+    {
+      "value": "1st",
+      "label": {
+        "en": "Dubai Award 2017",
+        "bn": "দুবাই অ্যাওয়ার্ড ২০১৭",
+        "ar": "جائزة دبي ٢٠١٧"
+      }
+    },
+    {
+      "value": "6",
+      "label": {
+        "en": "Countries engaged",
+        "bn": "দেশে অংশগ্রহণ",
+        "ar": "دول شارك فيها"
+      }
+    },
+    {
+      "value": "10+",
+      "label": {
+        "en": "Years teaching",
+        "bn": "বছরের শিক্ষকতা",
+        "ar": "سنوات في التدريس"
+      }
+    }
+  ],
+  "sections": {
+    "about": {
+      "num": "02",
+      "numLabel": {
+        "en": "About Me",
+        "bn": "আমার পরিচয়",
+        "ar": "نبذة عني"
+      },
+      "title": {
+        "en": "A Life Dedicated to the Qur'an",
+        "bn": "কুরআনের জন্য নিবেদিত একটি জীবন",
+        "ar": "حياة مكرّسة لخدمة القرآن"
+      },
+      "paragraphs": [
+        {
+          "en": "I am Md Tariqul Islam, a Bangladeshi Hafiz of the Holy Qur'an, Qur'anic reciter, Qari and Qur'an educator.",
+          "bn": "আমি মোঃ তারিকুল ইসলাম — বাংলাদেশের একজন হাফিজে কুরআন, কুরআন তিলাওয়াতকারী, ক্বারী ও কুরআন শিক্ষক।",
+          "ar": "أنا محمد طريق الإسلام، حافظ لكتاب الله من بنغلاديش، وقارئ للقرآن الكريم ومعلّم له."
+        },
+        {
+          "en": "My journey began with the memorization of the Holy Qur'an and gradually developed through Qur'anic recitation, Tajweed, competitions, Tarawih leadership, teaching and Qur'anic education.",
+          "bn": "আমার পথচলা শুরু হয় পবিত্র কুরআন মুখস্থের মাধ্যমে এবং ধীরে ধীরে তা বিকশিত হয় কুরআন তিলাওয়াত, তাজবীদ, প্রতিযোগিতা, তারাবীহর ইমামতি, শিক্ষকতা ও কুরআনী শিক্ষার পথ ধরে।",
+          "ar": "بدأت مسيرتي بحفظ القرآن الكريم، ثم تطوّرت تدريجيًا عبر التلاوة والتجويد والمسابقات وإمامة التراويح والتدريس والتعليم القرآني."
+        },
+        {
+          "en": "Over the years, I have had the opportunity to represent Bangladesh in international Qur'an competitions and participate in Qur'an-related programs and events in different countries.",
+          "bn": "বছরের পর বছর ধরে আমি আন্তর্জাতিক কুরআন প্রতিযোগিতায় বাংলাদেশের প্রতিনিধিত্ব করার এবং বিভিন্ন দেশে কুরআন-সংশ্লিষ্ট কর্মসূচি ও অনুষ্ঠানে অংশগ্রহণের সুযোগ পেয়েছি।",
+          "ar": "وعلى مدى السنوات أُتيحت لي فرصة تمثيل بنغلاديش في المسابقات القرآنية الدولية والمشاركة في البرامج والفعاليات القرآنية في بلدان مختلفة."
+        },
+        {
+          "en": "My international achievements include 1st Place in the Full Qur'an category at the Dubai International Holy Qur'an Award in 2017, 4th Place in its Melody category, and 9th Place at the Kuwait International Qur'an Recitation Competition in 2018.",
+          "bn": "আমার আন্তর্জাতিক অর্জনের মধ্যে রয়েছে ২০১৭ সালে দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ডে সম্পূর্ণ কুরআন ক্যাটাগরিতে ১ম স্থান, সুর ক্যাটাগরিতে ৪র্থ স্থান এবং ২০১৮ সালে কুয়েত আন্তর্জাতিক কুরআন তিলাওয়াত প্রতিযোগিতায় ৯ম স্থান।",
+          "ar": "ومن إنجازاتي الدولية: المركز الأول في فرع القرآن الكريم كاملًا بجائزة دبي الدولية للقرآن الكريم عام ٢٠١٧م، والمركز الرابع في فرع الصوت الحسن، والمركز التاسع في مسابقة الكويت الدولية لتلاوة القرآن الكريم عام ٢٠١٨م."
+        },
+        {
+          "en": "Beyond competition, my focus has increasingly turned toward advanced Qur'anic studies, Qira'at, authentic Qur'anic transmission and teaching.",
+          "bn": "প্রতিযোগিতার বাইরে আমার মনোযোগ ক্রমশ কেন্দ্রীভূত হয়েছে উচ্চতর কুরআনী অধ্যয়ন, ক্বিরাআত, নির্ভরযোগ্য কুরআনী সনদ ও শিক্ষকতার দিকে।",
+          "ar": "وبعيدًا عن المسابقات، اتّجه تركيزي بصورة متزايدة نحو الدراسات القرآنية المتقدّمة والقراءات والأسانيد القرآنية الموثوقة والتدريس."
+        },
+        {
+          "en": "I believe that a journey with the Qur'an is not measured only by achievements, but by continuous learning, practice, teaching and service.",
+          "bn": "আমি বিশ্বাস করি, কুরআনের সাথে পথচলা কেবল অর্জন দিয়ে পরিমাপ করা যায় না — বরং তা নিরবচ্ছিন্ন শেখা, চর্চা, শিক্ষাদান ও খেদমতের মাধ্যমেই পরিমাপযোগ্য।",
+          "ar": "وأؤمن بأن المسيرة مع القرآن لا تُقاس بالإنجازات وحدها، بل بالتعلّم المستمر والممارسة والتعليم والخدمة."
+        }
+      ],
+      "mission": {
+        "label": {
+          "en": "My Mission",
+          "bn": "আমার লক্ষ্য",
+          "ar": "رسالتي"
+        },
+        "text": {
+          "en": "To serve the Qur'an through accurate recitation, authentic learning, Qira'at, effective teaching and Qur'anic education.",
+          "bn": "সঠিক তিলাওয়াত, নির্ভরযোগ্য অধ্যয়ন, ক্বিরাআত, কার্যকর শিক্ষাদান ও কুরআনী শিক্ষার মাধ্যমে কুরআনের খেদমত করা।",
+          "ar": "خدمة القرآن الكريم من خلال التلاوة المتقنة والتلقّي الموثوق والقراءات والتدريس الفعّال والتعليم القرآني."
+        }
+      }
+    },
+    "intl": {
+      "num": "04",
+      "numLabel": {
+        "en": "International Achievements",
+        "bn": "আন্তর্জাতিক অর্জন",
+        "ar": "الإنجازات الدولية"
+      },
+      "title": {
+        "en": "Qur'anic Competition Achievements",
+        "bn": "কুরআন প্রতিযোগিতায় অর্জনসমূহ",
+        "ar": "إنجازات في المسابقات القرآنية"
+      },
+      "items": [
+        {
+          "featured": true,
+          "flag": "🇦🇪",
+          "year": "2017",
+          "title": {
+            "en": "Dubai International Holy Qur'an Award",
+            "bn": "দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ড",
+            "ar": "جائزة دبي الدولية للقرآن الكريم"
+          },
+          "statusKey": "achieved",
+          "categories": [
+            {
+              "medal": "🥇",
+              "rankKey": "1",
+              "rankText": null,
+              "name": {
+                "en": "Full Qur'an Category",
+                "bn": "সম্পূর্ণ কুরআন ক্যাটাগরি",
+                "ar": "فرع القرآن الكريم كاملًا"
+              }
+            },
+            {
+              "medal": "",
+              "rankKey": "4",
+              "rankText": null,
+              "name": {
+                "en": "Melody / Beautiful Voice Category",
+                "bn": "সুর / সুকণ্ঠ ক্যাটাগরি",
+                "ar": "فرع الصوت الحسن"
+              }
+            }
+          ],
+          "note": {
+            "en": "This remains one of the defining milestones of my Qur'anic journey. My first-place achievement is documented in my public profile and referenced by multiple published sources.",
+            "bn": "এটি আমার কুরআনী পথচলার অন্যতম নির্ণায়ক মাইলফলক হিসেবে রয়ে গেছে। আমার প্রথম স্থান অর্জন আমার পাবলিক প্রোফাইলে নথিভুক্ত এবং একাধিক প্রকাশিত সূত্রে উল্লিখিত।",
+            "ar": "يبقى هذا من أبرز معالم مسيرتي القرآنية. وحصولي على المركز الأول موثّق في ملفي التعريفي العام ومذكور في عدة مصادر منشورة."
+          }
+        },
+        {
+          "featured": false,
+          "flag": "🇰🇼",
+          "year": "2018",
+          "title": {
+            "en": "Kuwait International Qur'an Recitation Competition",
+            "bn": "কুয়েত আন্তর্জাতিক কুরআন তিলাওয়াত প্রতিযোগিতা",
+            "ar": "مسابقة الكويت الدولية لتلاوة القرآن الكريم"
+          },
+          "statusKey": "achieved",
+          "categories": [
+            {
+              "medal": "",
+              "rankKey": "9",
+              "rankText": null,
+              "name": {
+                "en": "Full Qur'an Category",
+                "bn": "সম্পূর্ণ কুরআন ক্যাটাগরি",
+                "ar": "فرع القرآن الكريم كاملًا"
+              }
+            }
+          ],
+          "note": null
+        },
+        {
+          "featured": false,
+          "flag": "🇶🇦",
+          "year": "2023",
+          "title": {
+            "en": "Sheikh Jassim Qur'an Competition — Qatar",
+            "bn": "শাইখ জাসিম কুরআন প্রতিযোগিতা — কাতার",
+            "ar": "مسابقة الشيخ جاسم للقرآن الكريم — قطر"
+          },
+          "statusKey": "participation",
+          "categories": [
+            {
+              "medal": "",
+              "rankKey": "",
+              "rankText": {
+                "en": "Awwal Al-Awa'il / First of the First Category",
+                "bn": "আউয়াল আল-আওয়াইল / ফার্স্ট অব দ্য ফার্স্ট ক্যাটাগরি",
+                "ar": "فرع أوّل الأوائل"
+              },
+              "name": null
+            }
+          ],
+          "note": null
+        }
+      ]
+    },
+    "natl": {
+      "num": "05",
+      "numLabel": {
+        "en": "National Achievements",
+        "bn": "জাতীয় অর্জন",
+        "ar": "الإنجازات المحلية"
+      },
+      "title": {
+        "en": "Bangladesh Qur'an Competitions",
+        "bn": "বাংলাদেশের কুরআন প্রতিযোগিতা",
+        "ar": "المسابقات القرآنية في بنغلاديش"
+      },
+      "note": {
+        "en": "These documented national achievements are also reflected in the public record of my Qur'anic competition journey.",
+        "bn": "এই নথিভুক্ত জাতীয় অর্জনগুলো আমার কুরআনী প্রতিযোগিতার পথচলার সর্বজনীন রেকর্ডেও প্রতিফলিত হয়েছে।",
+        "ar": "تنعكس هذه الإنجازات المحلية الموثّقة أيضًا في السجل العام لمسيرتي في المسابقات القرآنية."
+      },
+      "items": [
+        {
+          "year": "2014",
+          "name": {
+            "en": "Light of Quran",
+            "bn": "লাইট অব কুরআন",
+            "ar": "نور القرآن"
+          },
+          "org": {
+            "en": "Machranga Television",
+            "bn": "মাছরাঙা টেলিভিশন",
+            "ar": "تلفزيون ماتشرانغا"
+          },
+          "rankKey": "2"
+        },
+        {
+          "year": "2015",
+          "name": {
+            "en": "Light of the Holy Quran",
+            "bn": "লাইট অব দ্য হলি কুরআন",
+            "ar": "نور القرآن الكريم"
+          },
+          "org": {
+            "en": "Banglavision",
+            "bn": "বাংলাভিশন",
+            "ar": "بنغلا فيجن"
+          },
+          "rankKey": "6"
+        },
+        {
+          "year": "2017",
+          "name": {
+            "en": "PHP Qur'an Alo",
+            "bn": "পিএইচপি কুরআনের আলো",
+            "ar": "PHP نور القرآن"
+          },
+          "org": {
+            "en": "NTV",
+            "bn": "এনটিভি",
+            "ar": "قناة NTV"
+          },
+          "rankKey": "5"
+        },
+        {
+          "year": "2017",
+          "name": {
+            "en": "National Hifazul Quran Competition",
+            "bn": "জাতীয় হিফজুল কুরআন প্রতিযোগিতা",
+            "ar": "المسابقة الوطنية لحفظ القرآن الكريم"
+          },
+          "org": {
+            "en": "Bangladesh",
+            "bn": "বাংলাদেশ",
+            "ar": "بنغلاديش"
+          },
+          "rankKey": "2"
+        }
+      ]
+    },
+    "journey": {
+      "num": "03",
+      "numLabel": {
+        "en": "My Qur'anic Journey",
+        "bn": "আমার কুরআনী পথচলা",
+        "ar": "مسيرتي القرآنية"
+      },
+      "title": {
+        "en": "From Hifz to Advanced Qur'anic Studies",
+        "bn": "হিফজ থেকে উচ্চতর কুরআনী অধ্যয়ন",
+        "ar": "من الحفظ إلى الدراسات القرآنية المتقدّمة"
+      },
+      "items": [
+        {
+          "year": "2009",
+          "title": {
+            "en": "Began Hifz al-Qur'an",
+            "bn": "হিফজুল কুরআন শুরু",
+            "ar": "بدء حفظ القرآن الكريم"
+          },
+          "desc": null,
+          "statusKey": ""
+        },
+        {
+          "year": "2012",
+          "title": {
+            "en": "Completed Hifz of the Holy Qur'an",
+            "bn": "পবিত্র কুরআনের হিফজ সম্পন্ন",
+            "ar": "إتمام حفظ القرآن الكريم"
+          },
+          "desc": null,
+          "statusKey": "completed"
+        },
+        {
+          "year": "2013",
+          "title": {
+            "en": "Began leading Tarawih prayers",
+            "bn": "তারাবীহর নামাজে ইমামতি শুরু",
+            "ar": "بدء إمامة صلاة التراويح"
+          },
+          "desc": null,
+          "statusKey": ""
+        },
+        {
+          "year": "2014–2017",
+          "title": {
+            "en": "Participated in major national Qur'an competitions in Bangladesh",
+            "bn": "বাংলাদেশের প্রধান জাতীয় কুরআন প্রতিযোগিতাসমূহে অংশগ্রহণ",
+            "ar": "المشاركة في كبرى المسابقات القرآنية الوطنية في بنغلاديش"
+          },
+          "desc": null,
+          "statusKey": ""
+        },
+        {
+          "year": "2017",
+          "title": {
+            "en": "1st Place — Dubai International Holy Qur'an Award",
+            "bn": "১ম স্থান — দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ড",
+            "ar": "المركز الأول — جائزة دبي الدولية للقرآن الكريم"
+          },
+          "desc": {
+            "en": "4th Place — Melody Category",
+            "bn": "৪র্থ স্থান — সুর ক্যাটাগরি",
+            "ar": "المركز الرابع — فرع الصوت الحسن"
+          },
+          "statusKey": "achieved"
+        },
+        {
+          "year": "2018",
+          "title": {
+            "en": "9th Place — Kuwait International Qur'an Recitation Competition",
+            "bn": "৯ম স্থান — কুয়েত আন্তর্জাতিক কুরআন তিলাওয়াত প্রতিযোগিতা",
+            "ar": "المركز التاسع — مسابقة الكويت الدولية لتلاوة القرآن الكريم"
+          },
+          "desc": null,
+          "statusKey": "achieved"
+        },
+        {
+          "year": "2023",
+          "title": {
+            "en": "Sheikh Jassim Qur'an Competition — Qatar",
+            "bn": "শাইখ জাসিম কুরআন প্রতিযোগিতা — কাতার",
+            "ar": "مسابقة الشيخ جاسم للقرآن الكريم — قطر"
+          },
+          "desc": null,
+          "statusKey": "participation"
+        },
+        {
+          "year": "2026",
+          "title": {
+            "en": "Continuing Advanced Qur'anic Studies in Madinah and Sharjah",
+            "bn": "মদিনা ও শারজাহতে উচ্চতর কুরআনী অধ্যয়ন অব্যাহত",
+            "ar": "مواصلة الدراسات القرآنية المتقدّمة في المدينة المنوّرة والشارقة"
+          },
+          "desc": null,
+          "statusKey": "ongoing"
+        }
+      ]
+    },
+    "current": {
+      "num": "06",
+      "numLabel": {
+        "en": "Current Qur'anic Studies",
+        "bn": "বর্তমান কুরআনী অধ্যয়ন",
+        "ar": "الدراسات القرآنية الحالية"
+      },
+      "title": {
+        "en": "Continuing the Journey of Qur'anic Learning",
+        "bn": "কুরআনী শিক্ষার পথচলা অব্যাহত",
+        "ar": "مواصلة مسيرة التعلّم القرآني"
+      },
+      "items": [
+        {
+          "icon": "<path d=\"M24 4l3 6h8l-4 6 4 6h-8l-3 6-3-6H13l4-6-4-6h8z\" opacity=\".0\"/><path d=\"M8 42V24l16-12 16 12v18\"/><path d=\"M18 42V30h12v12\"/><path d=\"M24 4v6\"/><circle cx=\"24\" cy=\"14\" r=\"2\"/>",
+          "title": {
+            "en": "Al-Masjid an-Nabawi",
+            "bn": "আল-মসজিদ আন-নববী",
+            "ar": "المسجد النبوي الشريف"
+          },
+          "place": {
+            "en": "Madinah, Saudi Arabia",
+            "bn": "মদিনা, সৌদি আরব",
+            "ar": "المدينة المنوّرة، المملكة العربية السعودية"
+          },
+          "focus": {
+            "en": "Qur'anic Study Circle (Halaqah)",
+            "bn": "কুরআনী অধ্যয়ন হালাকা",
+            "ar": "حلقة قرآنية"
+          },
+          "statusKey": "ongoing",
+          "desc": {
+            "en": "Continuing Qur'anic study and recitation at Al-Masjid an-Nabawi, with continued development in Qur'anic recitation, Tajweed and advanced Qira'at studies.",
+            "bn": "আল-মসজিদ আন-নববীতে কুরআন অধ্যয়ন ও তিলাওয়াত অব্যাহত রয়েছে, সেই সাথে কুরআন তিলাওয়াত, তাজবীদ ও উচ্চতর ক্বিরাআত অধ্যয়নে ধারাবাহিক উন্নতি চলমান।",
+            "ar": "مواصلة الدراسة والتلاوة القرآنية في المسجد النبوي الشريف، مع تطوير مستمر في التلاوة والتجويد والدراسات المتقدّمة في القراءات."
+          }
+        },
+        {
+          "icon": "<path d=\"M6 42V20l18-12 18 12v22\"/><path d=\"M16 42V28h16v14\"/><path d=\"M24 2v6\"/><circle cx=\"24\" cy=\"12\" r=\"2.5\"/>",
+          "title": {
+            "en": "Holy Quran Academy",
+            "bn": "হলি কুরআন একাডেমি",
+            "ar": "أكاديمية القرآن الكريم"
+          },
+          "place": {
+            "en": "Sharjah, United Arab Emirates",
+            "bn": "শারজাহ, সংযুক্ত আরব আমিরাত",
+            "ar": "الشارقة، الإمارات العربية المتحدة"
+          },
+          "focus": {
+            "en": "Advanced Qur'anic Studies & Qira'at",
+            "bn": "উচ্চতর কুরআনী অধ্যয়ন ও ক্বিরাআত",
+            "ar": "الدراسات القرآنية المتقدّمة والقراءات"
+          },
+          "statusKey": "ongoing",
+          "desc": {
+            "en": "Continuing structured study in Qur'anic recitation, Tajweed and Qira'at under qualified teachers, with a focus on accurate recitation and authentic Qur'anic transmission.",
+            "bn": "যোগ্য শিক্ষকদের তত্ত্বাবধানে কুরআন তিলাওয়াত, তাজবীদ ও ক্বিরাআতের সুসংগঠিত অধ্যয়ন অব্যাহত, যেখানে গুরুত্ব দেওয়া হয় সঠিক তিলাওয়াত ও নির্ভরযোগ্য কুরআনী সনদের উপর।",
+            "ar": "مواصلة الدراسة المنهجية في التلاوة والتجويد والقراءات على أيدي معلّمين مؤهّلين، مع التركيز على إتقان التلاوة وصحّة التلقّي والسند."
+          }
+        }
+      ],
+      "areasLabel": {
+        "en": "Current Areas of Study",
+        "bn": "বর্তমান অধ্যয়নের ক্ষেত্রসমূহ",
+        "ar": "مجالات الدراسة الحالية"
+      },
+      "areas": [
+        {
+          "en": "Qur'anic Recitation",
+          "bn": "কুরআন তিলাওয়াত",
+          "ar": "تلاوة القرآن"
+        },
+        {
+          "en": "Tajweed",
+          "bn": "তাজবীদ",
+          "ar": "التجويد"
+        },
+        {
+          "en": "Qira'at",
+          "bn": "ক্বিরাআত",
+          "ar": "القراءات"
+        },
+        {
+          "en": "Riwayat",
+          "bn": "রিওয়ায়াত",
+          "ar": "الروايات"
+        },
+        {
+          "en": "Waqf & Ibtida'",
+          "bn": "ওয়াক্ফ ও ইবতিদা",
+          "ar": "الوقف والابتداء"
+        },
+        {
+          "en": "Hifz Revision",
+          "bn": "হিফজ পুনরাবৃত্তি",
+          "ar": "مراجعة الحفظ"
+        },
+        {
+          "en": "Maqamat",
+          "bn": "মাকামাত",
+          "ar": "المقامات"
+        },
+        {
+          "en": "Ijazah & Sanad",
+          "bn": "ইজাযাহ ও সনদ",
+          "ar": "الإجازة والسند"
+        },
+        {
+          "en": "Qur'anic Recitation Pedagogy",
+          "bn": "কুরআন তিলাওয়াত শিক্ষাপদ্ধতি",
+          "ar": "أساليب تعليم التلاوة"
+        }
+      ]
+    },
+    "qiraat": {
+      "num": "07",
+      "numLabel": {
+        "en": "Qira'at",
+        "bn": "ক্বিরাআত",
+        "ar": "القراءات"
+      },
+      "title": {
+        "en": "From Hifz to the Science of Qira'at",
+        "bn": "হিফজ থেকে ক্বিরাআতের জ্ঞানে",
+        "ar": "من الحفظ إلى علم القراءات"
+      },
+      "lead": {
+        "en": "My long-term Qur'anic goal is to develop a deep and systematic understanding of the Ten Qira'at through qualified teachers, structured study and authentic chains of transmission.",
+        "bn": "আমার দীর্ঘমেয়াদি কুরআনী লক্ষ্য হলো যোগ্য শিক্ষক, সুসংগঠিত অধ্যয়ন ও নির্ভরযোগ্য সনদের ধারাবাহিকতার মাধ্যমে ক্বিরাআতে আশারা (দশ ক্বিরাআত) সম্পর্কে গভীর ও সুশৃঙ্খল উপলব্ধি অর্জন করা।",
+        "ar": "هدفي القرآني بعيد المدى هو بناء فهم عميق ومنهجي للقراءات العشر على أيدي معلّمين مؤهّلين، من خلال دراسة منظّمة وأسانيد متّصلة موثوقة."
+      },
+      "focusLabel": {
+        "en": "Areas of Focus",
+        "bn": "মনোযোগের ক্ষেত্রসমূহ",
+        "ar": "مجالات التركيز"
+      },
+      "focus": [
+        {
+          "en": "Qira'at al-'Ashr",
+          "bn": "ক্বিরাআত আল-আশারা",
+          "ar": "القراءات العشر"
+        },
+        {
+          "en": "Riwayat",
+          "bn": "রিওয়ায়াত",
+          "ar": "الروايات"
+        },
+        {
+          "en": "Usul al-Qira'at",
+          "bn": "উসূল আল-ক্বিরাআত",
+          "ar": "أصول القراءات"
+        },
+        {
+          "en": "Farsh al-Huruf",
+          "bn": "ফারশ আল-হুরূফ",
+          "ar": "فرش الحروف"
+        },
+        {
+          "en": "Tajweed",
+          "bn": "তাজবীদ",
+          "ar": "التجويد"
+        },
+        {
+          "en": "Waqf & Ibtida'",
+          "bn": "ওয়াক্ফ ও ইবতিদা",
+          "ar": "الوقف والابتداء"
+        },
+        {
+          "en": "Maqamat",
+          "bn": "মাকামাত",
+          "ar": "المقامات"
+        },
+        {
+          "en": "Ijazah & Sanad",
+          "bn": "ইজাযাহ ও সনদ",
+          "ar": "الإجازة والسند"
+        }
+      ],
+      "objective": {
+        "label": {
+          "en": "Long-Term Objective",
+          "bn": "দীর্ঘমেয়াদি উদ্দেশ্য",
+          "ar": "الهدف بعيد المدى"
+        },
+        "text": {
+          "en": "To continue learning, practicing and transmitting the Qur'anic readings with accuracy, discipline and authenticity.",
+          "bn": "যথার্থতা, শৃঙ্খলা ও নির্ভরযোগ্যতার সাথে কুরআনী ক্বিরাআত শেখা, চর্চা করা এবং তা পরবর্তী প্রজন্মে পৌঁছে দেওয়া।",
+          "ar": "مواصلة تعلّم القراءات القرآنية وممارستها ونقلها بدقّة وانضباط وسند موثوق."
+        }
+      },
+      "arabic": "القراءات العشر",
+      "caption": {
+        "en": "The Ten Canonical Qur'anic Readings",
+        "bn": "দশটি স্বীকৃত কুরআনী ক্বিরাআত",
+        "ar": "القراءات العشر المتواترة"
+      }
+    },
+    "education": {
+      "num": "08",
+      "numLabel": {
+        "en": "Academic Education",
+        "bn": "একাডেমিক শিক্ষা",
+        "ar": "التعليم الأكاديمي"
+      },
+      "title": {
+        "en": "Qur'anic & Islamic Education",
+        "bn": "কুরআনী ও ইসলামী শিক্ষা",
+        "ar": "التعليم القرآني والإسلامي"
+      },
+      "items": [
+        {
+          "degree": {
+            "en": "Hifz al-Qur'an",
+            "bn": "হিফজুল কুরআন",
+            "ar": "حفظ القرآن الكريم"
+          },
+          "institution": [
+            {
+              "en": "Markazut Tahfiz International Madrasa",
+              "bn": "মারকাযুত তাহফীজ ইন্টারন্যাশনাল মাদরাসা",
+              "ar": "مدرسة مركز التحفيظ الدولية"
+            }
+          ],
+          "years": {
+            "en": "2009–2012",
+            "bn": "2009–2012",
+            "ar": "2009–2012"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Dakhil",
+            "bn": "দাখিল",
+            "ar": "الداخل"
+          },
+          "institution": [
+            {
+              "en": "Taler Chheo Nesaria Alim Madrasah",
+              "bn": "তালের ছেও নেসারিয়া আলিম মাদরাসা",
+              "ar": "مدرسة تالير تشيو نيساريا العالِم"
+            }
+          ],
+          "years": {
+            "en": "2018–2021",
+            "bn": "2018–2021",
+            "ar": "2018–2021"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Alim",
+            "bn": "আলিম",
+            "ar": "العالِم"
+          },
+          "institution": [
+            {
+              "en": "Taler Chheo Nesaria Alim Madrasah",
+              "bn": "তালের ছেও নেসারিয়া আলিম মাদরাসা",
+              "ar": "مدرسة تالير تشيو نيساريا العالِم"
+            }
+          ],
+          "years": {
+            "en": "2022–2023",
+            "bn": "2022–2023",
+            "ar": "2022–2023"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Sharh-e-Bekaya",
+            "bn": "শরহে বেকায়া",
+            "ar": "شرح الوقاية"
+          },
+          "institution": [
+            {
+              "en": "Darul Ulum Khanpara",
+              "bn": "দারুল উলূম খানপাড়া",
+              "ar": "دار العلوم خانبارا"
+            }
+          ],
+          "years": {
+            "en": "2022–2023",
+            "bn": "2022–2023",
+            "ar": "2022–2023"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Jalalayn",
+            "bn": "জালালাইন",
+            "ar": "تفسير الجلالين"
+          },
+          "institution": [
+            {
+              "en": "Darul Ulum Khanpara",
+              "bn": "দারুল উলূম খানপাড়া",
+              "ar": "دار العلوم خانبارا"
+            }
+          ],
+          "years": {
+            "en": "2023–2024",
+            "bn": "2023–2024",
+            "ar": "2023–2024"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Fazil",
+            "bn": "ফাযিল",
+            "ar": "الفاضل"
+          },
+          "institution": [
+            {
+              "en": "Darunnazat Siddikia Kamil Madrasah",
+              "bn": "দারুননাজাত সিদ্দিকীয়া কামিল মাদরাসা",
+              "ar": "مدرسة دار النجاة الصدّيقية الكامل"
+            }
+          ],
+          "years": {
+            "en": "2023–Present",
+            "bn": "২০২৩–বর্তমান",
+            "ar": "٢٠٢٣–حتى الآن"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Honors",
+            "bn": "অনার্স",
+            "ar": "البكالوريوس (مرتبة الشرف)"
+          },
+          "institution": [
+            {
+              "en": "Government Madrasa-e-Alia",
+              "bn": "সরকারি মাদরাসা-ই-আলিয়া",
+              "ar": "المدرسة العالية الحكومية"
+            }
+          ],
+          "years": {
+            "en": "2024–Present",
+            "bn": "২০২৪–বর্তমান",
+            "ar": "٢٠٢٤–حتى الآن"
+          },
+          "statusKey": ""
+        },
+        {
+          "degree": {
+            "en": "Qur'anic Study Circle (Halaqah)",
+            "bn": "কুরআনী অধ্যয়ন হালাকা",
+            "ar": "حلقة قرآنية"
+          },
+          "institution": [
+            {
+              "en": "Al-Masjid an-Nabawi",
+              "bn": "আল-মসজিদ আন-নববী",
+              "ar": "المسجد النبوي الشريف"
+            },
+            {
+              "en": "Madinah, Saudi Arabia",
+              "bn": "মদিনা, সৌদি আরব",
+              "ar": "المدينة المنوّرة، المملكة العربية السعودية"
+            }
+          ],
+          "years": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "statusKey": "ongoing"
+        },
+        {
+          "degree": {
+            "en": "Advanced Qur'anic Studies & Qira'at",
+            "bn": "উচ্চতর কুরআনী অধ্যয়ন ও ক্বিরাআত",
+            "ar": "الدراسات القرآنية المتقدّمة والقراءات"
+          },
+          "institution": [
+            {
+              "en": "Holy Quran Academy",
+              "bn": "হলি কুরআন একাডেমি",
+              "ar": "أكاديمية القرآن الكريم"
+            },
+            {
+              "en": "Sharjah, United Arab Emirates",
+              "bn": "শারজাহ, সংযুক্ত আরব আমিরাত",
+              "ar": "الشارقة، الإمارات العربية المتحدة"
+            }
+          ],
+          "years": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "statusKey": "ongoing"
+        },
+        {
+          "degree": {
+            "en": "Advanced Qira'at Studies",
+            "bn": "উচ্চতর ক্বিরাআত অধ্যয়ন",
+            "ar": "دراسات متقدّمة في القراءات"
+          },
+          "institution": [
+            {
+              "en": "Markaz Al-Ustaz — Dr. Ahmad Essa Al-Masarawi",
+              "bn": "মারকায আল-উস্তায — ড. আহমদ ঈসা আল-মাসারাবী",
+              "ar": "مركز الأستاذ — د. أحمد عيسى المعصراوي"
+            }
+          ],
+          "years": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "statusKey": "ongoing"
+        }
+      ]
+    },
+    "aspirations": {
+      "num": "09",
+      "numLabel": {
+        "en": "Academic Aspirations",
+        "bn": "একাডেমিক আকাঙ্ক্ষা",
+        "ar": "الطموحات الأكاديمية"
+      },
+      "title": {
+        "en": "Continuing Higher Education",
+        "bn": "উচ্চশিক্ষার পথে অগ্রযাত্রা",
+        "ar": "مواصلة التعليم العالي"
+      },
+      "sub": {
+        "en": "My academic journey is continuing alongside my Qur'anic studies, with the hope of pursuing higher education at leading Islamic and academic institutions.",
+        "bn": "কুরআনী অধ্যয়নের পাশাপাশি আমার একাডেমিক পথচলা অব্যাহত রয়েছে, শীর্ষস্থানীয় ইসলামী ও একাডেমিক প্রতিষ্ঠানে উচ্চশিক্ষা লাভের আশা নিয়ে।",
+        "ar": "تتواصل مسيرتي الأكاديمية جنبًا إلى جنب مع دراساتي القرآنية، أملًا في مواصلة التعليم العالي في مؤسسات إسلامية وأكاديمية مرموقة."
+      },
+      "items": [
+        {
+          "name": {
+            "en": "Islamic University of Madinah",
+            "bn": "ইসলামী বিশ্ববিদ্যালয়, মদিনা",
+            "ar": "الجامعة الإسلامية بالمدينة المنوّرة"
+          },
+          "statusKey": "awaited",
+          "paragraphs": [
+            {
+              "en": "I have completed the admission examination for an undergraduate program at the Islamic University of Madinah and am currently awaiting the admission result.",
+              "bn": "আমি ইসলামী বিশ্ববিদ্যালয় মদিনার স্নাতক প্রোগ্রামের ভর্তি পরীক্ষা সম্পন্ন করেছি এবং বর্তমানে ভর্তির ফলাফলের অপেক্ষায় রয়েছি।",
+              "ar": "أتممت اختبار القبول لبرنامج البكالوريوس في الجامعة الإسلامية بالمدينة المنوّرة، وأنا في انتظار نتيجة القبول."
+            },
+            {
+              "en": "If accepted, I hope to pursue higher academic studies in Islamic Studies and further develop my understanding of the Qur'an, Sunnah and Islamic sciences within the academic environment of Madinah.",
+              "bn": "নির্বাচিত হলে, আমি মদিনার একাডেমিক পরিবেশে ইসলামী শিক্ষায় উচ্চতর অধ্যয়ন এবং কুরআন, সুন্নাহ ও ইসলামী জ্ঞানের বিষয়ে আমার উপলব্ধি আরও গভীর করার আশা রাখি।",
+              "ar": "وإن قُبلت، أرجو أن أواصل دراساتي العليا في الدراسات الإسلامية، وأن أعمّق فهمي للقرآن والسنّة والعلوم الإسلامية في البيئة الأكاديمية بالمدينة المنوّرة."
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Qatar University",
+            "bn": "কাতার বিশ্ববিদ্যালয়",
+            "ar": "جامعة قطر"
+          },
+          "statusKey": "future",
+          "paragraphs": [
+            {
+              "en": "By the permission and grace of Allah, I aspire to pursue higher education at Qatar University in the future, continuing my academic development alongside my Qur'anic and Islamic studies.",
+              "bn": "আল্লাহর অনুমতি ও অনুগ্রহে, ভবিষ্যতে কাতার বিশ্ববিদ্যালয়ে উচ্চশিক্ষা গ্রহণের আকাঙ্ক্ষা রাখি, যা আমার কুরআনী ও ইসলামী অধ্যয়নের পাশাপাশি একাডেমিক বিকাশকে এগিয়ে নেবে।",
+              "ar": "بإذن الله وفضله، أطمح إلى مواصلة التعليم العالي في جامعة قطر مستقبلًا، بما يواكب تطوّري الأكاديمي إلى جانب دراساتي القرآنية والإسلامية."
+            }
+          ]
+        }
+      ],
+      "pathLabel": {
+        "en": "My Academic Path",
+        "bn": "আমার একাডেমিক পথ",
+        "ar": "مساري الأكاديمي"
+      },
+      "path": [
+        {
+          "en": "Hifz al-Qur'an",
+          "bn": "হিফজুল কুরআন",
+          "ar": "حفظ القرآن الكريم"
+        },
+        {
+          "en": "Tajweed & Recitation",
+          "bn": "তাজবীদ ও তিলাওয়াত",
+          "ar": "التجويد والتلاوة"
+        },
+        {
+          "en": "Qira'at & Riwayat",
+          "bn": "ক্বিরাআত ও রিওয়ায়াত",
+          "ar": "القراءات والروايات"
+        },
+        {
+          "en": "Islamic Studies",
+          "bn": "ইসলামী শিক্ষা",
+          "ar": "الدراسات الإسلامية"
+        },
+        {
+          "en": "Higher Academic Education",
+          "bn": "উচ্চতর একাডেমিক শিক্ষা",
+          "ar": "التعليم الأكاديمي العالي"
+        },
+        {
+          "en": "Research · Teaching · Service to the Qur'an",
+          "bn": "গবেষণা · শিক্ষকতা · কুরআনের খেদমত",
+          "ar": "البحث · التدريس · خدمة القرآن"
+        }
+      ]
+    },
+    "teaching": {
+      "num": "11",
+      "numLabel": {
+        "en": "Teaching Experience",
+        "bn": "শিক্ষকতার অভিজ্ঞতা",
+        "ar": "الخبرة التدريسية"
+      },
+      "title": {
+        "en": "Teaching the Qur'an",
+        "bn": "কুরআন শিক্ষাদান",
+        "ar": "تدريس القرآن الكريم"
+      },
+      "sub": {
+        "en": "My teaching experience focuses on helping students develop accurate pronunciation, Tajweed, fluency, memorization and confidence in Qur'anic recitation.",
+        "bn": "আমার শিক্ষকতার মূল লক্ষ্য হলো শিক্ষার্থীদের সঠিক উচ্চারণ, তাজবীদ, সাবলীলতা, মুখস্থকরণ এবং কুরআন তিলাওয়াতে আত্মবিশ্বাস গড়ে তুলতে সহায়তা করা।",
+        "ar": "تتركّز خبرتي التدريسية على مساعدة الطلاب في إتقان النطق والتجويد والطلاقة والحفظ، وبناء الثقة في تلاوة القرآن الكريم."
+      },
+      "items": [
+        {
+          "name": {
+            "en": "Qur'an Teacher Training",
+            "bn": "কুরআন শিক্ষক প্রশিক্ষণ",
+            "ar": "تدريب معلّمي القرآن"
+          },
+          "place": {
+            "en": "Markazut Tahfiz Foundation, Bangladesh",
+            "bn": "মারকাযুত তাহফীজ ফাউন্ডেশন, বাংলাদেশ",
+            "ar": "مؤسسة مركز التحفيظ، بنغلاديش"
+          },
+          "years": {
+            "en": "2014–2018",
+            "bn": "2014–2018",
+            "ar": "2014–2018"
+          }
+        },
+        {
+          "name": {
+            "en": "Qur'an Recitation & Tajweed Training",
+            "bn": "কুরআন তিলাওয়াত ও তাজবীদ প্রশিক্ষণ",
+            "ar": "التدريب على التلاوة والتجويد"
+          },
+          "place": {
+            "en": "Nashrul Quran Organization",
+            "bn": "নাশরুল কুরআন সংস্থা",
+            "ar": "منظّمة نشر القرآن"
+          },
+          "years": {
+            "en": "2024–Present",
+            "bn": "২০২৪–বর্তমান",
+            "ar": "٢٠٢٤–حتى الآن"
+          }
+        }
+      ],
+      "levelsLabel": {
+        "en": "Teaching Levels",
+        "bn": "শিক্ষাদানের স্তরসমূহ",
+        "ar": "مستويات التدريس"
+      },
+      "levels": [
+        {
+          "tag": {
+            "en": "Beginner",
+            "bn": "প্রাথমিক",
+            "ar": "المستوى التمهيدي"
+          },
+          "items": [
+            {
+              "en": "Qur'an Reading",
+              "bn": "কুরআন পাঠ",
+              "ar": "قراءة القرآن"
+            },
+            {
+              "en": "Arabic Letters",
+              "bn": "আরবি হরফ",
+              "ar": "الحروف العربية"
+            },
+            {
+              "en": "Makharij",
+              "bn": "মাখারিজ",
+              "ar": "مخارج الحروف"
+            },
+            {
+              "en": "Basic Tajweed",
+              "bn": "প্রাথমিক তাজবীদ",
+              "ar": "أساسيات التجويد"
+            },
+            {
+              "en": "Nazirah",
+              "bn": "নাজিরা",
+              "ar": "النظرة"
+            },
+            {
+              "en": "Memorization",
+              "bn": "মুখস্থকরণ",
+              "ar": "الحفظ"
+            }
+          ]
+        },
+        {
+          "tag": {
+            "en": "Intermediate",
+            "bn": "মধ্যম",
+            "ar": "المستوى المتوسّط"
+          },
+          "items": [
+            {
+              "en": "Advanced Tajweed",
+              "bn": "উচ্চতর তাজবীদ",
+              "ar": "التجويد المتقدّم"
+            },
+            {
+              "en": "Hifz Revision",
+              "bn": "হিফজ পুনরাবৃত্তি",
+              "ar": "مراجعة الحفظ"
+            },
+            {
+              "en": "Fluency & Accuracy",
+              "bn": "সাবলীলতা ও যথার্থতা",
+              "ar": "الطلاقة والإتقان"
+            },
+            {
+              "en": "Waqf & Ibtida'",
+              "bn": "ওয়াক্ফ ও ইবতিদা",
+              "ar": "الوقف والابتداء"
+            },
+            {
+              "en": "Recitation Development",
+              "bn": "তিলাওয়াত উন্নয়ন",
+              "ar": "تطوير التلاوة"
+            }
+          ]
+        },
+        {
+          "tag": {
+            "en": "Advanced",
+            "bn": "উচ্চতর",
+            "ar": "المستوى المتقدّم"
+          },
+          "items": [
+            {
+              "en": "Qira'at",
+              "bn": "ক্বিরাআত",
+              "ar": "القراءات"
+            },
+            {
+              "en": "Riwayat",
+              "bn": "রিওয়ায়াত",
+              "ar": "الروايات"
+            },
+            {
+              "en": "Advanced Recitation",
+              "bn": "উচ্চতর তিলাওয়াত",
+              "ar": "التلاوة المتقدّمة"
+            },
+            {
+              "en": "Maqamat",
+              "bn": "মাকামাত",
+              "ar": "المقامات"
+            },
+            {
+              "en": "Competition Preparation",
+              "bn": "প্রতিযোগিতার প্রস্তুতি",
+              "ar": "الإعداد للمسابقات"
+            },
+            {
+              "en": "Ijazah Preparation",
+              "bn": "ইজাযাহর প্রস্তুতি",
+              "ar": "الإعداد للإجازة"
+            }
+          ]
+        }
+      ]
+    },
+    "judging": {
+      "num": "12",
+      "numLabel": {
+        "en": "Qur'an Competition Judge",
+        "bn": "কুরআন প্রতিযোগিতার বিচারক",
+        "ar": "التحكيم في المسابقات القرآنية"
+      },
+      "title": {
+        "en": "Supporting the Next Generation of Huffaz",
+        "bn": "পরবর্তী প্রজন্মের হাফেজদের পাশে",
+        "ar": "دعم الجيل القادم من الحفّاظ"
+      },
+      "sub": {
+        "en": "I have also served as a judge in Qur'an and Hifz competitions.",
+        "bn": "আমি কুরআন ও হিফজ প্রতিযোগিতায় বিচারকের দায়িত্বও পালন করেছি।",
+        "ar": "كما شاركت محكّمًا في مسابقات القرآن الكريم والحفظ."
+      },
+      "items": [
+        {
+          "name": {
+            "en": "Markazut Tahfiz Foundation, Bangladesh",
+            "bn": "মারকাযুত তাহফীজ ফাউন্ডেশন, বাংলাদেশ",
+            "ar": "مؤسسة مركز التحفيظ، بنغلاديش"
+          },
+          "years": {
+            "en": "2019–2022",
+            "bn": "2019–2022",
+            "ar": "2019–2022"
+          }
+        },
+        {
+          "name": {
+            "en": "Nashrul Quran Organization",
+            "bn": "নাশরুল কুরআন সংস্থা",
+            "ar": "منظّمة نشر القرآن"
+          },
+          "years": {
+            "en": "2020",
+            "bn": "2020",
+            "ar": "2020"
+          }
+        },
+        {
+          "name": {
+            "en": "Madrasatus Suffa",
+            "bn": "মাদরাসাতুস সুফফা",
+            "ar": "مدرسة الصُّفّة"
+          },
+          "years": {
+            "en": "2023",
+            "bn": "2023",
+            "ar": "2023"
+          }
+        },
+        {
+          "name": {
+            "en": "Abu Jafor Academy",
+            "bn": "আবু জাফর একাডেমি",
+            "ar": "أكاديمية أبو جعفر"
+          },
+          "years": {
+            "en": "2024",
+            "bn": "2024",
+            "ar": "2024"
+          }
+        },
+        {
+          "name": {
+            "en": "PHP Qur'an-er Alo — NTV",
+            "bn": "পিএইচপি কুরআনের আলো — এনটিভি",
+            "ar": "PHP نور القرآن — قناة NTV"
+          },
+          "years": {
+            "en": "2024–2025",
+            "bn": "2024–2025",
+            "ar": "2024–2025"
+          }
+        }
+      ],
+      "areasLabel": {
+        "en": "Areas of Evaluation",
+        "bn": "মূল্যায়নের ক্ষেত্রসমূহ",
+        "ar": "معايير التقييم"
+      },
+      "areas": [
+        {
+          "en": "Hifz Accuracy",
+          "bn": "হিফজের যথার্থতা",
+          "ar": "دقّة الحفظ"
+        },
+        {
+          "en": "Tajweed",
+          "bn": "তাজবীদ",
+          "ar": "التجويد"
+        },
+        {
+          "en": "Makharij",
+          "bn": "মাখারিজ",
+          "ar": "مخارج الحروف"
+        },
+        {
+          "en": "Fluency",
+          "bn": "সাবলীলতা",
+          "ar": "الطلاقة"
+        },
+        {
+          "en": "Waqf & Ibtida'",
+          "bn": "ওয়াক্ফ ও ইবতিদা",
+          "ar": "الوقف والابتداء"
+        },
+        {
+          "en": "Voice & Recitation",
+          "bn": "কণ্ঠ ও তিলাওয়াত",
+          "ar": "الصوت والأداء"
+        },
+        {
+          "en": "Overall Qur'anic Performance",
+          "bn": "সামগ্রিক কুরআনী পরিবেশনা",
+          "ar": "الأداء القرآني العام"
+        }
+      ]
+    },
+    "imam": {
+      "num": "10",
+      "numLabel": {
+        "en": "Imam & Tarawih Experience",
+        "bn": "ইমামতি ও তারাবীহর অভিজ্ঞতা",
+        "ar": "الإمامة وصلاة التراويح"
+      },
+      "title": {
+        "en": "Leading Tarawih Prayers",
+        "bn": "তারাবীহর নামাজে ইমামতি",
+        "ar": "إمامة صلاة التراويح"
+      },
+      "sub": {
+        "en": "I have had the opportunity to lead Tarawih prayers at mosques in Bangladesh and abroad.",
+        "bn": "বাংলাদেশ ও বিদেশের বিভিন্ন মসজিদে তারাবীহর নামাজে ইমামতি করার সুযোগ আমার হয়েছে।",
+        "ar": "أتيحت لي فرصة إمامة صلاة التراويح في مساجد داخل بنغلاديش وخارجها."
+      },
+      "items": [
+        {
+          "name": {
+            "en": "Daudkandi Grand Mosque",
+            "bn": "দাউদকান্দি বড় মসজিদ",
+            "ar": "مسجد داودكاندي الكبير"
+          },
+          "place": {
+            "en": "Daudkandi, Cumilla, Bangladesh",
+            "bn": "দাউদকান্দি, কুমিল্লা, বাংলাদেশ",
+            "ar": "داودكاندي، كوميلا، بنغلاديش"
+          },
+          "years": {
+            "en": "2013",
+            "bn": "2013",
+            "ar": "2013"
+          }
+        },
+        {
+          "name": {
+            "en": "Hotel Prime Park Cox's Bazar Mosque",
+            "bn": "হোটেল প্রাইম পার্ক কক্সবাজার মসজিদ",
+            "ar": "مسجد فندق برايم بارك كوكس بازار"
+          },
+          "place": {
+            "en": "Cox's Bazar, Bangladesh",
+            "bn": "কক্সবাজার, বাংলাদেশ",
+            "ar": "كوكس بازار، بنغلاديش"
+          },
+          "years": {
+            "en": "2014",
+            "bn": "2014",
+            "ar": "2014"
+          }
+        },
+        {
+          "name": {
+            "en": "Baitul Fazal Jame Masjid",
+            "bn": "বাইতুল ফজল জামে মসজিদ",
+            "ar": "مسجد بيت الفضل الجامع"
+          },
+          "place": {
+            "en": "Tongi, Gazipur, Bangladesh",
+            "bn": "টঙ্গী, গাজীপুর, বাংলাদেশ",
+            "ar": "تونغي، غازيبور، بنغلاديش"
+          },
+          "years": {
+            "en": "2015",
+            "bn": "2015",
+            "ar": "2015"
+          }
+        },
+        {
+          "name": {
+            "en": "Al Nasir Jame Masjid",
+            "bn": "আল নাসির জামে মসজিদ",
+            "ar": "مسجد الناصر الجامع"
+          },
+          "place": {
+            "en": "Wari, Dhaka, Bangladesh",
+            "bn": "ওয়ারী, ঢাকা, বাংলাদেশ",
+            "ar": "واري، دكا، بنغلاديش"
+          },
+          "years": {
+            "en": "2016",
+            "bn": "2016",
+            "ar": "2016"
+          }
+        },
+        {
+          "name": {
+            "en": "Dubai & Al Ain City Mosques",
+            "bn": "দুবাই ও আল আইন সিটি মসজিদসমূহ",
+            "ar": "مساجد دبي ومدينة العين"
+          },
+          "place": {
+            "en": "United Arab Emirates",
+            "bn": "সংযুক্ত আরব আমিরাত",
+            "ar": "الإمارات العربية المتحدة"
+          },
+          "years": {
+            "en": "2017",
+            "bn": "2017",
+            "ar": "2017"
+          }
+        },
+        {
+          "name": {
+            "en": "Banani Central Jame Masjid",
+            "bn": "বনানী কেন্দ্রীয় জামে মসজিদ",
+            "ar": "مسجد بناني الجامع المركزي"
+          },
+          "place": {
+            "en": "Dhaka, Bangladesh",
+            "bn": "ঢাকা, বাংলাদেশ",
+            "ar": "دكا، بنغلاديش"
+          },
+          "years": {
+            "en": "2018, 2019, 2021, 2022",
+            "bn": "2018, 2019, 2021, 2022",
+            "ar": "2018, 2019, 2021, 2022"
+          }
+        },
+        {
+          "name": {
+            "en": "Sonpura Jame Masjid",
+            "bn": "সোনপুরা জামে মসজিদ",
+            "ar": "مسجد سونبورا الجامع"
+          },
+          "place": {
+            "en": "Rupganj, Narayanganj, Bangladesh",
+            "bn": "রূপগঞ্জ, নারায়ণগঞ্জ, বাংলাদেশ",
+            "ar": "روبغانج، ناراينغانج، بنغلاديش"
+          },
+          "years": {
+            "en": "2020",
+            "bn": "2020",
+            "ar": "2020"
+          }
+        },
+        {
+          "name": {
+            "en": "Motalib Plaza Shopping Complex Mosque",
+            "bn": "মোতালিব প্লাজা শপিং কমপ্লেক্স মসজিদ",
+            "ar": "مسجد مجمّع مطلب بلازا التجاري"
+          },
+          "place": {
+            "en": "Dhaka, Bangladesh",
+            "bn": "ঢাকা, বাংলাদেশ",
+            "ar": "دكا، بنغلاديش"
+          },
+          "years": {
+            "en": "2023",
+            "bn": "2023",
+            "ar": "2023"
+          }
+        },
+        {
+          "name": {
+            "en": "Mosque Al-Malik",
+            "bn": "মসজিদ আল-মালিক",
+            "ar": "مسجد المالك"
+          },
+          "place": {
+            "en": "Kuala Lumpur, Malaysia",
+            "bn": "কুয়ালালামপুর, মালয়েশিয়া",
+            "ar": "كوالالمبور، ماليزيا"
+          },
+          "years": {
+            "en": "2024–2025",
+            "bn": "2024–2025",
+            "ar": "2024–2025"
+          }
+        }
+      ]
+    },
+    "media": {
+      "num": "14",
+      "numLabel": {
+        "en": "Media & Public Appearances",
+        "bn": "মিডিয়া ও জনসম্মুখে উপস্থিতি",
+        "ar": "الإعلام والظهور العام"
+      },
+      "title": {
+        "en": "Qur'an on Television & Digital Media",
+        "bn": "টেলিভিশন ও ডিজিটাল মিডিয়ায় কুরআন",
+        "ar": "القرآن في التلفزيون والإعلام الرقمي"
+      },
+      "sub": {
+        "en": "Throughout my journey, I have participated in Qur'an competitions, recitation programs and Qur'an-related events broadcast through leading television networks in Bangladesh.",
+        "bn": "আমার পথচলায় আমি বাংলাদেশের শীর্ষস্থানীয় টেলিভিশন চ্যানেলে সম্প্রচারিত কুরআন প্রতিযোগিতা, তিলাওয়াত অনুষ্ঠান ও কুরআন-সংশ্লিষ্ট আয়োজনে অংশগ্রহণ করেছি।",
+        "ar": "شاركت طوال مسيرتي في مسابقات قرآنية وبرامج تلاوة وفعاليات قرآنية بُثّت عبر أبرز القنوات التلفزيونية في بنغلاديش."
+      },
+      "networks": [
+        "Machranga TV",
+        "BanglaVision",
+        "NTV",
+        "Asian TV",
+        "Channel i",
+        "Deepto TV",
+        "SA TV",
+        "RTV",
+        "BTV",
+        "Somoy TV",
+        "News24",
+        "Jamuna TV"
+      ],
+      "videos": [
+        {
+          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "label": {
+            "en": "Qur'an Recitation",
+            "bn": "কুরআন তিলাওয়াত",
+            "ar": "تلاوة القرآن الكريم"
+          }
+        },
+        {
+          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "label": {
+            "en": "Qur'an Competitions",
+            "bn": "কুরআন প্রতিযোগিতা",
+            "ar": "المسابقات القرآنية"
+          }
+        },
+        {
+          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "label": {
+            "en": "Islamic Programs & Interviews",
+            "bn": "ইসলামী অনুষ্ঠান ও সাক্ষাৎকার",
+            "ar": "البرامج الإسلامية واللقاءات"
+          }
+        }
+      ]
+    },
+    "engagement": {
+      "num": "13",
+      "numLabel": {
+        "en": "International Engagement",
+        "bn": "আন্তর্জাতিক অংশগ্রহণ",
+        "ar": "المشاركات الدولية"
+      },
+      "title": {
+        "en": "Qur'an Beyond Borders",
+        "bn": "সীমানা পেরিয়ে কুরআন",
+        "ar": "القرآن عبر الحدود"
+      },
+      "sub": {
+        "en": "My Qur'anic journey has taken me to different countries through competitions, Islamic events, educational programs and Qur'an-related activities.",
+        "bn": "প্রতিযোগিতা, ইসলামী আয়োজন, শিক্ষামূলক কর্মসূচি ও কুরআন-সংশ্লিষ্ট কার্যক্রমের মাধ্যমে আমার কুরআনী পথচলা বিভিন্ন দেশে বিস্তৃত হয়েছে।",
+        "ar": "قادتني مسيرتي القرآنية إلى بلدان مختلفة عبر المسابقات والفعاليات الإسلامية والبرامج التعليمية والأنشطة القرآنية."
+      },
+      "items": [
+        {
+          "flag": "🇦🇪",
+          "name": {
+            "en": "United Arab Emirates",
+            "bn": "সংযুক্ত আরব আমিরাত",
+            "ar": "الإمارات العربية المتحدة"
+          },
+          "event": {
+            "en": "Dubai International Holy Qur'an Award",
+            "bn": "দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ড",
+            "ar": "جائزة دبي الدولية للقرآن الكريم"
+          },
+          "year": "2017"
+        },
+        {
+          "flag": "🇰🇼",
+          "name": {
+            "en": "Kuwait",
+            "bn": "কুয়েত",
+            "ar": "الكويت"
+          },
+          "event": {
+            "en": "Kuwait International Qur'an Recitation Competition",
+            "bn": "কুয়েত আন্তর্জাতিক কুরআন তিলাওয়াত প্রতিযোগিতা",
+            "ar": "مسابقة الكويت الدولية لتلاوة القرآن الكريم"
+          },
+          "year": "2018"
+        },
+        {
+          "flag": "🇶🇦",
+          "name": {
+            "en": "Qatar",
+            "bn": "কাতার",
+            "ar": "قطر"
+          },
+          "event": {
+            "en": "Sheikh Jassim Qur'an Competition",
+            "bn": "শাইখ জাসিম কুরআন প্রতিযোগিতা",
+            "ar": "مسابقة الشيخ جاسم للقرآن الكريم"
+          },
+          "year": "2023"
+        },
+        {
+          "flag": "🇸🇦",
+          "name": {
+            "en": "Saudi Arabia",
+            "bn": "সৌদি আরব",
+            "ar": "المملكة العربية السعودية"
+          },
+          "event": {
+            "en": "Markazut Tahfiz Foundation's 10th Anniversary Qur'an Inauguration",
+            "bn": "মারকাযুত তাহফীজ ফাউন্ডেশনের ১০ম বার্ষিকী কুরআন উদ্বোধনী",
+            "ar": "الافتتاح القرآني للذكرى العاشرة لمؤسسة مركز التحفيظ"
+          },
+          "year": "2022"
+        },
+        {
+          "flag": "🇮🇳",
+          "name": {
+            "en": "India",
+            "bn": "ভারত",
+            "ar": "الهند"
+          },
+          "event": {
+            "en": "Inauguration of Noor E Alam Madrasa",
+            "bn": "নূর এ আলম মাদরাসার উদ্বোধন",
+            "ar": "افتتاح مدرسة نور العالم"
+          },
+          "year": "2024"
+        },
+        {
+          "flag": "🇲🇾",
+          "name": {
+            "en": "Malaysia",
+            "bn": "মালয়েশিয়া",
+            "ar": "ماليزيا"
+          },
+          "event": {
+            "en": "B.M.C. Islamic Conference",
+            "bn": "বি.এম.সি. ইসলামিক কনফারেন্স",
+            "ar": "مؤتمر B.M.C. الإسلامي"
+          },
+          "year": "2024"
+        }
+      ]
+    },
+    "gallery": {
+      "num": "15",
+      "numLabel": {
+        "en": "Gallery",
+        "bn": "গ্যালারি",
+        "ar": "المعرض"
+      },
+      "title": {
+        "en": "Moments from a Qur'anic Journey",
+        "bn": "কুরআনী পথচলার মুহূর্তগুলো",
+        "ar": "لقطات من مسيرة قرآنية"
+      },
+      "note": {
+        "en": "Photographs are added from <code>public/assets/gallery/</code> — see the project README for how to add new images.",
+        "bn": "ছবিগুলো <code>public/assets/gallery/</code> ফোল্ডার থেকে যুক্ত হয় — নতুন ছবি যোগ করার পদ্ধতি প্রজেক্টের README-তে দেওয়া আছে।",
+        "ar": "تُضاف الصور من مجلّد <code>public/assets/gallery/</code> — راجع ملف README للمشروع لمعرفة طريقة إضافة صور جديدة."
+      },
+      "filters": [
+        {
+          "id": "all",
+          "label": {
+            "en": "All",
+            "bn": "সব",
+            "ar": "الكل"
+          }
+        },
+        {
+          "id": "awards",
+          "label": {
+            "en": "International Awards",
+            "bn": "আন্তর্জাতিক পুরস্কার",
+            "ar": "الجوائز الدولية"
+          }
+        },
+        {
+          "id": "studies",
+          "label": {
+            "en": "Qur'anic Studies",
+            "bn": "কুরআনী অধ্যয়ন",
+            "ar": "الدراسات القرآنية"
+          }
+        },
+        {
+          "id": "imam",
+          "label": {
+            "en": "Imam & Tarawih",
+            "bn": "ইমামতি ও তারাবীহ",
+            "ar": "الإمامة والتراويح"
+          }
+        },
+        {
+          "id": "competitions",
+          "label": {
+            "en": "Competitions",
+            "bn": "প্রতিযোগিতা",
+            "ar": "المسابقات"
+          }
+        },
+        {
+          "id": "teaching",
+          "label": {
+            "en": "Teaching & Judging",
+            "bn": "শিক্ষকতা ও বিচারকার্য",
+            "ar": "التدريس والتحكيم"
+          }
+        },
+        {
+          "id": "events",
+          "label": {
+            "en": "International Events",
+            "bn": "আন্তর্জাতিক আয়োজন",
+            "ar": "الفعاليات الدولية"
+          }
+        }
+      ],
+      "items": [
+        {
+          "cat": "awards",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Dubai International Holy Qur'an Award — 2017",
+            "bn": "দুবাই ইন্টারন্যাশনাল হলি কুরআন অ্যাওয়ার্ড — ২০১৭",
+            "ar": "جائزة دبي الدولية للقرآن الكريم — ٢٠١٧"
+          },
+          "sub": {
+            "en": "First Place — Full Qur'an Category",
+            "bn": "১ম স্থান — সম্পূর্ণ কুরআন ক্যাটাগরি",
+            "ar": "المركز الأول — فرع القرآن كاملًا"
+          }
+        },
+        {
+          "cat": "awards",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Kuwait International Qur'an Competition — 2018",
+            "bn": "কুয়েত আন্তর্জাতিক কুরআন প্রতিযোগিতা — ২০১৮",
+            "ar": "مسابقة الكويت الدولية للقرآن — ٢٠١٨"
+          },
+          "sub": {
+            "en": "Ninth Place — Full Qur'an Category",
+            "bn": "৯ম স্থান — সম্পূর্ণ কুরআন ক্যাটাগরি",
+            "ar": "المركز التاسع — فرع القرآن كاملًا"
+          }
+        },
+        {
+          "cat": "awards",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Sheikh Jassim Qur'an Competition — 2023",
+            "bn": "শাইখ জাসিম কুরআন প্রতিযোগিতা — ২০২৩",
+            "ar": "مسابقة الشيخ جاسم للقرآن — ٢٠٢٣"
+          },
+          "sub": {
+            "en": "Doha, Qatar",
+            "bn": "দোহা, কাতার",
+            "ar": "الدوحة، قطر"
+          }
+        },
+        {
+          "cat": "studies",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Al-Masjid an-Nabawi — Madinah",
+            "bn": "আল-মসজিদ আন-নববী — মদিনা",
+            "ar": "المسجد النبوي — المدينة المنوّرة"
+          },
+          "sub": {
+            "en": "Continuing Qur'anic Studies",
+            "bn": "কুরআনী অধ্যয়ন চলমান",
+            "ar": "مواصلة الدراسات القرآنية"
+          }
+        },
+        {
+          "cat": "studies",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Holy Quran Academy — Sharjah",
+            "bn": "হলি কুরআন একাডেমি — শারজাহ",
+            "ar": "أكاديمية القرآن الكريم — الشارقة"
+          },
+          "sub": {
+            "en": "Advanced Qur'anic Studies & Qira'at",
+            "bn": "উচ্চতর কুরআনী অধ্যয়ন ও ক্বিরাআত",
+            "ar": "الدراسات القرآنية المتقدّمة والقراءات"
+          }
+        },
+        {
+          "cat": "studies",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "With My Teachers",
+            "bn": "শিক্ষকদের সাথে",
+            "ar": "مع مشايخي"
+          },
+          "sub": {
+            "en": "Halaqah & Qira'at sessions",
+            "bn": "হালাকা ও ক্বিরাআত মজলিস",
+            "ar": "حلقات القراءات"
+          }
+        },
+        {
+          "cat": "imam",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Banani Central Jame Masjid",
+            "bn": "বনানী কেন্দ্রীয় জামে মসজিদ",
+            "ar": "مسجد بناني الجامع المركزي"
+          },
+          "sub": {
+            "en": "Tarawih — Dhaka, Bangladesh",
+            "bn": "তারাবীহ — ঢাকা, বাংলাদেশ",
+            "ar": "التراويح — دكا، بنغلاديش"
+          }
+        },
+        {
+          "cat": "imam",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Mosque Al-Malik",
+            "bn": "মসজিদ আল-মালিক",
+            "ar": "مسجد المالك"
+          },
+          "sub": {
+            "en": "Tarawih — Kuala Lumpur, Malaysia",
+            "bn": "তারাবীহ — কুয়ালালামপুর, মালয়েশিয়া",
+            "ar": "التراويح — كوالالمبور، ماليزيا"
+          }
+        },
+        {
+          "cat": "competitions",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "PHP Qur'an-er Alo — NTV",
+            "bn": "পিএইচপি কুরআনের আলো — এনটিভি",
+            "ar": "PHP نور القرآن — قناة NTV"
+          },
+          "sub": {
+            "en": "National Qur'an Competition",
+            "bn": "জাতীয় কুরআন প্রতিযোগিতা",
+            "ar": "مسابقة قرآنية وطنية"
+          }
+        },
+        {
+          "cat": "competitions",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "National Hifazul Quran Competition",
+            "bn": "জাতীয় হিফজুল কুরআন প্রতিযোগিতা",
+            "ar": "المسابقة الوطنية لحفظ القرآن"
+          },
+          "sub": {
+            "en": "Second Place — 2017",
+            "bn": "২য় স্থান — ২০১৭",
+            "ar": "المركز الثاني — ٢٠١٧"
+          }
+        },
+        {
+          "cat": "teaching",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "With My Students",
+            "bn": "শিক্ষার্থীদের সাথে",
+            "ar": "مع طلابي"
+          },
+          "sub": {
+            "en": "Qur'an & Tajweed classes",
+            "bn": "কুরআন ও তাজবীদ ক্লাস",
+            "ar": "دروس القرآن والتجويد"
+          }
+        },
+        {
+          "cat": "teaching",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Judging Panel",
+            "bn": "বিচারক প্যানেল",
+            "ar": "لجنة التحكيم"
+          },
+          "sub": {
+            "en": "Qur'an & Hifz competitions",
+            "bn": "কুরআন ও হিফজ প্রতিযোগিতা",
+            "ar": "مسابقات القرآن والحفظ"
+          }
+        },
+        {
+          "cat": "events",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "B.M.C. Islamic Conference — Malaysia",
+            "bn": "বি.এম.সি. ইসলামিক কনফারেন্স — মালয়েশিয়া",
+            "ar": "مؤتمر B.M.C. الإسلامي — ماليزيا"
+          },
+          "sub": {
+            "en": "2024",
+            "bn": "২০২৪",
+            "ar": "٢٠٢٤"
+          }
+        },
+        {
+          "cat": "events",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Noor E Alam Madrasa Inauguration — India",
+            "bn": "নূর এ আলম মাদরাসা উদ্বোধন — ভারত",
+            "ar": "افتتاح مدرسة نور العالم — الهند"
+          },
+          "sub": {
+            "en": "2024",
+            "bn": "২০২৪",
+            "ar": "٢٠٢٤"
+          }
+        },
+        {
+          "cat": "events",
+          "src": "",
+          "slot": {
+            "en": "Add photo",
+            "bn": "ছবি যোগ করুন",
+            "ar": "أضف صورة"
+          },
+          "title": {
+            "en": "Markazut Tahfiz Foundation — Saudi Arabia",
+            "bn": "মারকাযুত তাহফীজ ফাউন্ডেশন — সৌদি আরব",
+            "ar": "مؤسسة مركز التحفيظ — السعودية"
+          },
+          "sub": {
+            "en": "10th Anniversary Qur'an Inauguration, 2022",
+            "bn": "১০ম বার্ষিকী কুরআন উদ্বোধনী, ২০২২",
+            "ar": "الافتتاح القرآني للذكرى العاشرة، ٢٠٢٢"
+          }
+        }
+      ]
+    },
+    "vision": {
+      "num": "16",
+      "numLabel": {
+        "en": "My Vision",
+        "bn": "আমার লক্ষ্য",
+        "ar": "رؤيتي"
+      },
+      "title": {
+        "en": "Serving the Qur'an for a Lifetime",
+        "bn": "আজীবন কুরআনের খেদমত",
+        "ar": "خدمة القرآن مدى الحياة"
+      },
+      "lead": {
+        "en": "My journey with the Qur'an is not defined by competitions alone.",
+        "bn": "কুরআনের সাথে আমার পথচলা কেবল প্রতিযোগিতা দিয়ে নির্ধারিত নয়।",
+        "ar": "مسيرتي مع القرآن لا تُحدَّد بالمسابقات وحدها."
+      },
+      "sub": {
+        "en": "Competitions have been important milestones, but the greater goal is continuous learning and service to the Qur'an.",
+        "bn": "প্রতিযোগিতা গুরুত্বপূর্ণ মাইলফলক হয়েছে, কিন্তু বড় লক্ষ্য হলো নিরবচ্ছিন্ন শেখা ও কুরআনের খেদমত।",
+        "ar": "كانت المسابقات محطّات مهمّة، غير أن الهدف الأكبر هو التعلّم المستمر وخدمة القرآن الكريم."
+      },
+      "items": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Recitation",
+            "bn": "তিলাওয়াত",
+            "ar": "التلاوة"
+          },
+          "text": {
+            "en": "Accurate, beautiful and disciplined Qur'anic recitation.",
+            "bn": "সঠিক, সুন্দর ও সুশৃঙ্খল কুরআন তিলাওয়াত।",
+            "ar": "تلاوة قرآنية متقنة وجميلة ومنضبطة."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Qira'at",
+            "bn": "ক্বিরাআত",
+            "ar": "القراءات"
+          },
+          "text": {
+            "en": "Serious study of the canonical Qur'anic readings and their authentic transmission.",
+            "bn": "স্বীকৃত কুরআনী ক্বিরাআত ও তার নির্ভরযোগ্য সনদের গভীর অধ্যয়ন।",
+            "ar": "دراسة جادّة للقراءات القرآنية المتواترة وأسانيدها الموثوقة."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Education",
+            "bn": "শিক্ষা",
+            "ar": "التعليم"
+          },
+          "text": {
+            "en": "Teaching Qur'an and Tajweed to students at different levels.",
+            "bn": "বিভিন্ন স্তরের শিক্ষার্থীদের কুরআন ও তাজবীদ শেখানো।",
+            "ar": "تدريس القرآن والتجويد للطلاب على اختلاف مستوياتهم."
+          }
+        },
+        {
+          "num": "04",
+          "title": {
+            "en": "Mentorship",
+            "bn": "পরামর্শদান",
+            "ar": "التوجيه"
+          },
+          "text": {
+            "en": "Helping the next generation of Huffaz and Qur'anic reciters develop their skills.",
+            "bn": "পরবর্তী প্রজন্মের হাফেজ ও কুরআন তিলাওয়াতকারীদের দক্ষতা বিকাশে সহায়তা করা।",
+            "ar": "مساعدة الجيل القادم من الحفّاظ والقرّاء على تنمية مهاراتهم."
+          }
+        },
+        {
+          "num": "05",
+          "title": {
+            "en": "Global Service",
+            "bn": "বৈশ্বিক খেদমত",
+            "ar": "الخدمة العالمية"
+          },
+          "text": {
+            "en": "Contributing to Qur'anic education and learning beyond geographical boundaries.",
+            "bn": "ভৌগোলিক সীমানা পেরিয়ে কুরআনী শিক্ষা ও অধ্যয়নে অবদান রাখা।",
+            "ar": "الإسهام في التعليم القرآني والتعلّم بما يتجاوز الحدود الجغرافية."
+          }
+        }
+      ]
+    },
+    "contact": {
+      "num": "17",
+      "numLabel": {
+        "en": "Contact",
+        "bn": "যোগাযোগ",
+        "ar": "التواصل"
+      },
+      "title": {
+        "en": "Let's Connect",
+        "bn": "যোগাযোগ করুন",
+        "ar": "لنتواصل"
+      },
+      "sub": {
+        "en": "For Qur'anic programs, recitation, teaching, educational collaboration, Islamic events and professional inquiries.",
+        "bn": "কুরআনী কর্মসূচি, তিলাওয়াত, শিক্ষকতা, শিক্ষামূলক সহযোগিতা, ইসলামী আয়োজন ও পেশাগত অনুসন্ধানের জন্য।",
+        "ar": "للبرامج القرآنية والتلاوة والتدريس والتعاون التعليمي والفعاليات الإسلامية والاستفسارات المهنية."
+      },
+      "roles": {
+        "en": "International Qur'anic Reciter · Hafiz · Qari · Qur'an Educator",
+        "bn": "আন্তর্জাতিক কুরআন তিলাওয়াতকারী · হাফিজ · ক্বারী · কুরআন শিক্ষক",
+        "ar": "قارئ دولي للقرآن · حافظ · قارئ · معلّم للقرآن"
+      },
+      "phone": {
+        "label": {
+          "en": "Phone",
+          "bn": "ফোন",
+          "ar": "الهاتف"
+        },
+        "value": "+8801968608646",
+        "display": "+880 1968-608646"
+      },
+      "email": {
+        "label": {
+          "en": "Email",
+          "bn": "ইমেইল",
+          "ar": "البريد الإلكتروني"
+        },
+        "value": "tariqulislam9018@gmail.com"
+      },
+      "based": {
+        "label": {
+          "en": "Based in",
+          "bn": "অবস্থান",
+          "ar": "مقرّ الإقامة"
+        },
+        "value": {
+          "en": "Bangladesh · Currently studying in Madinah & Sharjah",
+          "bn": "বাংলাদেশ · বর্তমানে মদিনা ও শারজাহতে অধ্যয়নরত",
+          "ar": "بنغلاديش · يدرس حاليًا في المدينة المنوّرة والشارقة"
+        }
+      },
+      "cta": {
+        "en": "Send an Enquiry",
+        "bn": "বার্তা পাঠান",
+        "ar": "أرسل استفسارًا"
+      },
+      "onlineLabel": {
+        "en": "Online Presence",
+        "bn": "অনলাইন উপস্থিতি",
+        "ar": "الحضور الرقمي"
+      },
+      "socials": [
+        {
+          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "network": "YouTube",
+          "handle": "Hafez Tariqul Islam"
+        },
+        {
+          "href": "https://www.facebook.com/tariqulislamofficial",
+          "network": "Facebook",
+          "handle": "Tariqul Islam Official"
+        },
+        {
+          "href": "https://www.instagram.com/hafeztariqulislam",
+          "network": "Instagram",
+          "handle": "@hafeztariqulislam"
+        },
+        {
+          "href": "https://en.wikipedia.org/wiki/Special:Search?search=Muhammad+Tariqul+Islam",
+          "network": "Wikipedia",
+          "handle": "Muhammad Tariqul Islam"
+        }
+      ]
+    },
+    "footer": {
+      "tag": {
+        "en": "Serving the Qur'an through Recitation, Qira'at, Teaching & Education",
+        "bn": "তিলাওয়াত, ক্বিরাআত, শিক্ষকতা ও শিক্ষার মাধ্যমে কুরআনের খেদমত",
+        "ar": "خدمة القرآن الكريم من خلال التلاوة والقراءات والتدريس والتعليم"
+      },
+      "copy": {
+        "en": "© 2026 Md Tariqul Islam. All Rights Reserved.",
+        "bn": "© ২০২৬ মোঃ তারিকুল ইসলাম। সর্বস্বত্ব সংরক্ষিত।",
+        "ar": "© ٢٠٢٦ محمد طريق الإسلام. جميع الحقوق محفوظة."
+      },
+      "top": {
+        "en": "Back to top ↑",
+        "bn": "উপরে ফিরুন ↑",
+        "ar": "العودة إلى الأعلى ↑"
+      },
+      "columns": [
+        {
+          "en": "Explore",
+          "bn": "ঘুরে দেখুন",
+          "ar": "استكشف"
+        },
+        {
+          "en": "More",
+          "bn": "আরও",
+          "ar": "المزيد"
+        },
+        {
+          "en": "Connect",
+          "bn": "যোগাযোগ",
+          "ar": "تواصل"
+        }
+      ]
+    }
+  }
+}

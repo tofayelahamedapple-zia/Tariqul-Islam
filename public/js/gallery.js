@@ -33,6 +33,7 @@
 
     if (!visible.length) {
       grid.innerHTML = '';
+      document.dispatchEvent(new CustomEvent('gallery:render'));
       return;
     }
 
@@ -49,6 +50,7 @@
                '<figcaption class="gal-item__cap"><b>' + title + '</b><span>' + sub + '</span></figcaption>' +
              '</figure>';
     }).join('');
+    document.dispatchEvent(new CustomEvent('gallery:render'));
   }
 
   document.addEventListener('click', function (e) {
