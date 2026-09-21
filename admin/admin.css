@@ -98,3 +98,16 @@ a{color:var(--sand)}
   .side button{width:auto;white-space:nowrap}
   .side .side__group{display:none}
 }
+
+/* sign-in */
+.signin{display:grid;place-items:center;min-height:100vh;background:var(--dark);padding:24px}
+.signin__card{background:var(--panel);border-radius:14px;padding:38px 34px;width:min(380px,100%);
+  box-shadow:0 22px 60px rgba(0,0,0,.35)}
+.signin__mark{width:40px;height:40px;fill:none;stroke:var(--sand);stroke-width:1.4;margin-bottom:18px}
+.signin__card h1{font-size:1.5rem;margin-bottom:6px}
+.signin__card p{color:var(--muted);margin:0 0 22px;font-size:13.5px}
+.signin__card input{width:100%;padding:11px 13px;border:1px solid var(--line-2);border-radius:var(--r);
+  background:#fff;color:var(--ink);margin-bottom:16px}
+.signin__card input:focus{outline:2px solid var(--sand);outline-offset:1px;border-color:transparent}
+.signin__card .save{width:100%;padding:12px}
+.signin__err{color:var(--bad);font-size:13px;margin:-8px 0 14px}

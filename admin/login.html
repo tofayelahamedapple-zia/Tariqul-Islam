@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Content</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="signin">
+  <form class="signin__card" id="form" autocomplete="on">
+    <svg class="signin__mark" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20 3 25.2 9.6 33.4 8.6 32.4 16.8 39 22 32.4 27.2 33.4 35.4 25.2 34.4 20 41 14.8 34.4 6.6 35.4 7.6 27.2 1 22 7.6 16.8 6.6 8.6 14.8 9.6Z"/>
+      <circle cx="20" cy="22" r="6.5"/>
+    </svg>
+    <h1>Content</h1>
+    <p>Sign in to edit the site.</p>
+    <label class="field__label" for="pw">Password</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required autofocus>
+    <p class="signin__err" id="err" hidden></p>
+    <button class="save" id="go" type="submit">Sign in</button>
+  </form>
+
+<script>
+document.getElementById('form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var go = document.getElementById('go'), err = document.getElementById('err');
+  err.hidden = true; go.disabled = true; go.textContent = 'Signing in…';
+  try {
+    var r = await fetch('/api/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: document.getElementById('pw').value })
+    });
+    var j = await r.json();
+    if (!r.ok) throw new Error(j.error || 'Sign in failed');
+    location.href = '/admin';
+  } catch (ex) {
+    err.textContent = ex.message; err.hidden = false;
+    go.disabled = false; go.textContent = 'Sign in';
+    document.getElementById('pw').select();
+  }
+});
+</script>
+</body>
+</html>

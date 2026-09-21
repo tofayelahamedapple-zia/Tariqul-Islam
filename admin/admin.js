@@ -18,7 +18,9 @@
       i18n('title', 'Browser tab title'),
       text('description', 'Search description', { area: true }),
       text('canonical', 'Site address', { hint: 'Replace https://example.com/ with the real domain before going live.' }),
-      i18n('skip', '“Skip to content” link')
+      i18n('skip', '“Skip to content” link'),
+      i18n('more', '“See more” button', { hint: 'Shown on phones under the gallery and video grids.' }),
+      i18n('less', '“Show less” button')
     ]},
     { id: 'nav', group: 'Site', label: 'Menu', path: 'nav', asList: {
       label: 'Menu items', titleKey: 'label',
@@ -30,7 +32,8 @@
       list('leads', 'Paragraphs', null, { simple: 'i18n', area: true }),
       list('ctas', 'Buttons', [ i18n('label', 'Label'), text('href', 'Links to') ], { titleKey: 'label' }),
       { k: 'image', label: 'Portrait', type: 'group', fields: [
-        text('src', 'File'), text('alt', 'Alt text'), text('width', 'Width'), text('height', 'Height') ] }
+        { k: 'src', label: 'Photograph', type: 'image', folder: 'assets' },
+        text('alt', 'Alt text'), text('width', 'Width'), text('height', 'Height') ] }
     ]},
     { id: 'stats', group: 'Site', label: 'Hero figures', path: 'stats', asList: {
       label: 'Figures', titleKey: 'label',
@@ -171,7 +174,8 @@
     ]},
 
     { id: 'status', group: 'Labels', label: 'Status labels', path: 'status', asMap: { label: 'Status labels' } },
-    { id: 'ranks', group: 'Labels', label: 'Placing labels', path: 'ranks', asMap: { label: 'Placings', numeric: true } }
+    { id: 'ranks', group: 'Labels', label: 'Placing labels', path: 'ranks', asMap: { label: 'Placings', numeric: true } },
+    { id: 'backups', group: 'Labels', label: 'Earlier versions', custom: 'backups' }
   ];
 
   /* ---------- helpers ---------- */
@@ -246,6 +250,7 @@
     const wrap = el('div', 'field');
     wrap.appendChild(el('label', 'field__label', f.label));
     const row = el('div', 'pick');
+    const folder = f.folder || 'gallery';
     const sel = el('select');
     sel.appendChild(new Option('— no photograph yet —', ''));
     galleryFiles.forEach(src => sel.appendChild(new Option(src.replace('assets/gallery/', ''), src)));
@@ -263,7 +268,11 @@
       const file = up.files[0]; if (!file) return;
       btn.textContent = 'Uploading…';
       try {
-        const r = await fetch('/api/upload', { method: 'POST', headers: { 'X-Filename': file.name }, body: file });
+        const r = await fetch('/api/upload', {
+          method: 'POST',
+          headers: { 'X-Filename': file.name, 'X-Folder': folder },
+          body: file
+        });
         const j = await r.json();
         if (!r.ok) throw new Error(j.error || 'upload failed');
         if (!galleryFiles.includes(j.src)) galleryFiles.push(j.src);
@@ -376,7 +385,12 @@
     panel.appendChild(el('p', 'sec-hint',
       lang === 'en' ? 'Editing English. Switch language at the top to translate.'
                     : 'Editing ' + LANGS[lang] + '. The English is shown under each box for reference.'));
+    if (s.asMap) {
+      panel.appendChild(el('p', 'sec-hint',
+        'You can reword these, but the set itself is fixed — each one has matching styling on the site.'));
+    }
 
+    if (s.custom === 'backups') return renderBackups(panel);
     const node = get(s.path);
     if (s.asMap) {
       Object.keys(node).forEach(k => renderField(node, { k, label: k, type: 'i18n' }, panel));
@@ -399,6 +413,44 @@
       b.addEventListener('click', () => { current = s.id; renderSide(); renderPanel(); });
       side.appendChild(b);
     });
+  }
+
+  /* ---------- earlier versions ---------- */
+  function renderBackups(panel) {
+    panel.appendChild(el('p', 'sec-hint',
+      'A copy of the content is kept every time you publish. Restoring one replaces what is on the site now.'));
+    const host = el('div', 'list');
+    panel.appendChild(host);
+    host.appendChild(el('p', 'hint', 'Loading…'));
+    fetch('/api/backups').then(r => r.json()).then(j => {
+      host.textContent = '';
+      if (!j.files || !j.files.length) { host.appendChild(el('p', 'hint', 'Nothing saved yet.')); return; }
+      j.files.forEach(file => {
+        const when = file.replace(/^site-|\.json$/g, '').replace(/T/, ' ').replace(/-(\d\d)-(\d\d)-\d+Z$/, ':$1:$2');
+        const card = el('div', 'card');
+        const head = el('div', 'card__head');
+        head.appendChild(el('span', 'card__title', when));
+        const b = el('button', 'tool', '↩'); b.type = 'button'; b.title = 'Restore this version';
+        b.style.width = 'auto'; b.style.padding = '0 12px'; b.textContent = 'Restore';
+        b.addEventListener('click', async () => {
+          if (!confirm('Restore the version from ' + when + '? What is on the site now will be replaced.')) return;
+          b.disabled = true; b.textContent = 'Restoring…';
+          try {
+            const r = await fetch('/api/restore', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ file })
+            });
+            const res = await r.json();
+            if (!r.ok) throw new Error(res.error || 'Restore failed');
+            toast('Restored. Reloading the editor…');
+            setTimeout(() => location.reload(), 900);
+          } catch (e) { toast(e.message, true); b.disabled = false; b.textContent = 'Restore'; }
+        });
+        head.appendChild(b);
+        card.appendChild(head);
+        host.appendChild(card);
+      });
+    }).catch(e => { host.textContent = ''; host.appendChild(el('p', 'hint', 'Could not list versions: ' + e.message)); });
   }
 
   /* ---------- save ---------- */
@@ -432,6 +484,12 @@
     });
   });
   $('#save').addEventListener('click', save);
+  $('#out').addEventListener('click', async () => {
+    if (dirty && !confirm('You have unsaved changes. Sign out anyway?')) return;
+    dirty = false;
+    await fetch('/api/logout', { method: 'POST' });
+    location.href = '/admin';
+  });
   window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); if (dirty) save(); }
@@ -447,4 +505,13 @@
   }).catch(e => {
     $('#panel').textContent = 'Could not load the content: ' + e.message;
   });
+
+  // Any call rejected as signed-out sends us back to the sign-in page.
+  const rawFetch = window.fetch;
+  window.fetch = function (input, init) {
+    return rawFetch(input, init).then(r => {
+      if (r.status === 401 && String(input).startsWith('/api/')) location.href = '/admin';
+      return r;
+    });
+  };
 })();

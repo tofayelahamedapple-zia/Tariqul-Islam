@@ -686,21 +686,17 @@ html[data-lang="bn"] .footer__col h4, html[data-lang="ar"] .footer__col h4 { tex
   .nav.is-open .nav__link::after { display: none; }
 }
 @media (max-width: 920px) {
-  /* The split collapses: photograph sits below the copy, still full-bleed. */
-  .hero { padding-bottom: 0; }
-  .hero__inner { display: flex; flex-direction: column; }
-  .hero__head { padding-bottom: clamp(28px, 5vw, 44px); }
-  .hero__body { padding-block: clamp(30px, 5vw, 46px) clamp(36px, 6vw, 56px); }
-  /* Grows with the viewport instead of sticking at phone size on tablets */
-  .hero__media { width: min(420px, 100%); margin-inline: auto; }
-  .hero__media::after {
-    background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
-                linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);
+  /* Stacked order: name, photograph, the four figures, then the copy.
+     .hero__inner drops its own box so the strip can sit between its children. */
+  .hero { display: flex; flex-direction: column; padding-bottom: 0; }
+  .hero__inner { display: contents; }
+  .hero__head { order: 1; padding: 0 var(--gutter) clamp(28px, 5vw, 44px); }
+  .hero__media {
+    order: 2; width: min(420px, calc(100% - var(--gutter) * 2));
+    margin-inline: auto;
   }
-  html[data-lang="ar"] .hero__media::after {
-    background: linear-gradient(to top, var(--night) 0%, rgba(35, 30, 24, 0) 34%),
-                linear-gradient(to bottom, rgba(35, 30, 24, .5) 0%, rgba(35, 30, 24, 0) 22%);
-  }
+  .hero__strip { order: 3; margin-top: clamp(30px, 5vw, 46px); }
+  .hero__body { order: 4; padding: clamp(30px, 5vw, 46px) var(--gutter) clamp(36px, 6vw, 56px); }
   .about { grid-template-columns: 1fr; }
   .about__aside { position: static; }
 }

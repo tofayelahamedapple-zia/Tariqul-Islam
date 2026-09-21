@@ -40,22 +40,49 @@ function send(res, status, body, headers) {
   res.writeHead(status, Object.assign({ 'X-Content-Type-Options': 'nosniff' }, headers || {}));
   if (body && body.pipe) body.pipe(res); else res.end(body);
 }
-const json = (res, status, obj) =>
-  send(res, status, JSON.stringify(obj), { 'Content-Type': MIME['.json'] });
+const json = (res, status, obj, extra) =>
+  send(res, status, JSON.stringify(obj), Object.assign({ 'Content-Type': MIME['.json'] }, extra || {}));
 
-/* ---------- auth ---------- */
-function authorised(req) {
-  const h = req.headers.authorization || '';
-  if (!h.startsWith('Basic ')) return false;
-  const given = Buffer.from(h.slice(6), 'base64').toString('utf8').split(':').slice(1).join(':');
-  const a = Buffer.from(given), b = Buffer.from(PASSWORD);
-  return a.length === b.length && crypto.timingSafeEqual(a, b);
-}
-const challenge = res =>
-  send(res, 401, 'Authentication required', {
-    'WWW-Authenticate': 'Basic realm="Portfolio admin", charset="UTF-8"',
-    'Content-Type': 'text/plain; charset=utf-8'
+/* ---------- auth ----------
+   A signed-in session is a random token in an HttpOnly cookie. Tokens live in
+   memory, so restarting the server signs everyone out. */
+const SESSIONS = new Map();
+const SESSION_MS = 12 * 60 * 60 * 1000;
+
+const cookies = req => {
+  const out = {};
+  (req.headers.cookie || '').split(';').forEach(part => {
+    const i = part.indexOf('=');
+    if (i > 0) out[part.slice(0, i).trim()] = decodeURIComponent(part.slice(i + 1).trim());
   });
+  return out;
+};
+
+function authorised(req) {
+  const token = cookies(req).admin;
+  if (!token) return false;
+  const expires = SESSIONS.get(token);
+  if (!expires) return false;
+  if (expires < Date.now()) { SESSIONS.delete(token); return false; }
+  return true;
+}
+
+function passwordMatches(given) {
+  const a = Buffer.from(String(given ?? ''));
+  const b = Buffer.from(PASSWORD);
+  // Compare a fixed-length digest so the check does not leak the length.
+  return crypto.timingSafeEqual(crypto.createHash('sha256').update(a).digest(),
+                                crypto.createHash('sha256').update(b).digest());
+}
+
+function startSession(res) {
+  const token = crypto.randomBytes(32).toString('hex');
+  SESSIONS.set(token, Date.now() + SESSION_MS);
+  for (const [t, exp] of SESSIONS) if (exp < Date.now()) SESSIONS.delete(t);
+  json(res, 200, { ok: true }, {
+    'Set-Cookie': `admin=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${SESSION_MS / 1000}`
+  });
+}
 
 /* ---------- request body ---------- */
 function readBody(req, limit, cb) {
@@ -99,18 +126,29 @@ function saveContent(buf, cb) {
   }
 }
 
+const FOLDERS = { gallery: 'assets/gallery', assets: 'assets' };
+
 function saveUpload(req, res) {
   const name = String(req.headers['x-filename'] || '').replace(/[^A-Za-z0-9._-]/g, '');
+  const folder = FOLDERS[String(req.headers['x-folder'] || 'gallery')];
+  if (!folder) return json(res, 400, { error: 'Unknown upload folder' });
   if (!name || !/\.(jpe?g|png|webp|avif|gif)$/i.test(name)) {
     return json(res, 400, { error: 'Give the file a name ending in .jpg, .png, .webp, .avif or .gif' });
   }
   readBody(req, MAX_UPLOAD, (err, buf) => {
     if (err) return json(res, 413, { error: 'File is larger than 8 MB' });
-    fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-    fs.writeFileSync(path.join(UPLOAD_DIR, name), buf);
-    json(res, 200, { src: 'assets/gallery/' + name, bytes: buf.length });
+    const dir = path.join(ROOT, folder);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, name), buf);
+    json(res, 200, { src: folder + '/' + name, bytes: buf.length });
   });
 }
+
+const listBackups = () => {
+  try {
+    return fs.readdirSync(BACKUPS).filter(f => /^site-.*\.json$/.test(f)).sort().reverse();
+  } catch (e) { return []; }
+};
 
 const listGallery = () => {
   try {
@@ -167,7 +205,26 @@ const server = http.createServer((req, res) => {
 
   /* --- admin --- */
   if (pathname === '/admin' || pathname.startsWith('/admin/') || pathname.startsWith('/api/')) {
-    if (!authorised(req)) return challenge(res);
+
+    /* the sign-in page and its stylesheet are the only things served signed-out */
+    if (pathname === '/api/login' && req.method === 'POST') {
+      return readBody(req, 2048, (err, buf) => {
+        let given = null;
+        try { given = JSON.parse(buf.toString('utf8')).password; } catch (e) {}
+        if (!passwordMatches(given)) return json(res, 401, { error: 'That password is not right.' });
+        startSession(res);
+      });
+    }
+    if (pathname === '/api/logout' && req.method === 'POST') {
+      SESSIONS.delete(cookies(req).admin);
+      return json(res, 200, { ok: true }, { 'Set-Cookie': 'admin=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0' });
+    }
+    if (pathname === '/admin/admin.css') return serveStatic(req, res, ADMIN, '/admin.css');
+
+    if (!authorised(req)) {
+      if (pathname.startsWith('/api/')) return json(res, 401, { error: 'Signed out' });
+      return serveStatic(req, res, ADMIN, '/login.html');
+    }
 
     if (pathname === '/api/content' && req.method === 'GET') {
       return send(res, 200, fs.readFileSync(CONTENT), { 'Content-Type': MIME['.json'], 'Cache-Control': 'no-store' });
@@ -180,6 +237,17 @@ const server = http.createServer((req, res) => {
       });
     }
     if (pathname === '/api/upload' && req.method === 'POST') return saveUpload(req, res);
+    if (pathname === '/api/backups' && req.method === 'GET') return json(res, 200, { files: listBackups() });
+    if (pathname === '/api/restore' && req.method === 'POST') {
+      return readBody(req, 4096, (err, buf) => {
+        let name;
+        try { name = JSON.parse(buf.toString('utf8')).file; } catch (e) { name = null; }
+        if (!name || !listBackups().includes(name)) return json(res, 400, { error: 'No such backup' });
+        const content = fs.readFileSync(path.join(BACKUPS, name));
+        saveContent(content, (bad, result) =>
+          bad ? json(res, bad.status, { error: bad.error }) : json(res, 200, { ok: true, restored: name, ...result }));
+      });
+    }
     if (pathname === '/api/gallery-files' && req.method === 'GET') return json(res, 200, { files: listGallery() });
 
     if (pathname === '/admin' || pathname === '/admin/') pathname = '/admin/index.html';

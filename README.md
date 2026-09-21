@@ -21,8 +21,8 @@ node server.js
 - Site: <http://localhost:4900>
 - Admin: <http://localhost:4900/admin>
 
-Sign in with any username and the password `tariqul`. **Change it** by starting the
-server with your own:
+The admin opens a sign-in page; the password is `tariqul`. **Change it** by starting
+the server with your own:
 
 ```bash
 ADMIN_PASSWORD="your-password" node server.js
@@ -31,8 +31,7 @@ ADMIN_PASSWORD="your-password" node server.js
 To use a different port: `PORT=8080 node server.js`.
 
 > **বাংলায়:** `node server.js` চালান → সাইট `localhost:4900`, অ্যাডমিন `localhost:4900/admin`।
-> যেকোনো ইউজারনেম আর পাসওয়ার্ড `tariqul` দিয়ে ঢুকুন। পাসওয়ার্ড বদলাতে উপরের
-> `ADMIN_PASSWORD` কমান্ডটা ব্যবহার করুন।
+> পাসওয়ার্ড `tariqul`। বদলাতে উপরের `ADMIN_PASSWORD` কমান্ডটা ব্যবহার করুন।
 
 ---
 
@@ -45,7 +44,12 @@ duplicated and deleted**.
 
 At the top there are three language tabs. Switch to বাংলা or العربية and every box shows
 that language, with the English printed underneath for reference, so nothing drifts out
-of sync. Photographs can be uploaded straight from the gallery section.
+of sync. Photographs — the hero portrait and every gallery slot — can be uploaded
+straight from the form.
+
+**Earlier versions** in the left-hand list restores any of the last 20 published
+versions. **Sign out** is in the top bar; a session lasts 12 hours, and restarting the
+server ends it.
 
 **Save & publish** writes `content/site.json` and immediately regenerates:
 
@@ -226,7 +230,7 @@ content/site.json          ← every word on the site, in all three languages
 content/backups/           last 20 versions, written on each save (not committed)
 build.js                   renders the site from site.json
 server.js                  zero-dependency server: serves public/ and hosts the admin
-admin/                     the content editor (password-protected, never published)
+admin/                     the content editor and its sign-in page (never published)
 tools/extract-content.js   one-off migration that created site.json
 .github/workflows/         GitHub Pages deployment
 public/                    ← generated. The entire website; this is what gets published
@@ -341,6 +345,10 @@ Run through these after a change; all of them passed at the last audit.
 - **Admin round trip** — reading, editing, saving and rebuilding leaves the site correct;
   invalid JSON and content missing its `sections` block are refused without touching the
   published files.
+- **Admin access** — signed out, `/admin` serves the sign-in page and every API call is
+  refused; a wrong password is rejected; signing out invalidates the session. Restore
+  refuses a filename that is not one of the kept backups, and uploads refuse any folder
+  outside the two allowed ones. The published site is reachable throughout.
 
 ## Browser support
 

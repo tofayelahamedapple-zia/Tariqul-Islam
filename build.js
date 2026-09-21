@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const CSS_V = 22, JS_V = 4;
+const CSS_V = 23, JS_V = 4;
 
 function build() {
   const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/site.json'), 'utf8'));
@@ -364,7 +364,10 @@ function build() {
   </div>
 </section>`;
 
-  const navCols = [site.nav.slice(0, 5), site.nav.slice(5, 10)];
+  // Split the menu in half rather than at a fixed index, so adding or removing
+  // items never drops one out of the footer.
+  const half = Math.ceil(site.nav.length / 2);
+  const navCols = [site.nav.slice(0, half), site.nav.slice(half)];
   const footer = `
 <footer class="footer">
   <div class="wrap">
