@@ -256,6 +256,7 @@ blue or grey anywhere, so the dark bands and the sand accent share one temperatu
 | Token | Value | Use |
 |---|---|---|
 | Dark | `#231E18` | hero, Studies, Media, Vision, mission block |
+| Strip | `#322B23` | the hero's credential band, a step up from the hero so it reads as its own surface |
 | Darkest | `#17120E` | footer |
 | Stone | `#3C3229` | Aspirations band |
 | Sand | `#DC9A63` | accent — rules, pills, ranks, years, calligraphy |

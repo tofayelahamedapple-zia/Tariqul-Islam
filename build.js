@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const CSS_V = 23, JS_V = 4;
+const CSS_V = 24, JS_V = 4;
 
 function build() {
   const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/site.json'), 'utf8'));
