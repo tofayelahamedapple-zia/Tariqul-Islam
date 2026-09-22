@@ -84,6 +84,77 @@ You can also edit `content/site.json` in a text editor and run `node build.js` y
 
 ---
 
+## Publish on a Hostinger VPS
+
+The whole application goes to the server — the site **and** the admin panel — so the
+client edits the content in a browser and the pages rebuild themselves on the server.
+Nothing but Node is needed; there are no dependencies to install.
+
+### 1. Put the repository on GitHub
+
+The deploy key for this project is `~/.ssh/tariqul_portfolio_deploy`. Add its public
+half to the repository under **Settings › Deploy keys › Add deploy key**, and tick
+**Allow write access** so pushes from this machine are accepted.
+
+```bash
+git remote add origin git@github-tariqul-portfolio:<user>/<repo>.git
+git push -u origin main
+```
+
+`github-tariqul-portfolio` is an alias in `~/.ssh/config` that points at github.com
+and forces that one key, so this repository never borrows another project's key.
+
+### 2. Pull it onto the VPS
+
+```bash
+ssh root@<your-vps-ip>
+git clone git@github.com:<user>/<repo>.git /var/www/tariqul
+cd /var/www/tariqul
+node -v            # must be 18 or newer
+```
+
+The VPS needs its own deploy key for a private repository: run `ssh-keygen -t ed25519
+-C "vps"` there and add that public key to GitHub the same way.
+
+### 3. Set the password and start it
+
+```bash
+printf '%s' '<the admin password>' > content/.admin-password
+chmod 600 content/.admin-password
+
+npm install -g pm2
+PORT=4900 pm2 start server.js --name tariqul
+pm2 save && pm2 startup
+```
+
+`content/.admin-password` is in `.gitignore` and never travels through the repository,
+so it has to be written once on the server.
+
+### 4. Put the domain in front of it
+
+Point the domain's A record at the VPS, then have nginx pass `:80`/`:443` through to
+`127.0.0.1:4900`, and issue a certificate with `certbot --nginx`. The application reads
+`PORT` and `HOST` from the environment, so no code changes are needed.
+
+### Updating later
+
+```bash
+cd /var/www/tariqul && git pull && pm2 restart tariqul
+```
+
+**One thing to watch.** Once the client starts editing through the admin panel, the
+server's own `content/site.json` is the newest copy — a `git pull` would overwrite it.
+Either edit only through the admin panel and pull the file back down before changing it
+locally, or edit only locally and push. Do not do both at once.
+
+> **বাংলায়:** VPS-এ পুরো অ্যাপটাই চলে — সাইট আর admin panel দুটোই। GitHub-এ deploy key
+> বসান (write access সহ) → push করুন → VPS-এ clone করে `pm2` দিয়ে চালু করুন →
+> পাসওয়ার্ড ফাইলটা সার্ভারে একবার লিখে দিন → nginx দিয়ে ডোমেইন বসান। পরে আপডেট করতে
+> `git pull && pm2 restart`। **সাবধান:** client admin panel দিয়ে কিছু বদলানোর পর
+> `git pull` করলে সেটা মুছে যাবে — তাই একসাথে দুই জায়গায় সম্পাদনা করবেন না।
+
+---
+
 ## Publish on GitHub Pages
 
 1. Create an empty repository on GitHub (no README, no .gitignore).
