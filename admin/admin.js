@@ -4,7 +4,7 @@
   'use strict';
 
   const LANGS = { en: 'English', bn: 'বাংলা', ar: 'العربية' };
-  let data = null, lang = 'en', current = 'meta', dirty = false, galleryFiles = [];
+  let data = null, lang = 'en', current = 'meta', dirty = false, galleryFiles = [], audioFiles = [];
 
   /* ---------- schema ---------- */
   const i18n = (k, label, o) => Object.assign({ k, label, type: 'i18n' }, o);
@@ -20,7 +20,11 @@
       text('canonical', 'Site address', { hint: 'Replace https://example.com/ with the real domain before going live.' }),
       i18n('skip', '“Skip to content” link'),
       i18n('more', '“See more” button', { hint: 'Shown on phones under the gallery and video grids.' }),
-      i18n('less', '“Show less” button')
+      i18n('less', '“Show less” button'),
+      i18n('readMore', '“Read more” link', { hint: 'Shown on phones under a long award note.' }),
+      i18n('readLess', '“Show less” link'),
+      i18n('nowPlaying', '“Now playing” label'),
+      i18n('soon', '“Soon” badge', { hint: 'On a juz tile that has no audio link yet.' })
     ]},
     { id: 'nav', group: 'Site', label: 'Menu', path: 'nav', asList: {
       label: 'Menu items', titleKey: 'label',
@@ -31,7 +35,11 @@
       i18n('roles', 'Roles line'),
       list('leads', 'Paragraphs', null, { simple: 'i18n', area: true }),
       list('ctas', 'Buttons', [ i18n('label', 'Label'), text('href', 'Links to') ], { titleKey: 'label' }),
-      { k: 'image', label: 'Portrait', type: 'group', fields: [
+      list('strip', 'Hero photographs', [
+        { k: 'src', label: 'Photograph', type: 'image', folder: 'assets' },
+        text('alt', 'Alt text')
+      ], { titleKey: 'alt', hint: 'They drift across the top of the page on a loop. Two or three read best; with one it simply sits still.' }),
+      { k: 'image', label: 'Fallback portrait', type: 'group', hint: 'Used if the list above is empty.', fields: [
         { k: 'src', label: 'Photograph', type: 'image', folder: 'assets' },
         text('alt', 'Alt text'), text('width', 'Width'), text('height', 'Height') ] }
     ]},
@@ -43,12 +51,16 @@
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       list('paragraphs', 'Paragraphs', null, { simple: 'i18n', area: true }),
       { k: 'mission', label: 'Mission box', type: 'group', fields: [
-        i18n('label', 'Label'), i18n('text', 'Text', { area: true }) ] }
+        i18n('label', 'Label'), i18n('text', 'Text', { area: true }) ] },
+      { k: 'image', label: 'Picture beside the heading', type: 'group', fields: [
+        { k: 'src', label: 'Picture', type: 'image', folder: 'assets',
+          hint: 'A drawn Mushaf ships as the default — upload a photograph or PNG to replace it.' },
+        i18n('alt', 'Alt text') ] }
     ]},
     { id: 'intl', group: 'Page', label: '04 International', path: 'sections.intl', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       list('items', 'Competitions', [
-        text('flag', 'Flag emoji'), text('year', 'Year'), i18n('title', 'Competition'),
+        text('flag', 'Flag emoji'), { k: 'logo', label: 'Organisation logo', type: 'image', folder: 'assets' }, text('year', 'Year'), i18n('title', 'Competition'),
         { k: 'statusKey', label: 'Status', type: 'status' },
         { k: 'featured', label: 'Highlight this one', type: 'bool' },
         list('categories', 'Categories', [
@@ -62,7 +74,7 @@
     { id: 'natl', group: 'Page', label: '05 National', path: 'sections.natl', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       list('items', 'Competitions', [
-        text('year', 'Year'), i18n('name', 'Competition'), i18n('org', 'Broadcaster'),
+        text('year', 'Year'), { k: 'logo', label: 'Organisation logo', type: 'image', folder: 'assets' }, i18n('name', 'Competition'), i18n('org', 'Broadcaster'),
         { k: 'rankKey', label: 'Placing', type: 'rank' }
       ], { titleKey: 'name' }),
       i18n('note', 'Closing note', { area: true })
@@ -77,7 +89,7 @@
     { id: 'current', group: 'Page', label: '06 Current studies', path: 'sections.current', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       list('items', 'Places of study', [
-        i18n('title', 'Institution'), i18n('place', 'Location'), i18n('focus', 'What is studied'),
+        i18n('title', 'Institution'), { k: 'logo', label: 'Organisation logo', type: 'image', folder: 'assets' }, i18n('place', 'Location'), i18n('focus', 'What is studied'),
         { k: 'statusKey', label: 'Status', type: 'status' },
         i18n('desc', 'Description', { area: true }),
         text('icon', 'Icon (SVG paths)', { area: true, hint: 'Advanced — leave alone unless you know SVG.' })
@@ -89,7 +101,14 @@
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       i18n('lead', 'Opening paragraph', { area: true }),
       i18n('focusLabel', 'Chips heading'),
-      list('focus', 'Areas of focus', null, { simple: 'i18n' }),
+      i18n('backLabel', '\u201cBack\u201d link on a topic page'),
+      list('focus', 'Areas of focus', [
+        text('slug', 'Address', { hint: 'Letters, numbers and hyphens \u2014 the page is served at /focus/<address>.html' }),
+        text('arabic', 'Arabic name', { hint: 'Shown in Amiri above the heading.' }),
+        i18n('label', 'Name'),
+        i18n('summary', 'One-line summary', { area: true }),
+        list('body', 'Paragraphs', null, { simple: 'i18n', area: true })
+      ], { titleKey: 'label', hint: 'Each area is a chip in this section and a page of its own.' }),
       { k: 'objective', label: 'Objective box', type: 'group', fields: [
         i18n('label', 'Label'), i18n('text', 'Text', { area: true }) ] },
       text('arabic', 'Calligraphy line'), i18n('caption', 'Caption under it')
@@ -106,7 +125,7 @@
     { id: 'aspirations', group: 'Page', label: '09 Aspirations', path: 'sections.aspirations', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
       list('items', 'Institutions', [
-        i18n('name', 'Institution'), { k: 'statusKey', label: 'Status', type: 'status' },
+        i18n('name', 'Institution'), { k: 'logo', label: 'Organisation logo', type: 'image', folder: 'assets' }, { k: 'statusKey', label: 'Status', type: 'status' },
         list('paragraphs', 'Paragraphs', null, { simple: 'i18n', area: true })
       ], { titleKey: 'name' }),
       i18n('pathLabel', 'Path heading'),
@@ -114,13 +133,13 @@
     ]},
     { id: 'teaching', group: 'Page', label: '11 Teaching', path: 'sections.teaching', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
-      list('items', 'Positions', [ i18n('name', 'Role'), i18n('place', 'Organisation'), i18n('years', 'Years') ], { titleKey: 'name' }),
+      list('items', 'Positions', [ i18n('name', 'Role'), i18n('place', 'Organisation'), { k: 'logo', label: 'Organisation logo', type: 'image', folder: 'assets' }, i18n('years', 'Years') ], { titleKey: 'name' }),
       i18n('levelsLabel', 'Levels heading'),
       list('levels', 'Levels', [ i18n('tag', 'Level'), list('items', 'Topics', null, { simple: 'i18n' }) ], { titleKey: 'tag' })
     ]},
     { id: 'judging', group: 'Page', label: '12 Judging', path: 'sections.judging', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
-      list('items', 'Panels', [ i18n('name', 'Organisation'), i18n('years', 'Years') ], { titleKey: 'name' }),
+      list('items', 'Panels', [ i18n('name', 'Organisation'), { k: 'logo', label: 'Organisation logo', type: 'image', folder: 'assets' }, i18n('years', 'Years') ], { titleKey: 'name' }),
       i18n('areasLabel', 'Chips heading'),
       list('areas', 'Areas of evaluation', null, { simple: 'i18n' })
     ]},
@@ -130,8 +149,17 @@
     ]},
     { id: 'media', group: 'Page', label: '14 Media', path: 'sections.media', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
-      list('networks', 'TV networks', null, { simple: 'text' }),
-      list('videos', 'Video tiles', [ i18n('label', 'Caption'), text('href', 'Links to') ], { titleKey: 'label' })
+      i18n('networksLabel', 'Logo strip heading'),
+      list('networks', 'TV networks', [
+        text('name', 'Channel'),
+        { k: 'logo', label: 'Logo', type: 'image', folder: 'assets',
+          hint: 'Left empty, the tile shows the channel name instead.' }
+      ], { titleKey: 'name', hint: 'They drift past below the videos, each on a light tile.' }),
+      list('videos', 'Video tiles', [
+        i18n('label', 'Caption'),
+        text('href', 'Video link', { hint: 'Paste the YouTube, Facebook or channel URL the tile opens.' }),
+        text('embed', 'Embed URL', { hint: 'Optional — an …/embed/VIDEO_ID address plays the clip inside the tile instead of linking out.' })
+      ], { titleKey: 'label', hint: 'The first four show on the page; any beyond that sit behind “See more”.' })
     ]},
     { id: 'engagement', group: 'Page', label: '13 Countries', path: 'sections.engagement', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
@@ -139,7 +167,18 @@
         text('flag', 'Flag emoji'), i18n('name', 'Country'), i18n('event', 'Event'), text('year', 'Year')
       ], { titleKey: 'name' })
     ]},
-    { id: 'gallery', group: 'Page', label: '15 Gallery', path: 'sections.gallery', fields: [
+    { id: 'quran', group: 'Page', label: '15 Full Qur\u2019an', path: 'sections.quran', fields: [
+      text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
+      i18n('emptyNote', 'Note while parts are missing', { area: true,
+        hint: 'Shown under the list until every juz has a link.' }),
+      list('items', 'The thirty juz', [
+        i18n('name', 'Juz name'),
+        i18n('note', 'Caption'),
+        { k: 'src', label: 'Recording', type: 'audio',
+          hint: 'Upload the file, pick one already uploaded, or paste a link. Empty and the tile reads \u201cSoon\u201d.' }
+      ], { titleKey: 'name', hint: 'Order is the order on the page. A juz with no recording is shown but cannot be played.' })
+    ]},
+    { id: 'gallery', group: 'Page', label: '16 Gallery', path: 'sections.gallery', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       list('filters', 'Filter buttons', [ text('id', 'Category id'), i18n('label', 'Label') ], { titleKey: 'label' }),
       list('items', 'Photographs', [
@@ -150,27 +189,46 @@
       ], { titleKey: 'title' }),
       i18n('note', 'Note under the grid', { area: true })
     ]},
-    { id: 'vision', group: 'Page', label: '16 Vision', path: 'sections.vision', fields: [
+    { id: 'blog', group: 'Page', label: '17 Blog', path: 'sections.blog', fields: [
+      text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
+      i18n('readLabel', '“Read the post” link'), i18n('allLabel', '“All posts” button'),
+      i18n('backLabel', '“Back” link on a post'),
+      i18n('emptyNote', 'Note when nothing is published', { area: true }),
+      list('posts', 'Posts', [
+        { k: 'published', label: 'Published', type: 'bool', def: false,
+          hint: 'Unticked, the post is kept but nothing about it reaches the site.' },
+        text('slug', 'Address', { hint: 'Letters, numbers and hyphens — the post is served at /blog/<address>.html' }),
+        text('date', 'Date', { hint: 'YYYY-MM-DD. Shown in each language\u2019s own numerals.' }),
+        { k: 'cover', label: 'Cover picture', type: 'image', folder: 'gallery' },
+        i18n('title', 'Title'),
+        i18n('excerpt', 'Summary', { area: true, hint: 'Shown on the card and under the title.' }),
+        list('body', 'Paragraphs', null, { simple: 'i18n', area: true })
+      ], { titleKey: 'title', hint: 'The newest four appear on the home page; every published post is listed at /blog/.' })
+    ]},
+    { id: 'vision', group: 'Page', label: '18 Vision', path: 'sections.vision', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'),
       i18n('lead', 'Lead line', { area: true }), i18n('sub', 'Second line', { area: true }),
       list('items', 'Pillars', [ text('num', 'Number'), i18n('title', 'Pillar'), i18n('text', 'Text', { area: true }) ], { titleKey: 'title' })
     ]},
-    { id: 'contact', group: 'Page', label: '17 Contact', path: 'sections.contact', fields: [
+    { id: 'contact', group: 'Page', label: '19 Contact', path: 'sections.contact', fields: [
       text('num', 'Number'), i18n('numLabel', 'Section label'), i18n('title', 'Heading'), i18n('sub', 'Intro', { area: true }),
       i18n('roles', 'Roles line'),
       { k: 'phone', label: 'Phone', type: 'group', fields: [ i18n('label', 'Label'), text('value', 'Dial number'), text('display', 'Shown as') ] },
       { k: 'email', label: 'Email', type: 'group', fields: [ i18n('label', 'Label'), text('value', 'Address') ] },
       { k: 'based', label: 'Based in', type: 'group', fields: [ i18n('label', 'Label'), i18n('value', 'Value') ] },
-      i18n('cta', 'Button label'), i18n('onlineLabel', 'Socials heading'),
+      i18n('onlineLabel', 'Socials heading'),
       list('socials', 'Social profiles', [
-        text('network', 'Network', { hint: 'YouTube, Facebook, Instagram or Wikipedia — the icon follows this.' }),
+        { k: 'enabled', label: 'Show this profile on the site', type: 'bool', def: true },
+        text('network', 'Network', { hint: 'YouTube, Facebook, Instagram, Telegram, Spotify or Wikipedia — the brand icon follows this name exactly.' }),
         text('handle', 'Shown as'), text('href', 'Link')
-      ], { titleKey: 'network' })
+      ], { titleKey: 'network', hint: 'Untick a profile to hide it from the contact card, the footer and the search-engine data — without deleting it.' })
     ]},
-    { id: 'footer', group: 'Page', label: '18 Footer', path: 'sections.footer', fields: [
+    { id: 'footer', group: 'Page', label: '20 Footer', path: 'sections.footer', fields: [
       i18n('tag', 'Tagline', { area: true }),
       list('columns', 'Column headings', null, { simple: 'i18n' }),
-      i18n('copy', 'Copyright line'), i18n('top', '“Back to top” label')
+      i18n('copy', 'Copyright line'),
+      i18n('credit', 'Developer credit', { hint: 'Shown in the footer bar beside the copyright.' }),
+      i18n('top', '“Back to top” label')
     ]},
 
     { id: 'status', group: 'Labels', label: 'Status labels', path: 'status', asMap: { label: 'Status labels' } },
@@ -246,6 +304,83 @@
     return wrap;
   }
 
+  /* A juz recording: upload it here, reuse one already uploaded, or paste a link
+     to wherever it is hosted. */
+  function fieldAudio(obj, f) {
+    const wrap = el('div', 'field');
+    wrap.appendChild(el('label', 'field__label', f.label));
+
+    const url = Object.assign(el('input'), { type: 'text', value: obj[f.k] || '',
+      placeholder: 'assets/audio/juz-01.mp3  or  https://\u2026/juz-01.mp3' });
+    url.addEventListener('input', () => { obj[f.k] = url.value.trim(); markDirty(); paint(); });
+
+    const row = el('div', 'pick');
+    const sel = el('select');
+    const fill = () => {
+      sel.textContent = '';
+      sel.appendChild(new Option('\u2014 uploaded files \u2014', ''));
+      audioFiles.forEach(src => sel.appendChild(new Option(src.replace('assets/audio/', ''), src)));
+      sel.value = audioFiles.includes(obj[f.k]) ? obj[f.k] : '';
+    };
+    sel.addEventListener('change', () => {
+      if (!sel.value) return;
+      obj[f.k] = sel.value; url.value = sel.value; markDirty(); paint();
+    });
+
+    const player = el('audio'); player.controls = true; player.preload = 'none';
+    player.style.width = '100%'; player.style.marginTop = '8px';
+    const paint = () => {
+      const v = obj[f.k];
+      if (v) { player.src = v.indexOf('http') === 0 ? v : '/' + v; player.style.display = ''; }
+      else { player.removeAttribute('src'); player.style.display = 'none'; }
+    };
+
+    const up = Object.assign(el('input'), { type: 'file', accept: 'audio/*' });
+    up.style.display = 'none';
+    const btn = el('button', 'add', 'Upload\u2026'); btn.type = 'button';
+    btn.addEventListener('click', () => up.click());
+    up.addEventListener('change', async () => {
+      const file = up.files[0]; if (!file) return;
+      btn.textContent = 'Uploading\u2026 0%';
+      try {
+        const src = await uploadAudio(file, pct => { btn.textContent = 'Uploading\u2026 ' + pct + '%'; });
+        if (!audioFiles.includes(src)) audioFiles.push(src);
+        audioFiles.sort();
+        obj[f.k] = src; url.value = src; markDirty(); fill(); paint();
+        toast('Uploaded ' + src.replace('assets/audio/', ''));
+      } catch (e) { toast(e.message, true); }
+      btn.textContent = 'Upload\u2026'; up.value = '';
+    });
+
+    row.appendChild(sel); row.appendChild(btn); row.appendChild(up);
+    wrap.appendChild(url); wrap.appendChild(row); wrap.appendChild(player);
+    if (f.hint) wrap.appendChild(el('div', 'hint', f.hint));
+    fill(); paint();
+    return wrap;
+  }
+
+  /* XHR rather than fetch, because a juz file is large enough that the progress
+     readout is the difference between "working" and "frozen". */
+  function uploadAudio(file, onProgress) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/upload');
+      xhr.setRequestHeader('X-Filename', file.name);
+      xhr.setRequestHeader('X-Folder', 'audio');
+      xhr.upload.onprogress = e => {
+        if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded / e.total * 100));
+      };
+      xhr.onload = () => {
+        let j = {}; try { j = JSON.parse(xhr.responseText); } catch (e) { /* not json */ }
+        if (xhr.status === 401) return reject(new Error('Signed out \u2014 reload and sign in again'));
+        if (xhr.status >= 200 && xhr.status < 300 && j.src) return resolve(j.src);
+        reject(new Error(j.error || 'Upload failed (' + xhr.status + ')'));
+      };
+      xhr.onerror = () => reject(new Error('Upload failed'));
+      xhr.send(file);
+    });
+  }
+
   function fieldImage(obj, f) {
     const wrap = el('div', 'field');
     wrap.appendChild(el('label', 'field__label', f.label));
@@ -299,6 +434,7 @@
     if (f.type === 'catref') return host.appendChild(fieldChoice(obj, f,
       data.sections.gallery.filters.filter(x => x.id !== 'all').map(x => [x.id, x.label.en || x.id]), false));
     if (f.type === 'image') return host.appendChild(fieldImage(obj, f));
+    if (f.type === 'audio') return host.appendChild(fieldAudio(obj, f));
     if (f.type === 'group') {
       const box = el('div', 'field');
       box.appendChild(el('div', 'field__label', f.label));
@@ -360,7 +496,8 @@
         else {
           const fresh = {};
           f.item.forEach(sf => {
-            fresh[sf.k] = sf.type === 'i18n' ? blankI18n()
+            fresh[sf.k] = sf.def !== undefined ? sf.def
+              : sf.type === 'i18n' ? blankI18n()
               : sf.type === 'list' ? []
               : sf.type === 'bool' ? false : '';
           });
@@ -497,9 +634,10 @@
 
   Promise.all([
     fetch('/api/content').then(r => r.json()),
-    fetch('/api/gallery-files').then(r => r.json()).catch(() => ({ files: [] }))
-  ]).then(([content, files]) => {
-    data = content; galleryFiles = files.files || [];
+    fetch('/api/gallery-files').then(r => r.json()).catch(() => ({ files: [] })),
+    fetch('/api/audio-files').then(r => r.json()).catch(() => ({ files: [] }))
+  ]).then(([content, files, audio]) => {
+    data = content; galleryFiles = files.files || []; audioFiles = audio.files || [];
     $('#state').textContent = 'loaded';
     renderSide(); renderPanel();
   }).catch(e => {

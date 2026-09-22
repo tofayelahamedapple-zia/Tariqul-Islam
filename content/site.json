@@ -1,7 +1,7 @@
 {
   "_note": "Single source of truth for every word on the site. Edit at /admin (node server.js), or by hand then run: node build.js",
   "meta": {
-    "displayName": "MD TARIQUL ISLAM",
+    "displayName": "HAFEZ TARIQUL ISLAM",
     "brandRole": {
       "en": "Hafiz · Qari · Educator",
       "bn": "হাফিজ · ক্বারী · শিক্ষক",
@@ -28,6 +28,36 @@
       "en": "Show less",
       "bn": "কম দেখুন",
       "ar": "عرض أقل"
+    },
+    "readMore": {
+      "en": "Read more",
+      "bn": "আরও পড়ুন",
+      "ar": "اقرأ المزيد"
+    },
+    "readLess": {
+      "en": "Show less",
+      "bn": "কম দেখুন",
+      "ar": "عرض أقل"
+    },
+    "play": {
+      "en": "Play",
+      "bn": "চালান",
+      "ar": "تشغيل"
+    },
+    "pause": {
+      "en": "Pause",
+      "bn": "থামান",
+      "ar": "إيقاف مؤقت"
+    },
+    "nowPlaying": {
+      "en": "Now playing",
+      "bn": "এখন বাজছে",
+      "ar": "قيد التشغيل"
+    },
+    "soon": {
+      "en": "Soon",
+      "bn": "শীঘ্রই",
+      "ar": "قريبًا"
     }
   },
   "status": {
@@ -160,12 +190,28 @@
       }
     },
     {
+      "label": {
+        "en": "Recitation",
+        "bn": "তিলাওয়াত",
+        "ar": "التلاوة"
+      },
+      "href": "#quran"
+    },
+    {
       "href": "#gallery",
       "label": {
         "en": "Gallery",
         "bn": "গ্যালারি",
         "ar": "المعرض"
       }
+    },
+    {
+      "label": {
+        "en": "Blog",
+        "bn": "ব্লগ",
+        "ar": "المقالات"
+      },
+      "href": "#blog"
     },
     {
       "href": "#vision",
@@ -191,8 +237,8 @@
       "ar": "في خدمة القرآن الكريم"
     },
     "name": {
-      "en": "MD TARIQUL ISLAM",
-      "bn": "এমডি তারিকুল ইসলাম",
+      "en": "HAFEZ TARIQUL ISLAM",
+      "bn": "হাফেজ তরিকুল ইসলাম",
       "ar": "محمد طريق الإسلام"
     },
     "roles": {
@@ -245,11 +291,17 @@
       }
     ],
     "image": {
-      "src": "assets/portrait-arch.webp?v=3",
-      "width": 900,
-      "height": 1200,
+      "src": "assets/portrait-hero.webp",
+      "width": 1760,
+      "height": 990,
       "alt": "MD Tariqul Islam"
-    }
+    },
+    "strip": [
+      {
+        "src": "assets/portrait-hero.webp",
+        "alt": "MD Tariqul Islam"
+      }
+    ]
   },
   "stats": [
     {
@@ -341,6 +393,14 @@
           "bn": "সঠিক তিলাওয়াত, নির্ভরযোগ্য অধ্যয়ন, ক্বিরাআত, কার্যকর শিক্ষাদান ও কুরআনী শিক্ষার মাধ্যমে কুরআনের খেদমত করা।",
           "ar": "خدمة القرآن الكريم من خلال التلاوة المتقنة والتلقّي الموثوق والقراءات والتدريس الفعّال والتعليم القرآني."
         }
+      },
+      "image": {
+        "src": "assets/quran-rehal.png",
+        "alt": {
+          "en": "An open Mushaf on a carved wooden rehal",
+          "bn": "কারুকাজ করা কাঠের রেহালে খোলা মুসহাফ",
+          "ar": "مصحف مفتوح على رحل خشبي منقوش"
+        }
       }
     },
     "intl": {
@@ -392,7 +452,8 @@
             "en": "This remains one of the defining milestones of my Qur'anic journey. My first-place achievement is documented in my public profile and referenced by multiple published sources.",
             "bn": "এটি আমার কুরআনী পথচলার অন্যতম নির্ণায়ক মাইলফলক হিসেবে রয়ে গেছে। আমার প্রথম স্থান অর্জন আমার পাবলিক প্রোফাইলে নথিভুক্ত এবং একাধিক প্রকাশিত সূত্রে উল্লিখিত।",
             "ar": "يبقى هذا من أبرز معالم مسيرتي القرآنية. وحصولي على المركز الأول موثّق في ملفي التعريفي العام ومذكور في عدة مصادر منشورة."
-          }
+          },
+          "logo": "assets/org/dubai.png"
         },
         {
           "featured": false,
@@ -416,7 +477,8 @@
               }
             }
           ],
-          "note": null
+          "note": null,
+          "logo": "assets/org/kuwait.png"
         },
         {
           "featured": false,
@@ -440,7 +502,8 @@
               "name": null
             }
           ],
-          "note": null
+          "note": null,
+          "logo": "assets/org/jassim.svg"
         }
       ]
     },
@@ -474,7 +537,8 @@
             "bn": "মাছরাঙা টেলিভিশন",
             "ar": "تلفزيون ماتشرانغا"
           },
-          "rankKey": "2"
+          "rankKey": "2",
+          "logo": ""
         },
         {
           "year": "2015",
@@ -488,7 +552,8 @@
             "bn": "বাংলাভিশন",
             "ar": "بنغلا فيجن"
           },
-          "rankKey": "6"
+          "rankKey": "6",
+          "logo": ""
         },
         {
           "year": "2017",
@@ -502,7 +567,8 @@
             "bn": "এনটিভি",
             "ar": "قناة NTV"
           },
-          "rankKey": "5"
+          "rankKey": "5",
+          "logo": "assets/org/php.png"
         },
         {
           "year": "2017",
@@ -516,7 +582,8 @@
             "bn": "বাংলাদেশ",
             "ar": "بنغلاديش"
           },
-          "rankKey": "2"
+          "rankKey": "2",
+          "logo": ""
         }
       ]
     },
@@ -654,7 +721,8 @@
             "en": "Continuing Qur'anic study and recitation at Al-Masjid an-Nabawi, with continued development in Qur'anic recitation, Tajweed and advanced Qira'at studies.",
             "bn": "আল-মসজিদ আন-নববীতে কুরআন অধ্যয়ন ও তিলাওয়াত অব্যাহত রয়েছে, সেই সাথে কুরআন তিলাওয়াত, তাজবীদ ও উচ্চতর ক্বিরাআত অধ্যয়নে ধারাবাহিক উন্নতি চলমান।",
             "ar": "مواصلة الدراسة والتلاوة القرآنية في المسجد النبوي الشريف، مع تطوير مستمر في التلاوة والتجويد والدراسات المتقدّمة في القراءات."
-          }
+          },
+          "logo": "assets/org/nabawi-halaqat.png"
         },
         {
           "icon": "<path d=\"M6 42V20l18-12 18 12v22\"/><path d=\"M16 42V28h16v14\"/><path d=\"M24 2v6\"/><circle cx=\"24\" cy=\"12\" r=\"2.5\"/>",
@@ -678,7 +746,8 @@
             "en": "Continuing structured study in Qur'anic recitation, Tajweed and Qira'at under qualified teachers, with a focus on accurate recitation and authentic Qur'anic transmission.",
             "bn": "যোগ্য শিক্ষকদের তত্ত্বাবধানে কুরআন তিলাওয়াত, তাজবীদ ও ক্বিরাআতের সুসংগঠিত অধ্যয়ন অব্যাহত, যেখানে গুরুত্ব দেওয়া হয় সঠিক তিলাওয়াত ও নির্ভরযোগ্য কুরআনী সনদের উপর।",
             "ar": "مواصلة الدراسة المنهجية في التلاوة والتجويد والقراءات على أيدي معلّمين مؤهّلين، مع التركيز على إتقان التلاوة وصحّة التلقّي والسند."
-          }
+          },
+          "logo": "assets/org/sharjah.svg"
         }
       ],
       "areasLabel": {
@@ -758,44 +827,252 @@
       },
       "focus": [
         {
-          "en": "Qira'at al-'Ashr",
-          "bn": "ক্বিরাআত আল-আশারা",
-          "ar": "القراءات العشر"
+          "slug": "qiraat-al-ashr",
+          "arabic": "القراءات العشر",
+          "label": {
+            "en": "Qira'at al-'Ashr",
+            "bn": "ক্বিরাআত আল-আশারা",
+            "ar": "القراءات العشر"
+          },
+          "summary": {
+            "en": "The ten readings established by mass transmission, each named after the Imam known for it.",
+            "bn": "মুতাওয়াতির সূত্রে প্রতিষ্ঠিত দশটি ক্বিরাআত, প্রত্যেকটি যে ইমামের নামে পরিচিত তাঁর নামে।",
+            "ar": "القراءات العشر الثابتة بالتواتر، كلٌّ منها منسوبة إلى الإمام الذي اشتهر بها."
+          },
+          "body": [
+            {
+              "en": "The Qur'an was received and passed on in more than one recognised reading. Ten of these are established as mutawatir — transmitted in every generation by so many that agreement on an error is not possible.",
+              "bn": "কুরআন একাধিক স্বীকৃত ক্বিরাআতে গৃহীত ও প্রচারিত হয়েছে। এর মধ্যে দশটি মুতাওয়াতির সূত্রে প্রতিষ্ঠিত — প্রতি যুগে এত বিপুলসংখ্যক মানুষের মাধ্যমে বর্ণিত যে ভুলের উপর একমত হওয়া অসম্ভব।",
+              "ar": "نُقل القرآن الكريم بأكثر من قراءة معتبرة، وقد ثبتت عشر منها بالتواتر، أي نقلها في كل طبقة جمعٌ يستحيل تواطؤهم على الخطأ."
+            },
+            {
+              "en": "Each is named after the Imam who became known for it: Nafi' al-Madani, Ibn Kathir al-Makki, Abu 'Amr al-Basri, Ibn 'Amir al-Shami, 'Asim al-Kufi, Hamzah al-Kufi and al-Kisa'i al-Kufi — the seven gathered by Ibn Mujahid — with Abu Ja'far al-Madani, Ya'qub al-Hadrami and Khalaf al-'Ashir completing the ten.",
+              "bn": "প্রত্যেকটি সেই ইমামের নামে পরিচিত যিনি তা প্রচার করেছেন: নাফি‘ আল-মাদানী, ইবনু কাসীর আল-মাক্কী, আবূ ‘আমর আল-বাসরী, ইবনু ‘আমির আশ-শামী, ‘আসিম আল-কূফী, হামযাহ আল-কূফী ও আল-কিসাঈ আল-কূফী — ইবনু মুজাহিদ যে সাতজনকে একত্র করেছিলেন; এরপর আবূ জা‘ফার আল-মাদানী, ইয়া‘কূব আল-হাদরামী ও খালাফ আল-‘আশির মিলে দশ পূর্ণ হয়।",
+              "ar": "وكلٌّ منها منسوبة إلى إمامها: نافع المدني، وابن كثير المكي، وأبو عمرو البصري، وابن عامر الشامي، وعاصم الكوفي، وحمزة الكوفي، والكسائي الكوفي — وهم السبعة الذين جمعهم ابن مجاهد — ثم أبو جعفر المدني، ويعقوب الحضرمي، وخلف العاشر، فتتمّ العشر."
+            },
+            {
+              "en": "The differences between them touch pronunciation, vowelling and occasionally a word. None contradicts another: taken together they show how the Qur’an was actually received, not competing versions of it.",
+              "bn": "এদের পার্থক্য উচ্চারণ, হরকত এবং কখনো কোনো শব্দে। কোনোটি অন্যটির বিরোধী নয়; একসাথে এগুলো দেখায় কুরআন প্রকৃতপক্ষে কীভাবে গৃহীত হয়েছে — পরস্পরবিরোধী সংস্করণ নয়।",
+              "ar": "والفروق بينها في النطق والضبط وأحيانًا في كلمة، ولا تعارض بينها؛ بل هي مجتمعةً تُبيّن كيف تُلقّي القرآن حقيقةً، لا نُسخًا متنافسة منه."
+            }
+          ]
         },
         {
-          "en": "Riwayat",
-          "bn": "রিওয়ায়াত",
-          "ar": "الروايات"
+          "slug": "riwayat",
+          "arabic": "الروايات",
+          "label": {
+            "en": "Riwayat",
+            "bn": "রিওয়ায়াত",
+            "ar": "الروايات"
+          },
+          "summary": {
+            "en": "The named transmissions through which each reading reaches us.",
+            "bn": "যে নির্দিষ্ট বর্ণনাসূত্রে প্রতিটি ক্বিরাআত আমাদের কাছে পৌঁছেছে।",
+            "ar": "الطرق المسمّاة التي وصلت بها كل قراءة إلينا."
+          },
+          "body": [
+            {
+              "en": "A qira’ah does not reach us loose: it comes through named students of the Imam. Each Imam has two principal narrators, so the ten readings yield twenty riwayat.",
+              "bn": "ক্বিরাআত এলোমেলোভাবে আসে না: তা ইমামের নির্দিষ্ট ছাত্রদের মাধ্যমে আসে। প্রত্যেক ইমামের দুজন প্রধান রাবী, তাই দশ ক্বিরাআত থেকে বিশটি রিওয়ায়াত।",
+              "ar": "لا تصل القراءة مرسلةً، بل عن تلاميذ مسمَّين للإمام. ولكل إمام راويان مشهوران، فتكون للقراءات العشر عشرون رواية."
+            },
+            {
+              "en": "'Asim's reading comes through Hafs and through Shu'bah; Nafi's through Qalun and through Warsh. Hafs 'an 'Asim is what most of the Muslim world reads today, and Warsh 'an Nafi' is widespread across North and West Africa.",
+              "bn": "‘আসিমের ক্বিরাআত এসেছে হাফস ও শু‘বার মাধ্যমে; নাফি‘র এসেছে ক্বালূন ও ওয়ারশের মাধ্যমে। আজ মুসলিম বিশ্বের অধিকাংশ পড়ে হাফস ‘আন ‘আসিম, আর উত্তর ও পশ্চিম আফ্রিকায় ব্যাপকভাবে প্রচলিত ওয়ারশ ‘আন নাফি‘।",
+              "ar": "فقراءة عاصم تصل برواية حفص ورواية شعبة، وقراءة نافع برواية قالون ورواية ورش. ورواية حفص عن عاصم هي التي يقرأ بها أكثر العالم الإسلامي اليوم، ورواية ورش عن نافع منتشرة في شمال أفريقيا وغربها."
+            },
+            {
+              "en": "Beneath the riwayah sits the tariq — the particular route by which a narrator’s text reached a later generation. Knowing which riwayah and which tariq one is reciting is part of reciting precisely.",
+              "bn": "রিওয়ায়াতের নিচে আছে তরীক — যে নির্দিষ্ট পথে রাবীর পাঠ পরবর্তী প্রজন্মে পৌঁছেছে। কোন রিওয়ায়াত ও কোন তরীক অনুযায়ী পড়া হচ্ছে তা জানাই নির্ভুল তিলাওয়াতের অংশ।",
+              "ar": "وتحت الرواية الطريق، وهو المسلك الخاص الذي وصل به نصّ الراوي إلى من بعده. ومعرفة الرواية والطريق التي يقرأ بها القارئ من تمام الضبط."
+            }
+          ]
         },
         {
-          "en": "Usul al-Qira'at",
-          "bn": "উসূল আল-ক্বিরাআত",
-          "ar": "أصول القراءات"
+          "slug": "usul-al-qiraat",
+          "arabic": "أصول القراءات",
+          "label": {
+            "en": "Usul al-Qira'at",
+            "bn": "উসূল আল-ক্বিরাআত",
+            "ar": "أصول القراءات"
+          },
+          "summary": {
+            "en": "The general rules a reading applies wherever their conditions occur.",
+            "bn": "একটি ক্বিরাআত যেসব সাধারণ নিয়ম শর্ত পাওয়া গেলেই প্রয়োগ করে।",
+            "ar": "القواعد المطّردة التي تُطبَّق كلما تحقّقت شروطها."
+          },
+          "body": [
+            {
+              "en": "Usul are the rules a reading applies consistently rather than word by word: settle them once and they hold wherever their conditions appear.",
+              "bn": "উসূল হলো সেসব নিয়ম যা একটি ক্বিরাআত শব্দে শব্দে নয়, বরং ধারাবাহিকভাবে প্রয়োগ করে: একবার আয়ত্ত করলে শর্ত পাওয়া গেলেই তা প্রযোজ্য।",
+              "ar": "الأصول قواعد تُطبَّق باطّراد لا كلمةً كلمة؛ فإذا ضُبطت مرة جرت كلما وُجدت شروطها."
+            },
+            {
+              "en": "They cover the lengths of madd, how hamzah is realised or eased, imalah — inclining a fathah towards a kasrah — idgham where letters meet, and the treatment of the ha’ of the pronoun, among others.",
+              "bn": "এর অন্তর্ভুক্ত মাদের দৈর্ঘ্য, হামযাহ কীভাবে উচ্চারিত বা লাঘব করা হয়, ইমালা — ফাতহাকে কাসরার দিকে ঝোঁকানো — হরফ মিলিত হলে ইদগাম, এবং হা আয-যমীরের বিধান ইত্যাদি।",
+              "ar": "وتشمل مقادير المدّ، وتحقيق الهمز أو تخفيفه، والإمالة، والإدغام عند التقاء الحروف، وحكم هاء الضمير، وغير ذلك."
+            },
+            {
+              "en": "Learning the usul of a riwayah first is what makes the rest manageable: once the general rules are settled, only the exceptions remain.",
+              "bn": "প্রথমে কোনো রিওয়ায়াতের উসূল শেখাই বাকিটা সহজ করে দেয়: সাধারণ নিয়ম স্থির হয়ে গেলে কেবল ব্যতিক্রমগুলোই থাকে।",
+              "ar": "وتقديم أصول الرواية هو ما يجعل بقيّتها ميسورة؛ فإذا استقرّت القواعد لم يبقَ إلا الاستثناءات."
+            }
+          ]
         },
         {
-          "en": "Farsh al-Huruf",
-          "bn": "ফারশ আল-হুরূফ",
-          "ar": "فرش الحروف"
+          "slug": "farsh-al-huruf",
+          "arabic": "فرش الحروف",
+          "label": {
+            "en": "Farsh al-Huruf",
+            "bn": "ফারশ আল-হুরূফ",
+            "ar": "فرش الحروف"
+          },
+          "summary": {
+            "en": "The individual places where readings differ in a way no general rule predicts.",
+            "bn": "যেসব একক স্থানে ক্বিরাআতসমূহ এমনভাবে ভিন্ন হয় যা কোনো সাধারণ নিয়মে আসে না।",
+            "ar": "المواضع المفردة التي تختلف فيها القراءات على غير قاعدة مطّردة."
+          },
+          "body": [
+            {
+              "en": "Farsh is the counterpart of usul. Where the usul give rules, farsh gives the individual words — a different vowel, a different letter, a singular where another reads a plural.",
+              "bn": "ফারশ উসূলের পরিপূরক। উসূল যেখানে নিয়ম দেয়, ফারশ সেখানে একক শব্দ দেয় — ভিন্ন হরকত, ভিন্ন হরফ, একটিতে একবচন যেখানে অন্যটিতে বহুবচন।",
+              "ar": "الفرش مقابل الأصول؛ فالأصول قواعد، والفرش كلمات مفردة: حركة مختلفة، أو حرف مختلف، أو إفراد في موضع جمعٍ عند غيره."
+            },
+            {
+              "en": "A well-known example is the opening of al-Fatihah, recited both as maliki yawm al-din and as maaliki yawm al-din. Both are established readings, and each carries a sound meaning.",
+              "bn": "সুপরিচিত উদাহরণ সূরা ফাতিহার আয়াত, যা পড়া হয় “মালিকি ইয়াওমিদ্দীন” এবং “মা-লিকি ইয়াওমিদ্দীন” দুভাবেই। দুটিই প্রতিষ্ঠিত ক্বিরাআত এবং প্রত্যেকটির অর্থ সঠিক।",
+              "ar": "ومن أشهر أمثلته قوله تعالى في الفاتحة، يُقرأ ﴿مَلِكِ يَوْمِ ٱلدِّينِ﴾ و﴿مَٰلِكِ يَوْمِ ٱلدِّينِ﴾، وكلتاهما قراءة ثابتة، ولكلٍّ معنى صحيح."
+            },
+            {
+              "en": "Farsh is learned surah by surah and verse by verse. There is no shortcut: it is memorised with the text and checked against a teacher.",
+              "bn": "ফারশ শেখা হয় সূরা ধরে, আয়াত ধরে। এর কোনো সংক্ষিপ্ত পথ নেই: পাঠের সাথেই মুখস্থ করতে হয় এবং উস্তাদের কাছে যাচাই করতে হয়।",
+              "ar": "ويُتعلَّم الفرش سورةً سورة وآيةً آية؛ لا طريق مختصرة إليه، بل يُحفظ مع النصّ ويُعرض على المعلّم."
+            }
+          ]
         },
         {
-          "en": "Tajweed",
-          "bn": "তাজবীদ",
-          "ar": "التجويد"
+          "slug": "tajweed",
+          "arabic": "التجويد",
+          "label": {
+            "en": "Tajweed",
+            "bn": "তাজবীদ",
+            "ar": "التجويد"
+          },
+          "summary": {
+            "en": "Giving every letter its due in articulation and in context.",
+            "bn": "প্রতিটি হরফকে তার উচ্চারণ ও প্রসঙ্গের হক আদায় করে পড়া।",
+            "ar": "إعطاء كل حرف حقّه ومستحقّه في المخرج والسياق."
+          },
+          "body": [
+            {
+              "en": "Tajweed is giving every letter its due: its point of articulation, the makhraj, and its qualities, the sifat — and then its due in context: madd, ghunnah, idgham, ikhfa’ and qalqalah.",
+              "bn": "তাজবীদ হলো প্রতিটি হরফকে তার হক দেওয়া: তার মাখরাজ ও সিফাত — এরপর প্রসঙ্গভেদে তার মুস্তাহাক: মাদ, গুন্নাহ, ইদগাম, ইখফা ও ক্বালক্বালাহ।",
+              "ar": "التجويد إعطاء كل حرف حقّه من مخرجه وصفاته، ثم مستحقّه في سياقه من مدٍّ وغنّةٍ وإدغامٍ وإخفاءٍ وقلقلة."
+            },
+            {
+              "en": "It is not an ornament added to the recitation. The scholars of this science treat reciting without it as a shortcoming, because it is the manner in which the Qur’an was received.",
+              "bn": "এটি তিলাওয়াতের উপর যুক্ত কোনো অলংকার নয়। এ শাস্ত্রের আলিমগণ তাজবীদ ছাড়া পড়াকে ত্রুটি গণ্য করেন, কারণ কুরআন এভাবেই গৃহীত হয়েছে।",
+              "ar": "وليس زينةً تُضاف إلى التلاوة؛ بل عدّ أهل هذا الفنّ القراءةَ بغيره نقصًا، لأنه الوجه الذي تُلُقِّي به القرآن."
+            },
+            {
+              "en": "And it is learned by ear. A teacher who listens each week corrects in a minute what a book cannot settle in ten pages.",
+              "bn": "আর এটি শেখা হয় কানে শুনে। যে উস্তাদ প্রতি সপ্তাহে শোনেন, তিনি এক মিনিটে যা শুধরে দেন, কিতাব দশ পৃষ্ঠাতেও তা নিষ্পত্তি করতে পারে না।",
+              "ar": "وإنما يُؤخذ بالسماع؛ فالمعلّم الذي يسمع كل أسبوع يصحّح في دقيقة ما لا يحسمه كتاب في عشر صفحات."
+            }
+          ]
         },
         {
-          "en": "Waqf & Ibtida'",
-          "bn": "ওয়াক্ফ ও ইবতিদা",
-          "ar": "الوقف والابتداء"
+          "slug": "waqf-ibtida",
+          "arabic": "الوقف والابتداء",
+          "label": {
+            "en": "Waqf & Ibtida'",
+            "bn": "ওয়াক্ফ ও ইবতিদা",
+            "ar": "الوقف والابتداء"
+          },
+          "summary": {
+            "en": "Where a reciter may stop, and where they may begin again.",
+            "bn": "কোথায় থামা যায় এবং কোথা থেকে আবার শুরু করা যায়।",
+            "ar": "مواضع الوقف الجائز ومواضع الابتداء الصحيح."
+          },
+          "body": [
+            {
+              "en": "Where a reciter stops, and where they resume, changes how the words are understood. This is why the science of waqf and ibtida’ sits beside tajweed rather than after it.",
+              "bn": "ক্বারী কোথায় থামেন এবং কোথা থেকে আবার শুরু করেন, তা শব্দগুলোর অর্থ বদলে দেয়। তাই ওয়াক্ফ ও ইবতিদার ইলম তাজবীদের পরে নয়, তার পাশেই থাকে।",
+              "ar": "موضع وقف القارئ وموضع ابتدائه يُغيّران فهم الكلام؛ ولذلك كان علم الوقف والابتداء إلى جانب التجويد لا بعده."
+            },
+            {
+              "en": "The scholars classify a stop by how complete the sense is at that point — tamm, kafi, hasan or qabih — and the marks in the Mushaf are a summary of that judgement, not a separate rule.",
+              "bn": "আলিমগণ থামার স্থানকে সেখানকার অর্থ কতটা পূর্ণ তার ভিত্তিতে ভাগ করেন — তাম্ম, কাফী, হাসান বা ক্বাবীহ — আর মুসহাফের চিহ্নগুলো সেই বিচারেরই সারসংক্ষেপ, আলাদা কোনো নিয়ম নয়।",
+              "ar": "وقد قسّم العلماء الوقف بحسب تمام المعنى عنده إلى تامٍّ وكافٍ وحسنٍ وقبيح، ورموز المصحف خلاصة لذلك الحكم لا قاعدةً مستقلّة عنه."
+            },
+            {
+              "en": "A reciter who must take a breath mid-verse needs to know where stopping leaves the meaning sound, and where resuming requires going back a few words.",
+              "bn": "যে ক্বারীকে আয়াতের মাঝে শ্বাস নিতে হয়, তাঁর জানা দরকার কোথায় থামলে অর্থ ঠিক থাকে আর কোথায় আবার শুরু করতে হলে কয়েক শব্দ পিছিয়ে যেতে হয়।",
+              "ar": "والقارئ الذي يحتاج إلى التنفّس في أثناء الآية يلزمه أن يعرف أين يسلم المعنى بالوقف، وأين يجب أن يرجع بكلماتٍ عند الابتداء."
+            }
+          ]
         },
         {
-          "en": "Maqamat",
-          "bn": "মাকামাত",
-          "ar": "المقامات"
+          "slug": "maqamat",
+          "arabic": "المقامات",
+          "label": {
+            "en": "Maqamat",
+            "bn": "মাকামাত",
+            "ar": "المقامات"
+          },
+          "summary": {
+            "en": "The melodic modes a reciter may use, kept in the service of tajweed.",
+            "bn": "ক্বারী যেসব সুরের কাঠামো ব্যবহার করতে পারেন, তাজবীদের অধীনে রেখে।",
+            "ar": "الأنغام التي يستعملها القارئ، مع بقائها في خدمة التجويد."
+          },
+          "body": [
+            {
+              "en": "The maqamat are the melodic modes of Arabic music that a reciter may carry the recitation on — among them Bayati, Saba, Hijaz, Rast, Nahawand, Sikah and ‘Ajam.",
+              "bn": "মাকামাত হলো আরবি সংগীতের সুর-কাঠামো, যার উপর ক্বারী তিলাওয়াত পরিচালনা করতে পারেন — যেমন বায়াতী, সাবা, হিজায, রাস্ত, নাহাওয়ান্দ, সীকাহ ও ‘আজম।",
+              "ar": "المقامات أنغام الموسيقى العربية التي قد يحمل القارئ تلاوته عليها، ومنها البياتي والصبا والحجاز والرست والنهاوند والسيكاه والعجم."
+            },
+            {
+              "en": "Used well, the mode follows the meaning: Saba where the verses carry grief, Hijaz where they carry awe. Used carelessly, it pulls the listener toward the voice and away from the words.",
+              "bn": "ভালোভাবে ব্যবহৃত হলে সুর অর্থের অনুসরণ করে: বেদনার আয়াতে সাবা, ভয়-বিস্ময়ের আয়াতে হিজায। অসাবধানে ব্যবহৃত হলে তা শ্রোতাকে শব্দ থেকে সরিয়ে কণ্ঠের দিকে টানে।",
+              "ar": "فإذا أُحسن استعمالها تبع النغمُ المعنى: الصبا حيث الحزن، والحجاز حيث الهيبة. وإذا أُسيء جذب السامعَ إلى الصوت بعيدًا عن المعنى."
+            },
+            {
+              "en": "The governing rule is that melody serves tajweed and never bends it: no madd lengthened, and none shortened, for the sake of a tune.",
+              "bn": "মূল নিয়ম হলো সুর তাজবীদের সেবা করবে, কখনো তাকে বাঁকাবে না: সুরের জন্য কোনো মাদ দীর্ঘ করা যাবে না, সংক্ষিপ্তও নয়।",
+              "ar": "والضابط أنّ النغم خادمٌ للتجويد لا يليّه: فلا يُزاد مدّ ولا يُنقص من أجل اللحن."
+            }
+          ]
         },
         {
-          "en": "Ijazah & Sanad",
-          "bn": "ইজাযাহ ও সনদ",
-          "ar": "الإجازة والسند"
+          "slug": "ijazah-sanad",
+          "arabic": "الإجازة والسند",
+          "label": {
+            "en": "Ijazah & Sanad",
+            "bn": "ইজাযাহ ও সনদ",
+            "ar": "الإجازة والسند"
+          },
+          "summary": {
+            "en": "The licence to transmit, and the chain of teachers it carries.",
+            "bn": "বর্ণনার অনুমতি এবং তার সাথে থাকা উস্তাদদের ধারাবাহিক সনদ।",
+            "ar": "الإذن بالرواية، والسلسلة التي يحملها من الشيوخ."
+          },
+          "body": [
+            {
+              "en": "An ijazah is the licence a teacher gives a student to transmit what they have recited, granted after the teacher has heard the whole Qur’an from them in a stated riwayah.",
+              "bn": "ইজাযাহ হলো উস্তাদ কর্তৃক ছাত্রকে দেওয়া অনুমতি যে সে যা পড়েছে তা বর্ণনা করতে পারবে — নির্দিষ্ট রিওয়ায়াতে পূর্ণ কুরআন শোনার পর তা দেওয়া হয়।",
+              "ar": "الإجازة إذنٌ يمنحه الشيخ لتلميذه بأن يروي ما قرأه، يُعطى بعد أن يسمع منه الشيخ القرآن كاملًا برواية معيّنة."
+            },
+            {
+              "en": "The sanad is the chain of names the ijazah carries: the student from their teacher, from theirs, and so on through the generations back to the Prophet ṣalla Allāhu ‘alayhi wa sallam.",
+              "bn": "সনদ হলো ইজাযাহ বহনকারী নামের ধারাবাহিকতা: ছাত্র তার উস্তাদ থেকে, তিনি তাঁর উস্তাদ থেকে, এভাবে প্রজন্ম পরম্পরায় নবী সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম পর্যন্ত।",
+              "ar": "والسند سلسلة الأسماء التي تحملها الإجازة: التلميذ عن شيخه، عن شيخه، هكذا عبر الطبقات حتى النبيّ صلى الله عليه وسلم."
+            },
+            {
+              "en": "It is not a certificate of merit. It is a statement of fact: that this person recited this text to this teacher, and may now teach it to others.",
+              "bn": "এটি যোগ্যতার কোনো সনদপত্র নয়। এটি একটি বাস্তব বিবৃতি: এই ব্যক্তি এই পাঠ এই উস্তাদের কাছে পড়েছেন এবং এখন তা অন্যদের শেখাতে পারেন।",
+              "ar": "وليست شهادة تفضيل، بل إخبار بواقع: أنّ هذا قرأ هذا النصّ على هذا الشيخ، وله أن يُقرئه غيره."
+            }
+          ]
         }
       ],
       "objective": {
@@ -815,6 +1092,16 @@
         "en": "The Ten Canonical Qur'anic Readings",
         "bn": "দশটি স্বীকৃত কুরআনী ক্বিরাআত",
         "ar": "القراءات العشر المتواترة"
+      },
+      "readLabel": {
+        "en": "Read more about this",
+        "bn": "এ বিষয়ে বিস্তারিত",
+        "ar": "اقرأ المزيد عن هذا"
+      },
+      "backLabel": {
+        "en": "Back to Qira’at",
+        "bn": "ক্বিরাআতে ফিরুন",
+        "ar": "العودة إلى القراءات"
       }
     },
     "education": {
@@ -1078,7 +1365,8 @@
               "bn": "নির্বাচিত হলে, আমি মদিনার একাডেমিক পরিবেশে ইসলামী শিক্ষায় উচ্চতর অধ্যয়ন এবং কুরআন, সুন্নাহ ও ইসলামী জ্ঞানের বিষয়ে আমার উপলব্ধি আরও গভীর করার আশা রাখি।",
               "ar": "وإن قُبلت، أرجو أن أواصل دراساتي العليا في الدراسات الإسلامية، وأن أعمّق فهمي للقرآن والسنّة والعلوم الإسلامية في البيئة الأكاديمية بالمدينة المنوّرة."
             }
-          ]
+          ],
+          "logo": "assets/org/madinah.svg"
         },
         {
           "name": {
@@ -1093,7 +1381,8 @@
               "bn": "আল্লাহর অনুমতি ও অনুগ্রহে, ভবিষ্যতে কাতার বিশ্ববিদ্যালয়ে উচ্চশিক্ষা গ্রহণের আকাঙ্ক্ষা রাখি, যা আমার কুরআনী ও ইসলামী অধ্যয়নের পাশাপাশি একাডেমিক বিকাশকে এগিয়ে নেবে।",
               "ar": "بإذن الله وفضله، أطمح إلى مواصلة التعليم العالي في جامعة قطر مستقبلًا، بما يواكب تطوّري الأكاديمي إلى جانب دراساتي القرآنية والإسلامية."
             }
-          ]
+          ],
+          "logo": "assets/org/qu.png"
         }
       ],
       "pathLabel": {
@@ -1167,7 +1456,8 @@
             "en": "2014–2018",
             "bn": "2014–2018",
             "ar": "2014–2018"
-          }
+          },
+          "logo": "assets/org/markaz.png"
         },
         {
           "name": {
@@ -1184,7 +1474,8 @@
             "en": "2024–Present",
             "bn": "২০২৪–বর্তমান",
             "ar": "٢٠٢٤–حتى الآن"
-          }
+          },
+          "logo": "assets/org/nashrul.png"
         }
       ],
       "levelsLabel": {
@@ -1335,7 +1626,8 @@
             "en": "2019–2022",
             "bn": "2019–2022",
             "ar": "2019–2022"
-          }
+          },
+          "logo": "assets/org/markaz.png"
         },
         {
           "name": {
@@ -1347,7 +1639,8 @@
             "en": "2020",
             "bn": "2020",
             "ar": "2020"
-          }
+          },
+          "logo": "assets/org/nashrul.png"
         },
         {
           "name": {
@@ -1359,7 +1652,8 @@
             "en": "2023",
             "bn": "2023",
             "ar": "2023"
-          }
+          },
+          "logo": "assets/org/suffa.png"
         },
         {
           "name": {
@@ -1371,7 +1665,8 @@
             "en": "2024",
             "bn": "2024",
             "ar": "2024"
-          }
+          },
+          "logo": ""
         },
         {
           "name": {
@@ -1383,7 +1678,8 @@
             "en": "2024–2025",
             "bn": "2024–2025",
             "ar": "2024–2025"
-          }
+          },
+          "logo": "assets/org/php.png"
         }
       ],
       "areasLabel": {
@@ -1620,22 +1916,58 @@
         "ar": "شاركت طوال مسيرتي في مسابقات قرآنية وبرامج تلاوة وفعاليات قرآنية بُثّت عبر أبرز القنوات التلفزيونية في بنغلاديش."
       },
       "networks": [
-        "Machranga TV",
-        "BanglaVision",
-        "NTV",
-        "Asian TV",
-        "Channel i",
-        "Deepto TV",
-        "SA TV",
-        "RTV",
-        "BTV",
-        "Somoy TV",
-        "News24",
-        "Jamuna TV"
+        {
+          "name": "Machranga TV",
+          "logo": "assets/tv/maasranga.png"
+        },
+        {
+          "name": "BanglaVision",
+          "logo": "assets/tv/banglavision.png"
+        },
+        {
+          "name": "NTV",
+          "logo": "assets/tv/ntv.png"
+        },
+        {
+          "name": "Asian TV",
+          "logo": "assets/tv/asiantv.png"
+        },
+        {
+          "name": "Channel i",
+          "logo": "assets/tv/channeli.png"
+        },
+        {
+          "name": "Deepto TV",
+          "logo": "assets/tv/deepto.png"
+        },
+        {
+          "name": "SA TV",
+          "logo": "assets/tv/satv.png"
+        },
+        {
+          "name": "RTV",
+          "logo": "assets/tv/rtv.svg"
+        },
+        {
+          "name": "BTV",
+          "logo": "assets/tv/btv.png"
+        },
+        {
+          "name": "Somoy TV",
+          "logo": "assets/tv/somoy.png"
+        },
+        {
+          "name": "News24",
+          "logo": "assets/tv/news24.png"
+        },
+        {
+          "name": "Jamuna TV",
+          "logo": "assets/tv/jamuna.svg"
+        }
       ],
       "videos": [
         {
-          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "href": "https://www.youtube.com/@HafezTariqulIslam",
           "label": {
             "en": "Qur'an Recitation",
             "bn": "কুরআন তিলাওয়াত",
@@ -1643,7 +1975,7 @@
           }
         },
         {
-          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "href": "https://www.youtube.com/@HafezTariqulIslam",
           "label": {
             "en": "Qur'an Competitions",
             "bn": "কুরআন প্রতিযোগিতা",
@@ -1651,14 +1983,27 @@
           }
         },
         {
-          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "href": "https://www.youtube.com/@HafezTariqulIslam",
           "label": {
             "en": "Islamic Programs & Interviews",
             "bn": "ইসলামী অনুষ্ঠান ও সাক্ষাৎকার",
             "ar": "البرامج الإسلامية واللقاءات"
           }
+        },
+        {
+          "href": "https://www.youtube.com/@HafezTariqulIslam",
+          "label": {
+            "en": "Television Appearances",
+            "bn": "টেলিভিশন উপস্থিতি",
+            "ar": "الظهور التلفزيوني"
+          }
         }
-      ]
+      ],
+      "networksLabel": {
+        "en": "Broadcast on",
+        "bn": "যেসব চ্যানেলে সম্প্রচারিত",
+        "ar": "بُثَّ على"
+      }
     },
     "engagement": {
       "num": "13",
@@ -1765,7 +2110,7 @@
       ]
     },
     "gallery": {
-      "num": "15",
+      "num": "16",
       "numLabel": {
         "en": "Gallery",
         "bn": "গ্যালারি",
@@ -2128,7 +2473,7 @@
       ]
     },
     "vision": {
-      "num": "16",
+      "num": "18",
       "numLabel": {
         "en": "My Vision",
         "bn": "আমার লক্ষ্য",
@@ -2218,7 +2563,7 @@
       ]
     },
     "contact": {
-      "num": "17",
+      "num": "19",
       "numLabel": {
         "en": "Contact",
         "bn": "যোগাযোগ",
@@ -2254,7 +2599,7 @@
           "bn": "ইমেইল",
           "ar": "البريد الإلكتروني"
         },
-        "value": "tariqulislam9018@gmail.com"
+        "value": "contact@hafeztariqulislam.com"
       },
       "based": {
         "label": {
@@ -2268,11 +2613,6 @@
           "ar": "بنغلاديش · يدرس حاليًا في المدينة المنوّرة والشارقة"
         }
       },
-      "cta": {
-        "en": "Send an Enquiry",
-        "bn": "বার্তা পাঠান",
-        "ar": "أرسل استفسارًا"
-      },
       "onlineLabel": {
         "en": "Online Presence",
         "bn": "অনলাইন উপস্থিতি",
@@ -2280,24 +2620,46 @@
       },
       "socials": [
         {
-          "href": "https://www.youtube.com/@hafeztariqulislam",
+          "href": "https://www.youtube.com/@HafezTariqulIslam",
           "network": "YouTube",
-          "handle": "Hafez Tariqul Islam"
+          "handle": "Hafez Tariqul Islam",
+          "enabled": true
         },
         {
-          "href": "https://www.facebook.com/tariqulislamofficial",
+          "href": "https://www.facebook.com/torikulislamofficial",
           "network": "Facebook",
-          "handle": "Tariqul Islam Official"
+          "handle": "Tariqul Islam Official",
+          "enabled": true
         },
         {
-          "href": "https://www.instagram.com/hafeztariqulislam",
+          "href": "https://www.instagram.com/hafeztariqulislam/",
           "network": "Instagram",
-          "handle": "@hafeztariqulislam"
+          "handle": "@hafeztariqulislam",
+          "enabled": true
         },
         {
-          "href": "https://en.wikipedia.org/wiki/Special:Search?search=Muhammad+Tariqul+Islam",
+          "href": "https://t.me/hafeztariqulislam",
+          "network": "Telegram",
+          "handle": "@hafeztariqulislam",
+          "enabled": true
+        },
+        {
+          "href": "https://open.spotify.com/artist/1sYBGkIuAm7JTsVWHnbePl",
+          "network": "Spotify",
+          "handle": "Hafez Tariqul Islam",
+          "enabled": true
+        },
+        {
+          "href": "https://www.linkedin.com/in/hafez-tariqul-islam-19560421a/",
+          "network": "LinkedIn",
+          "handle": "Hafez Tariqul Islam",
+          "enabled": true
+        },
+        {
+          "href": "https://en.wikipedia.org/wiki/Muhammad_Tariqul_Islam",
           "network": "Wikipedia",
-          "handle": "Muhammad Tariqul Islam"
+          "handle": "Muhammad Tariqul Islam",
+          "enabled": true
         }
       ]
     },
@@ -2311,6 +2673,11 @@
         "en": "© 2026 Md Tariqul Islam. All Rights Reserved.",
         "bn": "© ২০২৬ মোঃ তারিকুল ইসলাম। সর্বস্বত্ব সংরক্ষিত।",
         "ar": "© ٢٠٢٦ محمد طريق الإسلام. جميع الحقوق محفوظة."
+      },
+      "credit": {
+        "en": "Development by DREEKK INNOVATION (Tofayel Ahamed)",
+        "bn": "ডেভেলপমেন্ট — DREEKK INNOVATION (তোফায়েল আহমেদ)",
+        "ar": "تطوير — DREEKK INNOVATION (توفيل أحمد)"
       },
       "top": {
         "en": "Back to top ↑",
@@ -2332,6 +2699,537 @@
           "en": "Connect",
           "bn": "যোগাযোগ",
           "ar": "تواصل"
+        }
+      ]
+    },
+    "quran": {
+      "num": "15",
+      "numLabel": {
+        "en": "Full Qur’an Recitation",
+        "bn": "সম্পূর্ণ কুরআন তিলাওয়াত",
+        "ar": "تلاوة القرآن كاملًا"
+      },
+      "title": {
+        "en": "Listen to the Complete Qur’an — 30 Juz",
+        "bn": "সম্পূর্ণ কুরআন শুনুন — ৩০ পারা",
+        "ar": "استمع إلى القرآن كاملًا — ثلاثون جزءًا"
+      },
+      "sub": {
+        "en": "The recitation is arranged juz by juz, so you can begin wherever you wish and continue at your own pace.",
+        "bn": "তিলাওয়াত পারা অনুযায়ী সাজানো — যেখান থেকে ইচ্ছা শুরু করে নিজের গতিতে চালিয়ে যেতে পারেন।",
+        "ar": "التلاوة مرتّبة جزءًا جزءًا، فابدأ من حيث شئت وواصل على مهلك."
+      },
+      "emptyNote": {
+        "en": "Audio for the remaining parts is being added.",
+        "bn": "বাকি পারাগুলোর অডিও যুক্ত করা হচ্ছে।",
+        "ar": "يجري إضافة الصوتيات لبقية الأجزاء."
+      },
+      "items": [
+        {
+          "name": {
+            "en": "Juz 1",
+            "bn": "পারা ১",
+            "ar": "الجزء ١"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 2",
+            "bn": "পারা ২",
+            "ar": "الجزء ٢"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 3",
+            "bn": "পারা ৩",
+            "ar": "الجزء ٣"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 4",
+            "bn": "পারা ৪",
+            "ar": "الجزء ٤"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 5",
+            "bn": "পারা ৫",
+            "ar": "الجزء ٥"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 6",
+            "bn": "পারা ৬",
+            "ar": "الجزء ٦"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 7",
+            "bn": "পারা ৭",
+            "ar": "الجزء ٧"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 8",
+            "bn": "পারা ৮",
+            "ar": "الجزء ٨"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 9",
+            "bn": "পারা ৯",
+            "ar": "الجزء ٩"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 10",
+            "bn": "পারা ১০",
+            "ar": "الجزء ١٠"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 11",
+            "bn": "পারা ১১",
+            "ar": "الجزء ١١"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 12",
+            "bn": "পারা ১২",
+            "ar": "الجزء ١٢"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 13",
+            "bn": "পারা ১৩",
+            "ar": "الجزء ١٣"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 14",
+            "bn": "পারা ১৪",
+            "ar": "الجزء ١٤"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 15",
+            "bn": "পারা ১৫",
+            "ar": "الجزء ١٥"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 16",
+            "bn": "পারা ১৬",
+            "ar": "الجزء ١٦"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 17",
+            "bn": "পারা ১৭",
+            "ar": "الجزء ١٧"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 18",
+            "bn": "পারা ১৮",
+            "ar": "الجزء ١٨"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 19",
+            "bn": "পারা ১৯",
+            "ar": "الجزء ١٩"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 20",
+            "bn": "পারা ২০",
+            "ar": "الجزء ٢٠"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 21",
+            "bn": "পারা ২১",
+            "ar": "الجزء ٢١"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 22",
+            "bn": "পারা ২২",
+            "ar": "الجزء ٢٢"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 23",
+            "bn": "পারা ২৩",
+            "ar": "الجزء ٢٣"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 24",
+            "bn": "পারা ২৪",
+            "ar": "الجزء ٢٤"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 25",
+            "bn": "পারা ২৫",
+            "ar": "الجزء ٢٥"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 26",
+            "bn": "পারা ২৬",
+            "ar": "الجزء ٢٦"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 27",
+            "bn": "পারা ২৭",
+            "ar": "الجزء ٢٧"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 28",
+            "bn": "পারা ২৮",
+            "ar": "الجزء ٢٨"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 29",
+            "bn": "পারা ২৯",
+            "ar": "الجزء ٢٩"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        },
+        {
+          "name": {
+            "en": "Juz 30",
+            "bn": "পারা ৩০",
+            "ar": "الجزء ٣٠"
+          },
+          "note": {
+            "en": "",
+            "bn": "",
+            "ar": ""
+          },
+          "src": ""
+        }
+      ]
+    },
+    "blog": {
+      "num": "17",
+      "numLabel": {
+        "en": "Writing",
+        "bn": "লেখালেখি",
+        "ar": "مقالات"
+      },
+      "title": {
+        "en": "Notes on the Qur’an & Teaching",
+        "bn": "কুরআন ও শিক্ষকতা নিয়ে কিছু কথা",
+        "ar": "مقالات في القرآن والتدريس"
+      },
+      "sub": {
+        "en": "Occasional notes on recitation, Tajweed, memorisation and teaching.",
+        "bn": "তিলাওয়াত, তাজবীদ, হিফজ ও শিক্ষকতা নিয়ে মাঝে মাঝে লেখা।",
+        "ar": "مقالات متفرّقة في التلاوة والتجويد والحفظ والتدريس."
+      },
+      "readLabel": {
+        "en": "Read the post",
+        "bn": "পুরোটা পড়ুন",
+        "ar": "اقرأ المقال"
+      },
+      "allLabel": {
+        "en": "See more",
+        "bn": "আরও দেখুন",
+        "ar": "عرض المزيد"
+      },
+      "backLabel": {
+        "en": "Back to all posts",
+        "bn": "সব লেখায় ফিরুন",
+        "ar": "العودة إلى المقالات"
+      },
+      "emptyNote": {
+        "en": "The first posts are on their way.",
+        "bn": "প্রথম লেখাগুলো শীঘ্রই আসছে।",
+        "ar": "المقالات الأولى في الطريق."
+      },
+      "posts": [
+        {
+          "slug": "beginning-with-tajweed",
+          "date": "2026-09-10",
+          "published": true,
+          "cover": "assets/blog/beginning-with-tajweed.png",
+          "title": {
+            "en": "Where a Student Should Begin with Tajweed",
+            "bn": "তাজবীদ শেখা শুরু করবেন কোথা থেকে",
+            "ar": "من أين يبدأ الطالب مع التجويد"
+          },
+          "excerpt": {
+            "en": "Before rules and terminology, a student needs a correct ear and a patient teacher. A few thoughts on the first months.",
+            "bn": "নিয়ম আর পরিভাষার আগে দরকার শুদ্ধ শ্রবণ আর ধৈর্যশীল উস্তাদ। প্রথম কয়েক মাস নিয়ে কিছু কথা।",
+            "ar": "قبل القواعد والمصطلحات يحتاج الطالب إلى أذن سليمة ومعلّم صبور. خواطر عن الأشهر الأولى."
+          },
+          "body": [
+            {
+              "en": "Students often ask me which book they should start with. My answer is usually that the book matters less than the ear. Tajweed was carried from teacher to student by listening long before it was written down, and that order still holds.",
+              "bn": "ছাত্ররা প্রায়ই জিজ্ঞেস করে কোন কিতাব দিয়ে শুরু করবে। আমার উত্তর সাধারণত এই যে, কিতাবের চেয়ে কান বেশি জরুরি। তাজবীদ লেখা হওয়ার বহু আগে থেকেই উস্তাদ থেকে ছাত্রে শ্রবণের মাধ্যমে পৌঁছেছে — সেই ধারা আজও ঠিক।",
+              "ar": "كثيرًا ما يسألني الطلاب عن الكتاب الذي يبدؤون به. وجوابي غالبًا أنّ الكتاب أقلّ أهمية من الأذن. فالتجويد انتقل من المعلّم إلى الطالب سماعًا قبل أن يُدوَّن، وهذا الترتيب ما زال قائمًا."
+            },
+            {
+              "en": "Spend the first weeks listening closely to a single reciter and repeating short passages after him. Do not rush to the whole of Surah al-Baqarah. A handful of verses returned to every day will teach more than a page read once.",
+              "bn": "প্রথম সপ্তাহগুলোতে একজন ক্বারীর তিলাওয়াত মনোযোগ দিয়ে শুনুন এবং ছোট ছোট অংশ তাঁর পরে পুনরাবৃত্তি করুন। পুরো সূরা বাকারায় তাড়াহুড়ো করবেন না। প্রতিদিন ফিরে দেখা কয়েকটি আয়াত একবার পড়া এক পৃষ্ঠার চেয়ে বেশি শেখায়।",
+              "ar": "اقضِ الأسابيع الأولى في الإنصات الدقيق لقارئ واحد وترديد مقاطع قصيرة بعده. ولا تستعجل سورة البقرة كاملة. فآيات قليلة تُراجع كلّ يوم تُعلّم أكثر من صفحة تُقرأ مرّة واحدة."
+            },
+            {
+              "en": "The makharij come next: knowing where each letter is formed, and feeling it rather than only naming it. A teacher who listens to you weekly will correct in one minute what a book cannot explain in ten pages.",
+              "bn": "এরপর আসে মাখারিজ — প্রতিটি হরফ কোথা থেকে উচ্চারিত হয় তা জানা, শুধু নাম মুখস্থ নয়, অনুভব করা। যে উস্তাদ সপ্তাহে একবার আপনার তিলাওয়াত শোনেন, তিনি এক মিনিটে যা শুধরে দেন, কিতাব দশ পৃষ্ঠায়ও তা বোঝাতে পারে না।",
+              "ar": "ثمّ تأتي المخارج: معرفة موضع خروج كلّ حرف، والإحساس به لا مجرّد تسميته. فالمعلّم الذي يسمع منك أسبوعيًّا يصحّح في دقيقة ما لا يشرحه كتاب في عشر صفحات."
+            },
+            {
+              "en": "Finally, be patient with yourself. Accuracy arrives slowly and then all at once. What looks like no progress for two months is usually the ear learning quietly.",
+              "bn": "সবশেষে নিজের প্রতি ধৈর্যশীল হোন। শুদ্ধতা ধীরে ধীরে আসে, তারপর একসাথে। দুই মাস যা কোনো অগ্রগতি মনে হয় না, সেটা আসলে কান নীরবে শিখতে থাকা।",
+              "ar": "وأخيرًا، تأنَّ على نفسك. فالإتقان يأتي ببطء ثمّ يأتي دفعة واحدة. وما يبدو عدم تقدّم طوال شهرين هو في الغالب أذنٌ تتعلّم في صمت."
+            }
+          ]
+        },
+        {
+          "slug": "keeping-hifz-alive",
+          "date": "2026-09-16",
+          "published": true,
+          "cover": "assets/blog/keeping-hifz-alive.png",
+          "title": {
+            "en": "Keeping Hifz Alive After You Finish",
+            "bn": "হিফজ শেষ করার পর তা ধরে রাখা",
+            "ar": "الحفاظ على الحفظ بعد الختم"
+          },
+          "excerpt": {
+            "en": "Completing the memorisation is the easier half. What follows is a daily habit, not an achievement.",
+            "bn": "মুখস্থ শেষ করাটাই সহজ অংশ। এরপর যা আসে তা একটি দৈনন্দিন অভ্যাস, কোনো অর্জন নয়।",
+            "ar": "إتمام الحفظ هو النصف الأيسر. أمّا ما بعده فعادة يومية، لا إنجاز."
+          },
+          "body": [
+            {
+              "en": "Many students finish their hifz and then discover, a year later, that a third of it has quietly slipped away. This is not a failure of memory. It is what happens to anything that is not returned to.",
+              "bn": "অনেক ছাত্র হিফজ শেষ করে, এক বছর পর আবিষ্কার করে যে তার এক-তৃতীয়াংশ নীরবে হারিয়ে গেছে। এটা স্মৃতির ব্যর্থতা নয়। যেকোনো কিছুতে ফিরে না গেলে এমনটাই হয়।",
+              "ar": "كثير من الطلاب يُتمّون حفظهم، ثمّ يكتشفون بعد سنة أنّ ثلثه قد تسرّب في صمت. وليس هذا خللًا في الذاكرة، بل هو ما يحدث لكلّ ما لا يُعاد إليه."
+            },
+            {
+              "en": "A fixed daily portion is worth more than a long session once a week. Even one juz a day, read attentively rather than quickly, will hold the whole in place over a month.",
+              "bn": "সপ্তাহে একদিনের দীর্ঘ বৈঠকের চেয়ে প্রতিদিনের নির্দিষ্ট পরিমাণ বেশি মূল্যবান। দিনে এক পারা — দ্রুত নয়, মনোযোগ দিয়ে — এক মাসে পুরোটা ধরে রাখে।",
+              "ar": "حصّة يومية ثابتة خير من جلسة طويلة مرّة في الأسبوع. فجزء واحد كلّ يوم، يُقرأ بتدبّر لا بسرعة، يُمسك الكلّ على مدار شهر."
+            },
+            {
+              "en": "Recite aloud, and if you can, recite to someone. Silent review hides mistakes from you; the tongue and the listener both catch what the eye lets pass.",
+              "bn": "উচ্চস্বরে পড়ুন, সম্ভব হলে কাউকে শোনান। নীরব পুনরাবৃত্তি ভুল লুকিয়ে রাখে; জিহ্বা আর শ্রোতা দুজনেই ধরে ফেলে যা চোখ এড়িয়ে যায়।",
+              "ar": "اقرأ جهرًا، وإن استطعت فاقرأ على أحد. فالمراجعة الصامتة تُخفي عنك الخطأ، واللسان والسامع يلتقطان ما يتجاوزه البصر."
+            },
+            {
+              "en": "And treat the days you miss gently. A review missed is made up, not mourned. Consistency over years is built by returning after the gaps, not by never having any.",
+              "bn": "আর যেদিনগুলো বাদ পড়ে, সেগুলোর প্রতি নম্র হোন। বাদ পড়া পুনরাবৃত্তি পুষিয়ে নেওয়ার জিনিস, শোক করার নয়। বছরের পর বছরের ধারাবাহিকতা গড়ে ওঠে বিরতির পর ফিরে আসা দিয়ে, কখনো বিরতি না হওয়া দিয়ে নয়।",
+              "ar": "وارفُق بنفسك في الأيام التي تفوتك. فالمراجعة الفائتة تُقضى ولا يُحزن عليها. والاستمرار على مدى السنين يُبنى بالعودة بعد الانقطاع، لا بألّا ينقطع المرء أبدًا."
+            }
+          ]
         }
       ]
     }

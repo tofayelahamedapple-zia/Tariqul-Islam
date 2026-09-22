@@ -22,9 +22,22 @@ const ROOT = path.join(__dirname, 'public');
 const ADMIN = path.join(__dirname, 'admin');
 const CONTENT = path.join(__dirname, 'content/site.json');
 const BACKUPS = path.join(__dirname, 'content/backups');
-const PASSWORD = process.env.ADMIN_PASSWORD || 'tariqul';
+const PASSWORD_FILE = path.join(__dirname, 'content/.admin-password');
+
+/* The password comes from the environment, or from a local file that is kept out of
+   git, so a real password never lands in the repository. */
+function storedPassword() {
+  try { return fs.readFileSync(PASSWORD_FILE, 'utf8').trim(); } catch (e) { return ''; }
+}
+const PASSWORD = process.env.ADMIN_PASSWORD || storedPassword() || 'tariqul';
+const PASSWORD_SOURCE = process.env.ADMIN_PASSWORD ? 'ADMIN_PASSWORD'
+  : storedPassword() ? 'content/.admin-password' : 'default';
 const UPLOAD_DIR = path.join(ROOT, 'assets/gallery');
 const MAX_UPLOAD = 8 * 1024 * 1024;
+/* A juz recording runs to tens of megabytes, so audio gets its own ceiling and is
+   streamed straight to disk rather than held in memory. */
+const MAX_AUDIO = 300 * 1024 * 1024;
+const AUDIO_DIR = path.join(ROOT, 'assets/audio');
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -32,6 +45,7 @@ const MIME = {
   '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
   '.mp4': 'video/mp4', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.m4a': 'audio/mp4',
+  '.aac': 'audio/aac', '.ogg': 'audio/ogg', '.opus': 'audio/ogg', '.wav': 'audio/wav',
   '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf',
   '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.pdf': 'application/pdf'
 };
@@ -126,12 +140,21 @@ function saveContent(buf, cb) {
   }
 }
 
-const FOLDERS = { gallery: 'assets/gallery', assets: 'assets' };
+const FOLDERS = { gallery: 'assets/gallery', assets: 'assets', audio: 'assets/audio' };
 
 function saveUpload(req, res) {
   const name = String(req.headers['x-filename'] || '').replace(/[^A-Za-z0-9._-]/g, '');
-  const folder = FOLDERS[String(req.headers['x-folder'] || 'gallery')];
+  const key = String(req.headers['x-folder'] || 'gallery');
+  const folder = FOLDERS[key];
   if (!folder) return json(res, 400, { error: 'Unknown upload folder' });
+
+  if (key === 'audio') {
+    if (!name || !/\.(mp3|m4a|aac|ogg|opus|wav)$/i.test(name)) {
+      return json(res, 400, { error: 'Give the file a name ending in .mp3, .m4a, .aac, .ogg, .opus or .wav' });
+    }
+    return streamUpload(req, res, folder, name);
+  }
+
   if (!name || !/\.(jpe?g|png|webp|avif|gif)$/i.test(name)) {
     return json(res, 400, { error: 'Give the file a name ending in .jpg, .png, .webp, .avif or .gif' });
   }
@@ -144,9 +167,51 @@ function saveUpload(req, res) {
   });
 }
 
+/* Writes the request body to disk as it arrives; a part file is removed if the
+   upload is abandoned or runs past the ceiling, so nothing half-written is served. */
+function streamUpload(req, res, folder, name) {
+  const dir = path.join(ROOT, folder);
+  fs.mkdirSync(dir, { recursive: true });
+  const finalPath = path.join(dir, name);
+  const partPath = finalPath + '.part';
+  const out = fs.createWriteStream(partPath);
+  let size = 0, failed = false;
+
+  const fail = (status, message) => {
+    if (failed) return;
+    failed = true;
+    out.destroy();
+    fs.rm(partPath, { force: true }, () => {});
+    req.destroy();
+    json(res, status, { error: message });
+  };
+
+  req.on('data', c => {
+    size += c.length;
+    if (size > MAX_AUDIO) fail(413, 'File is larger than ' + Math.round(MAX_AUDIO / 1048576) + ' MB');
+  });
+  req.on('error', () => fail(400, 'The upload was interrupted'));
+  req.on('aborted', () => fail(400, 'The upload was interrupted'));
+  out.on('error', () => fail(500, 'Could not write the file'));
+  out.on('finish', () => {
+    if (failed) return;
+    fs.renameSync(partPath, finalPath);
+    json(res, 200, { src: folder + '/' + name, bytes: size });
+  });
+  req.pipe(out);
+}
+
 const listBackups = () => {
   try {
     return fs.readdirSync(BACKUPS).filter(f => /^site-.*\.json$/.test(f)).sort().reverse();
+  } catch (e) { return []; }
+};
+
+const listAudio = () => {
+  try {
+    return fs.readdirSync(AUDIO_DIR)
+      .filter(f => /\.(mp3|m4a|aac|ogg|opus|wav)$/i.test(f))
+      .map(f => 'assets/audio/' + f).sort();
   } catch (e) { return []; }
 };
 
@@ -179,14 +244,43 @@ function serveStatic(req, res, baseDir, pathname) {
     const ext = path.extname(file).toLowerCase();
     const etag = '"' + stat.size.toString(16) + '-' + stat.mtimeMs.toString(16) + '"';
     if (req.headers['if-none-match'] === etag) return send(res, 304, null, { ETag: etag });
-    const LONG = ['.png','.jpg','.jpeg','.webp','.avif','.gif','.mp4','.webm','.mp3','.m4a','.woff','.woff2','.ttf','.pdf'];
+    const LONG = ['.png','.jpg','.jpeg','.webp','.avif','.gif','.mp4','.webm','.mp3','.m4a',
+                  '.aac','.ogg','.opus','.wav','.woff','.woff2','.ttf','.pdf'];
     const headers = {
       'Content-Type': MIME[ext] || 'application/octet-stream',
       'Content-Length': stat.size,
       'Cache-Control': LONG.indexOf(ext) !== -1 ? 'public, max-age=604800' : 'no-cache',
-      ETag: etag, 'Last-Modified': stat.mtime.toUTCString()
+      ETag: etag, 'Last-Modified': stat.mtime.toUTCString(),
+      'Accept-Ranges': 'bytes'
     };
     if (req.method === 'HEAD') return send(res, 200, null, headers);
+
+    /* Range requests. Without these an <audio> element cannot seek, and Safari
+       will not play a long file at all. Only a single range is honoured, which
+       is all a media element ever asks for. */
+    const range = req.headers.range;
+    if (range) {
+      const m = /^bytes=(\d*)-(\d*)$/.exec(String(range).trim());
+      if (!m || (m[1] === '' && m[2] === '')) {
+        return send(res, 416, null, { 'Content-Range': 'bytes */' + stat.size, 'Accept-Ranges': 'bytes' });
+      }
+      let start, end;
+      if (m[1] === '') {                       // bytes=-500 -> the last 500 bytes
+        const len = Number(m[2]);
+        start = Math.max(0, stat.size - len); end = stat.size - 1;
+      } else {
+        start = Number(m[1]);
+        end = m[2] === '' ? stat.size - 1 : Math.min(Number(m[2]), stat.size - 1);
+      }
+      if (!(start >= 0 && start <= end && end < stat.size)) {
+        return send(res, 416, null, { 'Content-Range': 'bytes */' + stat.size, 'Accept-Ranges': 'bytes' });
+      }
+      return send(res, 206, fs.createReadStream(file, { start, end }), Object.assign({}, headers, {
+        'Content-Length': end - start + 1,
+        'Content-Range': 'bytes ' + start + '-' + end + '/' + stat.size
+      }));
+    }
+
     send(res, 200, fs.createReadStream(file), headers);
   }
 }
@@ -249,6 +343,7 @@ const server = http.createServer((req, res) => {
       });
     }
     if (pathname === '/api/gallery-files' && req.method === 'GET') return json(res, 200, { files: listGallery() });
+    if (pathname === '/api/audio-files' && req.method === 'GET') return json(res, 200, { files: listAudio() });
 
     if (pathname === '/admin' || pathname === '/admin/') pathname = '/admin/index.html';
     return serveStatic(req, res, ADMIN, pathname.replace(/^\/admin/, '') || '/index.html');
@@ -268,10 +363,11 @@ server.listen(PORT, HOST, () => {
   console.log('  ──────────────────────────────────────────');
   console.log('  Site:    http://localhost:' + PORT);
   console.log('  Admin:   http://localhost:' + PORT + '/admin');
-  console.log('  Sign in with any username and the password' +
-              (process.env.ADMIN_PASSWORD ? ' from ADMIN_PASSWORD.' : ' "tariqul".'));
-  if (!process.env.ADMIN_PASSWORD) {
-    console.log('  Set your own:  ADMIN_PASSWORD="…" node server.js');
+  console.log('  Password source: ' + PASSWORD_SOURCE);
+  if (PASSWORD_SOURCE === 'default') {
+    console.log('  Still the built-in "tariqul" — set your own with either:');
+    console.log('    echo "your-password" > content/.admin-password');
+    console.log('    ADMIN_PASSWORD="your-password" node server.js');
   }
   console.log('');
 });

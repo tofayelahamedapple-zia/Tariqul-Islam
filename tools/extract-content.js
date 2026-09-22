@@ -59,7 +59,9 @@ const site = {
     canonical: one(html, /<link rel="canonical" href="([^"]*)"/),
     skip: t('a11y.skip'),
     more: { en: 'See more', bn: 'আরও দেখুন', ar: 'عرض المزيد' },
-    less: { en: 'Show less', bn: 'কম দেখুন', ar: 'عرض أقل' }
+    less: { en: 'Show less', bn: 'কম দেখুন', ar: 'عرض أقل' },
+    readMore: { en: 'Read more', bn: 'আরও পড়ুন', ar: 'اقرأ المزيد' },
+    readLess: { en: 'Show less', bn: 'কম দেখুন', ar: 'عرض أقل' }
   },
   status: {}, ranks: {},
   nav: all(html, /<a class="nav__link" href="([^"]+)"\s+data-i18n="([^"]+)"/g).map(m => ({ href: m[1], label: t(m[2]) })),

@@ -3,5 +3,12 @@ node_modules/
 *.log
 .env
 
+# The admin password — never commit this
+content/.admin-password
+
 # Admin keeps the last 20 versions of the content here
 content/backups/
+
+# Uploaded Qur'an recordings — far too large for a git repository
+public/assets/audio/*
+!public/assets/audio/README.txt
