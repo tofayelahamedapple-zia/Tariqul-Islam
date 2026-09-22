@@ -538,7 +538,7 @@
             "ar": "تلفزيون ماتشرانغا"
           },
           "rankKey": "2",
-          "logo": ""
+          "logo": "assets/tv/maasranga.png"
         },
         {
           "year": "2015",
@@ -553,7 +553,7 @@
             "ar": "بنغلا فيجن"
           },
           "rankKey": "6",
-          "logo": ""
+          "logo": "assets/tv/banglavision.png"
         },
         {
           "year": "2017",
